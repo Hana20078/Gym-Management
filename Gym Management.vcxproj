@@ -123,7 +123,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Attendance_Tracking.cpp" />
+    <ClCompile Include="Billing_System.cpp" />
     <ClCompile Include="Gym Management.cpp" />
+    <ClCompile Include="member.cpp" />
+    <ClCompile Include="Membership_Plan_Management.cpp" />
+    <ClCompile Include="Reports.cpp" />
+    <ClCompile Include="Trainer_Management.cpp" />
+    <ClCompile Include="Workout_Program_Management.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Attendance_Tracking.h" />
+    <ClInclude Include="Billing_System.h" />
+    <ClInclude Include="member.h" />
+    <ClInclude Include="Membership_Plan_Management.h" />
+    <ClInclude Include="Reports.h" />
+    <ClInclude Include="Trainer_Management.h" />
+    <ClInclude Include="Workout_Program_Management.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
