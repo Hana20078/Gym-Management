@@ -18,5 +18,49 @@
     <ClCompile Include="Gym Management.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Attendance_Tracking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Billing_System.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="member.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Membership_Plan_Management.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Reports.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Trainer_Management.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Workout_Program_Management.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Attendance_Tracking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Billing_System.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="member.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Membership_Plan_Management.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Reports.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Trainer_Management.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Workout_Program_Management.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

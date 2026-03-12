@@ -21,6 +21,7 @@ int main() {
 		cout << "6.Track membership status" << endl;
 		cout << "7.exist" << endl;
 		cin >> choice;
+		cout << "*******************************************************" << endl;
 		//switch (choice) {
 		//case1:
 		//	register_member();
