@@ -21,20 +21,20 @@ int main() {
 		cout << "6.Track membership status" << endl;
 		cout << "7.exist" << endl;
 		cin >> choice;
-		switch (choice) {
-		case1:
-			register_member();
-		case 2:
-			update_member();
-		case 3:
-			delete_member();
-		case 4:
-			search_member();
-		case 5:
-			display_member();
-		case 6:
-			track_memberships();
-		case 7:
-			cout << "existing...........";
-		}while (choice != 7);
-	}
+		//switch (choice) {
+		//case1:
+		//	register_member();
+		//case 2:
+		//	update_member();
+		//case 3:
+		//	delete_member();
+		//case 4:
+		//	search_member();
+		//case 5:
+		//	display_member();
+		//case 6:
+		//	track_memberships();
+		//case 7:
+		//	cout << "existing...........";
+	}while (choice != 7);
+}
