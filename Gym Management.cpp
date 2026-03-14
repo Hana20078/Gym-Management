@@ -22,6 +22,7 @@ int main() {
 		cout << "7.exist" << endl;
 		cin >> choice;
 		cout << "*******************************************************" << endl;
+		cout << "*******************************************************" << endl;
 		//switch (choice) {
 		//case1:
 		//	register_member();
