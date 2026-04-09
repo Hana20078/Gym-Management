@@ -13,6 +13,15 @@ person::person() {
 	id = counter++;
 
 }
+person::person(string n, int id, int ag, int con) {
+	name = n;
+	age = ag;
+	contactinfo = con;
+
+
+}
+
+
 void person::printer() {
 	cout << "name  : " << name << endl;
 	cout << "id :" << id << endl;

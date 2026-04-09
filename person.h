@@ -11,6 +11,7 @@ private :
 	int age;//to check if member/trainer age is valid
 public:
 	person();
+	person(string n, int id, int ag, int contactinfo);
 	void printer();
 	void setname();
 	void setcontactinfo();
