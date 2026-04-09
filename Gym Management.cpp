@@ -4,8 +4,10 @@
 #include "Membership_Plan_Management.h" 
 #include "Workout_Program_Management.h" 
 #include "Billing_System.h"  
+
 #include "Attendance_Tracking.h" 
 #include "Reports.h"
+#include "person.h"
 
 
 using namespace std;

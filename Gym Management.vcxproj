@@ -128,6 +128,7 @@
     <ClCompile Include="Gym Management.cpp" />
     <ClCompile Include="member.cpp" />
     <ClCompile Include="Membership_Plan_Management.cpp" />
+    <ClCompile Include="person.cpp" />
     <ClCompile Include="Reports.cpp" />
     <ClCompile Include="Trainer_Management.cpp" />
     <ClCompile Include="Workout_Program_Management.cpp" />
@@ -137,6 +138,7 @@
     <ClInclude Include="Billing_System.h" />
     <ClInclude Include="member.h" />
     <ClInclude Include="Membership_Plan_Management.h" />
+    <ClInclude Include="person.h" />
     <ClInclude Include="Reports.h" />
     <ClInclude Include="Trainer_Management.h" />
     <ClInclude Include="Workout_Program_Management.h" />
