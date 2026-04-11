@@ -13,7 +13,7 @@ person::person() {
 	id = counter++;
 
 }
-person::person(string n, int id, int ag, int con) {
+person::person(string n, int idd, int ag, int con) {
 	name = n;
 	age = ag;
 	contactinfo = con;
