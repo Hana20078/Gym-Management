@@ -1,5 +1,6 @@
 #pragma once
-class member
+#include "person.h"
+class member:public person 
 {
 };
 
