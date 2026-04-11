@@ -9,12 +9,14 @@ struct activity {
 	int session_duration;
 };
 class Trainer_Management :public person
+
+
 {
 private:
 	string specailty;
 	double salary;
 	float comisson;
-	member assignedmemberlist[10];
+	string assignedmemberlist[10];
 	activity trainer_activity;
 public:
 	Trainer_Management(string n, int idd, int ag, int con, string spec, double sal, float com, activity ta, member list[10]) :person(n, ag, idd, con) {};

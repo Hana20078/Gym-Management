@@ -50,6 +50,13 @@ Trainer_Management::Trainer_Management()
  }
 
  void Trainer_Management::setassignedmemberlist() {
+	 int i = i;
+	 cout<<"enter what "
+	 while (true) {
+		 cout<<"assigned member number "<<i
+			 cin>>assignedmemberlist[i]
+		 
+ }
 
  }
  void Trainer_Management::setcomisson()
