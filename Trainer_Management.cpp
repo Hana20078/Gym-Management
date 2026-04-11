@@ -10,6 +10,7 @@ Trainer_Management::Trainer_Management(string n, int idd, int ag, int con, strin
 	comisson = com;
 	trainer_activity.hours_worked = ta.hours_worked;
 	trainer_activity.session_duration = ta.session_duration;
+
 }
 
 Trainer_Management::Trainer_Management()
@@ -41,4 +42,47 @@ Trainer_Management::Trainer_Management()
 	 cout << "enter speciality : ";
 		 cin >> specailty;
  }
+
+ void Trainer_Management::setsalary()
+ {
+	 cout << "enter salary :";
+	 cin >> salary;
+ }
+
+ void Trainer_Management::setassignedmemberlist() {
+
+ }
+ void Trainer_Management::setcomisson()
+ {
+ }
+ void Trainer_Management::setactivity() {
+	 cout << "enter trainer activity (hours worked & ssesion duration) :" << endl;
+	 cin >> trainer_activity.hours_worked >> trainer_activity.session_duration;
+ }
+
+ double Trainer_Management::getsalary()
+ {
+	 return salary;
+ }
+
+ float Trainer_Management::getcomisson()
+ {
+	 return comisson;
+ }
+
+ member Trainer_Management::getassignedmemberlist()
+ {
+	 return ;
+ }
+
+ activity Trainer_Management::getactivity()
+	 
+ {
+	 activity a1;
+	a1.hours_worked= trainer_activity.hours_worked;
+	a1.session_duration = trainer_activity.session_duration;
+		return a1;
+ }
+ 
+ 
  
