@@ -4,22 +4,20 @@
 int person:: counter = 1000
 ;
 person::person() {
-	cout << "please enter name:"<<endl;
+	cout << "please enter name:";
 	cin >> name;
-	cout << "please enter your age : "<<endl;
+	cout << "please enter your age : ";
 	cin >> age;
-	cout << "please enter your contact info : "<<endl;
-	cout << contactinfo;
-	id =++ counter;
-	cout << "enter your gender : " << endl;
-	cin >> gender;
+	cout << "please enter your contact info : ";
+	cin >>contactinfo;
+	id = counter++;
 
 }
-person::person(string n, int idd, int ag, int con,string g) {
+person::person(string n, int ag, int con) {
 	name = n;
 	age = ag;
 	contactinfo = con;
-	gender = g;
+	id = counter++;
 
 
 }
@@ -57,7 +55,7 @@ string person::getname() {
 
 int person::getid()
 {
-	return age;
+	return id;
 }
 
 int person::getage() {
