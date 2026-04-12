@@ -20,7 +20,7 @@ private:
 	string assignedmemberlist[10];
 	activity trainer_activity;
 public:
-    Trainer_Management(string n, int idd, int ag, int con, string spec, double sal, float com, activity ta, member list[10], string g);
+	Trainer_Management(string n, int idd, int ag, int con, string spec, double sal, float com, activity ta, member list[10], string g);
 	Trainer_Management();
 	void printer();
 	void setspeciality();
@@ -32,4 +32,6 @@ public:
 	float getcomisson();
 	member getassignedmemberlist();
 	activity getactivity();
+	void save_file();\
+	void load_file(string filename);
 };

@@ -1,5 +1,6 @@
 #include "Trainer_Management.h"
 #include <iostream>
+#include<fstream>
 
 using namespace std;
 
@@ -87,6 +88,12 @@ member Trainer_Management::getassignedmemberlist()
     a1.hours_worked= trainer_activity.hours_worked;
     a1.session_duration = trainer_activity.session_duration;
          return a1;
+ }
+
+ void Trainer_Management::save_file(string filename)
+ {
+     ofstream trainerfile;
+     trainerfile.open(filename+".txt")
  }
  
  
