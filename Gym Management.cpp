@@ -10,35 +10,64 @@
 
 using namespace std;
 
+void displayMenu() {
+    cout << "\nWelcome to the Potatos Management System!" << endl;
+    cout << "1. Create a new member" << endl;
+    cout << "2. Create a new trainer" << endl;
+    cout << "0. Exit" << endl;
+    cout << "Enter your choice: ";
+}
+void createMember(member members[], int& memberCount) {
+    if (memberCount < 1000) {
+        members[memberCount].createnewclient();
+        memberCount++;
+        cout << "Member created successfully!" << endl;
+    }
+    else {
+        cout << "Member limit reached. Cannot create more members." << endl;
+	}
+     
+}
+void createTrainer(member Trainer[], int& TrainerCount) {
+    if (TrainerCount < 1000) {
+        Trainer[TrainerCount].createnewclient();
+        TrainerCount++;
+        cout << "Trainer created successfully!" << endl;
+    }
+    else {
+        cout << "Trainer limit reached. Cannot create more trainers." << endl;
+    }
+
+}
+
+
 int main() {
     int choice;
-    member m1;
-	cout << "Welcome to the Potatos Management System!" << endl;
-	cout << "1. Create a new member" << endl;
-	cout << "2. Create a new trainer" << endl;
-    cin >> choice;
+    member m[1000];
+    member t[30];
+    int TrainerCount = 0;
+    int memberCount = 0;
+    do {
+		displayMenu();
+        cin >> choice;
 
-    //
-    Trainer_Management myTrainer;
-
-    cout << "Saving trainer data to file..." << endl;
-    myTrainer.save_file();
-    cout << "Done! Check your folder for trainerfile.txt" << endl;
-
-    //
-
-
-	switch (choice)
-    {
+        switch (choice)
+        {
+        
         case 1:
-            m1.createnewclient();
+			createMember(m, memberCount);
             break;
         case 2:
-			break;
+			cout << "Creating a new trainer is under construction. Please check back later." << endl;
+			//createTrainer(t, TrainerCount);
+            break;
+        case 0:
+            cout << "Exiting..." << endl;
+            break;
         default:
             cout << "Invalid choice" << endl;
             break;
-    }
-
+        }
+    } while (choice != 0);
     return 0;
 }
