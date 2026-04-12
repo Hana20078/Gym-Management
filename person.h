@@ -8,16 +8,16 @@ using namespace std;
 
 class person {
 
-private:
+protected:
 	static int counter; // static to be affected by each object created
-	std::string name;
+	string name;
 	int id;
 	int contactinfo;
 	int age; // to check if member/trainer age is valid
-	std::string gender;
+	string gender;
 public:
 	person();
-	person(std::string n, int ag, int con, std::string g);
+	person(string n, int ag, int con,string g);
 	void printer();
 	void setname();
 	void setcontactinfo();

@@ -90,10 +90,23 @@ member Trainer_Management::getassignedmemberlist()
          return a1;
  }
 
- void Trainer_Management::save_file(string filename)
+ void Trainer_Management::load_file()
  {
-     ofstream trainerfile;
-     trainerfile.open(filename+".txt")
+ }
+
+ void Trainer_Management::save_file()
+ {
+     ofstream tfile;
+     tfile.open("trainerfile.txt");
+     if (tfile) {
+         tfile << name << "   " << age << "  " << specailty << "  " << id << "  " << gender << "  " << salary << "  " << comisson <<"  " << contactinfo;
+         for (int i = 0; i < 10; i++) {
+             tfile << assignedmemberlist[i]<<"  ";
+             
+             
+   }
+     }
+     tfile.close();
  }
  
  

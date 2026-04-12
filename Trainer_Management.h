@@ -32,6 +32,6 @@ public:
 	float getcomisson();
 	member getassignedmemberlist();
 	activity getactivity();
-	void save_file();\
-	void load_file(string filename);
+	void save_file();
+	void load_file();
 };

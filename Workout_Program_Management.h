@@ -27,7 +27,7 @@ public:
 class Exercise
 {
 private:
-	std::string exercise_name;
+	:string exercise_name;
 	int sets, reps, rest_time;
 public:
 	void setid();
@@ -38,8 +38,8 @@ public:
 	void setassigned_trainer();
 	int getid();
 	int getduration();
-	std::string getname();
-	std::string gettarget_goal();
+	string getname();
+	string gettarget_goal();
 	std::string getexercise_list();
 	std::string getassigned_trainer();
 	Exercise(std::string en, int s, int r, int rt);
