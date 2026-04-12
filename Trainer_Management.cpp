@@ -4,7 +4,7 @@
 #include<string>
 using namespace std;
 
-Trainer_Management::Trainer_Management(string n, int idd, int ag, int con, string spec, double sal, float com, activity ta, member list[10])
+Trainer_Management::Trainer_Management(string n, int idd, int ag, int con, string spec, double sal, float com, activity ta, member list[10],string g)
 {
 	specailty = spec;
 	comisson = com;
@@ -51,12 +51,12 @@ Trainer_Management::Trainer_Management()
 
  void Trainer_Management::setassignedmemberlist() {
 	 int i = i;
-	 cout<<"enter what "
+	 cout << "enter what ";
 	 while (true) {
-		 cout<<"assigned member number "<<i
-			 cin>>assignedmemberlist[i]
-		 
- }
+		 cout << "assigned member number " << i;
+		 cin >> assignedmemberlist[i];
+	 }
+ 
 
  }
  void Trainer_Management::setcomisson()
