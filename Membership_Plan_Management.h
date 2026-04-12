@@ -6,6 +6,10 @@ private:
 	string name;
 public:
 	Membership_Plan_Management(int i,string n);
+	void setid();
+	void setname();
+	int getid();
+	string getname();
 	void displaymembershipPlan();
 
 };
