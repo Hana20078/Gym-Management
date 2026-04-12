@@ -2,6 +2,7 @@
 #include<iostream>
 #include <string>
 using namespace std;
+
 workout_programs::workout_programs(int i, int d, string n, string tg, string el, string at) {
 	id = i;
 	duration = d;

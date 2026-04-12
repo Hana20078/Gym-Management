@@ -1,24 +1,25 @@
 #pragma once
+#include <string>
+
+using namespace std;
+
 class Membership_Plan_Management
 {
 private:
 	int id;
-	string name;
+	std::string name;
 public:
-	Membership_Plan_Management(int i,string n);
-	void setid();
-	void setname();
-	int getid();
-	string getname();
+	Membership_Plan_Management(int i, std::string n);
 	void displaymembershipPlan();
 
 };
+
 class plan {
 private:
 	int plan_id, duration, Access_level;
 	float price;
-	string Allowed_services, Discount_rules;
+	std::string Allowed_services, Discount_rules;
 public:
-	plan(int pi, int d, int al, float p, string a, string dr);
+	plan(int pi, int d, int al, float p, std::string a, std::string dr);
 	void displayPlan();
 };
