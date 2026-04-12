@@ -1,7 +1,8 @@
 #include "Membership_Plan_Management.h"
-#include<iostream>
-#include <string>
+#include <iostream>
+
 using namespace std;
+
 Membership_Plan_Management::Membership_Plan_Management(int i, string n) {
 	id = i;
 	name = n;
@@ -27,7 +28,7 @@ string Membership_Plan_Management::getname()
 	return name;
 }
 void Membership_Plan_Management::displaymembershipPlan() {
-	cout << "ID:" << id<<endl;
+	cout << "ID:" << id << endl;
 	cout << "Name:" << name << endl;
 	cout << "======================================================";
 }
