@@ -7,6 +7,9 @@ using namespace std;
 int person::counter = 1000;
 
 person::person() {
+
+}
+void person::createnewclient() {
     cout << "please enter name:";
     cin >> name;
     cout << "please enter your age : ";

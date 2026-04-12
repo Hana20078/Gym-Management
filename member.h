@@ -1,11 +1,32 @@
 #pragma once
 #include "person.h"
-
+#include <iostream>
+#include <ctime>
 using namespace std;
 
-class member:public person 
+class member: private person 
 {
 private:
+	time_t now = time(0);
+	string membership_plan;
+	time_t registration_date;
+	time_t expiration_date;
+	string assigned_trainer;
+	string attendance_record;
+	string payment_status;
+	string active_subscription;
+
+public:
+	member();
+	void chooseplan();
+	void activesubscription();
+	void assignedtrainer();
+	void Membershipstatus();
+	void printmemberinfo();
+	void createnewclient();
+
+
+
 
 
 };

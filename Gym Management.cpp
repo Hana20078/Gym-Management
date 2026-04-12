@@ -11,10 +11,20 @@
 using namespace std;
 
 int main() {
-    // Menu code is commented out. If you want the loop, uncomment and declare int choice;
-    person p1;
-    person p2;
-    p1.printer();
-    p2.printer();
+    int choice;
+    member m1;
+	cout << "Welcome to the Potatos Management System!" << endl;
+	cout << "1. Create a new member" << endl;
+    cin >> choice;
+	switch (choice)
+    {
+        case 1:
+            m1.createnewclient();
+            break;
+        default:
+            cout << "Invalid choice" << endl;
+            break;
+    }
+
     return 0;
 }

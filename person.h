@@ -10,19 +10,20 @@ class person {
 
 private:
 	static int counter; // static to be affected by each object created
-	std::string name;
+	string name;
 	int id;
 	int contactinfo;
 	int age; // to check if member/trainer age is valid
-	std::string gender;
+	string gender;
 public:
 	person();
-	person(std::string n, int ag, int con, std::string g);
+	person(string n, int ag, int con, string g);
 	void printer();
+	void createnewclient();
 	void setname();
 	void setcontactinfo();
 	void setage();
-	std::string getname();
+	string getname();
 	int getid();
 	int getage();
 	int getcontactinfo();
