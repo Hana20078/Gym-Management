@@ -13,6 +13,18 @@ private:
 	string exercise_name;
 	int sets, reps, rest_time;
 public:
+	void setid();
+	void setduration();
+	void setname();
+	void settarget_goal();
+	void setexercise_list();
+	void setassigned_trainer();
+	int getid();
+	int getduration();
+	string getname();
+	string gettarget_goal();
+	string getexercise_list();
+	string getassigned_trainer();
 	Exercise(string en, int s, int r, int rt);
 	void display();
 };
