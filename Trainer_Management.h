@@ -1,37 +1,35 @@
 #pragma once
-#include"person.h"
+#include "person.h"
 #include "member.h"
-#include<string>
+#include <string>
 
 struct activity {
-	//7t 2l attendance hena ya shafik
+	// attendance data
 	int hours_worked;
 	int session_duration;
 };
-class Trainer_Management :public person
 
+using namespace std;
 
+class Trainer_Management : public person
 {
 private:
-	string specailty;
+	std::string specailty;
 	double salary;
 	float comisson;
-	string assignedmemberlist[10];
+	std::string assignedmemberlist[10];
 	activity trainer_activity;
 public:
-	Trainer_Management(string n, int idd, int ag, int con, string spec, double sal, float com, activity ta, member list[10],string g) :person(n, ag, idd, con,g) {};
-Trainer_Management();
-void printer();
-void setspeciality();
-void setsalary();
-void setassignedmemberlist();
-void setcomisson();
-void setactivity();
-double getsalary();
-float getcomisson();
-member getassignedmemberlist();
-activity getactivity();
-
-
-
+    Trainer_Management(std::string n, int idd, int ag, int con, std::string spec, double sal, float com, activity ta, member list[10], std::string g);
+	Trainer_Management();
+	void printer();
+	void setspeciality();
+	void setsalary();
+	void setassignedmemberlist();
+	void setcomisson();
+	void setactivity();
+	double getsalary();
+	float getcomisson();
+	member getassignedmemberlist();
+	activity getactivity();
 };

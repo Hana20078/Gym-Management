@@ -1,31 +1,31 @@
 
-#include<string>
-using namespace std;
-class person{
+#ifndef PERSON_H
+#define PERSON_H
 
-private :
-	static int counter; //static to be affected by each object created
-	string name;
+#include <string>
+
+using namespace std;
+
+class person {
+
+private:
+	static int counter; // static to be affected by each object created
+	std::string name;
 	int id;
 	int contactinfo;
-	int age;//to check if member/trainer age is valid
-	string gender;
+	int age; // to check if member/trainer age is valid
+	std::string gender;
 public:
 	person();
-	person(string n, int id, int ag, int contactinfo,string g);
+	person(std::string n, int ag, int con, std::string g);
 	void printer();
 	void setname();
 	void setcontactinfo();
 	void setage();
-	string getname();
+	std::string getname();
 	int getid();
 	int getage();
 	int getcontactinfo();
-	
-
-
-
-
-
 };
 
+#endif // PERSON_H
