@@ -82,8 +82,10 @@ activity Trainer_Management::getactivity()
     a1.session_duration = trainer_activity.session_duration;
          return a1;
  }
-void Trainer_Management::load_file()
- {
+void Trainer_Management::load_file() {
+    ifstream 
+
+ 
  }
 void Trainer_Management::save_file()
  {
