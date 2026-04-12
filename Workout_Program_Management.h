@@ -6,10 +6,22 @@ using namespace std;
 class workout_programs {
 private:
 	int id, duration;
-	std::string name, target_goal, exercise_list, assigned_trainer;
+    string name, target_goal, exercise_list, assigned_trainer;
 public:
-	workout_programs(int i, int d, std::string n, std::string tg, std::string el, std::string at);
+    workout_programs(int i, int d, string n, string tg, string el, string at);
 	void displayprogram();
+	void setid();
+	void setduration();
+	void setname();
+	void settarget_goal();
+	void setexercise_list();
+	void setassigned_trainer();
+    int getid();
+	int getduration();
+	string getname();
+	string gettarget_goal();
+	string getexercise_list();
+	string getassigned_trainer();
 };
 
 class Exercise

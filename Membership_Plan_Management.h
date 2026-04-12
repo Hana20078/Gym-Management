@@ -10,6 +10,10 @@ private:
 	std::string name;
 public:
 	Membership_Plan_Management(int i, std::string n);
+    void setid();
+	void setname();
+	int getid();
+	std::string getname();
 	void displaymembershipPlan();
 
 };
