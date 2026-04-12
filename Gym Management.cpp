@@ -15,12 +15,26 @@ int main() {
     member m1;
 	cout << "Welcome to the Potatos Management System!" << endl;
 	cout << "1. Create a new member" << endl;
+	cout << "2. Create a new trainer" << endl;
     cin >> choice;
+
+    //
+    Trainer_Management myTrainer;
+
+    cout << "Saving trainer data to file..." << endl;
+    myTrainer.save_file();
+    cout << "Done! Check your folder for trainerfile.txt" << endl;
+
+    //
+
+
 	switch (choice)
     {
         case 1:
             m1.createnewclient();
             break;
+        case 2:
+			break;
         default:
             cout << "Invalid choice" << endl;
             break;

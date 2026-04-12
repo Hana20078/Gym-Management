@@ -27,7 +27,7 @@ public:
 class Exercise
 {
 private:
-	:string exercise_name;
+	string exercise_name;
 	int sets, reps, rest_time;
 public:
 	void setid();
