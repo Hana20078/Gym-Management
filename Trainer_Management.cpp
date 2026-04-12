@@ -14,6 +14,8 @@ Trainer_Management::Trainer_Management(string n, int idd, int ag, int con, strin
 }
 Trainer_Management::Trainer_Management()
 {
+    person::createnewclient();
+
     cout << "enter trainer specaility: " << endl;
     cin >> specailty;
     cout << "enter salary:" << endl;
