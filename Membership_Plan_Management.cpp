@@ -7,6 +7,26 @@ Membership_Plan_Management::Membership_Plan_Management(int i, string n) {
 	id = i;
 	name = n;
 }
+void Membership_Plan_Management::setid()
+{
+	cout << "write membership plan's id  " << id;
+	cin >> id;
+}
+void Membership_Plan_Management::setname()
+{
+	cout << "write membership plan's name " << name;
+	cin >> name;
+}
+int Membership_Plan_Management::getid()
+{
+	cout << "membership plan's id is " << id;
+	return id;
+}
+string Membership_Plan_Management::getname()
+{
+	cout << "membership plan's name is " << name;
+	return name;
+}
 void Membership_Plan_Management::displaymembershipPlan() {
 	cout << "ID:" << id << endl;
 	cout << "Name:" << name << endl;
