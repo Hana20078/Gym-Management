@@ -19,7 +19,7 @@ private:
 	string assignedmemberlist[10];
 	activity trainer_activity;
 public:
-	Trainer_Management(string n, int idd, int ag, int con, string spec, double sal, float com, activity ta, member list[10]) :person(n, ag, idd, con) {};
+	Trainer_Management(string n, int idd, int ag, int con, string spec, double sal, float com, activity ta, member list[10],string g) :person(n, ag, idd, con,g) {};
 Trainer_Management();
 void printer();
 void setspeciality();
