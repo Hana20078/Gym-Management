@@ -8,7 +8,7 @@ using namespace std;
 
 class person {
 
-private:
+protected:
 	static int counter; // static to be affected by each object created
 	string name;
 	int id;
@@ -17,7 +17,7 @@ private:
 	string gender;
 public:
 	person();
-	person(string n, int ag, int con, string g);
+	person(std::string n, int ag, int con, std::string g);
 	void printer();
 	void createnewclient();
 	void setname();

@@ -42,6 +42,9 @@
     <ClCompile Include="person.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="saving_loading.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Attendance_Tracking.h">
@@ -66,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="person.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="saving_loading.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

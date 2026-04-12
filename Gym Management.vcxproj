@@ -130,6 +130,7 @@
     <ClCompile Include="Membership_Plan_Management.cpp" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="Reports.cpp" />
+    <ClCompile Include="saving_loading.cpp" />
     <ClCompile Include="Trainer_Management.cpp" />
     <ClCompile Include="Workout_Program_Management.cpp" />
   </ItemGroup>
@@ -140,6 +141,7 @@
     <ClInclude Include="Membership_Plan_Management.h" />
     <ClInclude Include="person.h" />
     <ClInclude Include="Reports.h" />
+    <ClInclude Include="saving_loading.h" />
     <ClInclude Include="Trainer_Management.h" />
     <ClInclude Include="Workout_Program_Management.h" />
   </ItemGroup>
