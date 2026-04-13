@@ -17,7 +17,7 @@ private:
 	string active_subscription;
 
 public:
-	member();
+	
 	void chooseplan();
 	void activesubscription();
 	void assignedtrainer();

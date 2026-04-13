@@ -4,14 +4,8 @@
 
 using namespace std;
 
-Trainer_Management::Trainer_Management(string n, int idd, int ag, int con, string spec, double sal, float com, activity ta, member list[10], string g) : person(n, ag, con, g)
-{
-    specailty = spec;
-    salary = sal;
-    comisson = com;
-    trainer_activity.hours_worked = ta.hours_worked;
-    trainer_activity.session_duration = ta.session_duration;
-}
+
+
 Trainer_Management::Trainer_Management()
 {
     person::createnewclient();
