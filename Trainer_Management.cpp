@@ -6,7 +6,7 @@ using namespace std;
 
 
 
-Trainer_Management::Trainer_Management()
+void Trainer_Management::createnewtrainer()
 {
     person::createnewclient();
 

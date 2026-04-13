@@ -34,4 +34,5 @@ public:
 	activity getactivity();
 	void save_file();
 	void load_file();
+	void createnewtrainer();
 };
