@@ -5,10 +5,12 @@ using namespace std;
 
 class workout_programs {
 private:
-	int id, duration;
+	int num, duration;
     string name, target_goal, exercise_list, assigned_trainer;
+	float start_date, expiration_date;
 public:
-    workout_programs(int i, int d, string n, string tg, string el, string at);
+    workout_programs(int nu, int d, string n, string tg, string el, string at ,float sd,float ed);
+	void chooseWorkout();
 	void displayprogram();
 	void setid();
 	void setduration();
@@ -22,6 +24,10 @@ public:
 	string gettarget_goal();
 	string getexercise_list();
 	string getassigned_trainer();
+	void setexpiration_date();
+	float getexpiration_date();
+	void setstart_date();
+	float getstart_date();
 };
 
 class Exercise
