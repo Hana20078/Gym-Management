@@ -78,12 +78,12 @@ void plan::printstartandenddate()
 	cout << "Expiration Date: " << ctime(&expiration_date) << endl;
 }
 void membershipplansystem() {
-	Membership_Plan_Management m(0,"");
+	Membership_Plan_Management m(0, "");
 	m.setid();
 	m.setname();
 	m.displaymembershipPlan();
 	cout << endl;
-	plan p(0,0,0,"","",Access_level::Basic);
+	plan p(0, 0, 0, "", "", Access_level::Basic);
 	p.setplan_id();
 	p.setduration();
 	p.setprice();
@@ -92,4 +92,5 @@ void membershipplansystem() {
 	p.setstart_date();
 	p.setexpiration_date();
 	p.displayPlan();
-	p.printstartandenddate() ;
+	p.printstartandenddate();
+}
