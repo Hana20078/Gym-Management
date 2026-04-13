@@ -78,7 +78,7 @@ activity Trainer_Management::getactivity()
  }
 void Trainer_Management::load_file() {
     ifstream tfile;
-    tfile.open("trainerfile.txt",ios::app);
+    tfile.open("trainerfile.txt");
     if (tfile) {
 		tfile >> name >> age >> specailty >> id >> gender>> salary >> comisson >> contactinfo;
         for (int i = 0; i < 10; i++) {
