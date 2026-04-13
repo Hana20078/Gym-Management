@@ -52,6 +52,33 @@ void plan::displayPlan() {
 	cout << "======================================================";
 }
 
+void plan::setplan_id()
+{
+	cout << "write plan id " << plan_id;
+	cin >> plan_id;
+}	
+
+void plan::setduration()
+{
+	cout << "write plan duration in days " << duration;
+	cin >> duration;
+}
+
+void plan::setprice()
+{
+	cout << "write plan price " << price;
+	cin >> price;
+}
+
+void plan::setAllowed_services() {
+	cout << "write allowed services for this plan " << Allowed_services;
+	cin >> Allowed_services;
+}
+
+void plan::setDiscount_rules() {
+	cout << "write discount rules for this plan " << Discount_rules;
+	cin >> Discount_rules;
+}
 void plan::setexpiration_date()
 {
 	time_t now = time(0);
