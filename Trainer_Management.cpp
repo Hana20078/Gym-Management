@@ -105,8 +105,10 @@ void Trainer_Management::save_file()
      ofstream tfile;
      tfile.open("trainerfile.txt",ios::app);
      if (tfile) {
-		 tfile << name << " " << age << " " << specailty << " " << id << " " << gender << " " << salary << " " << comisson << " " << contactinfo << endl;
+         tfile << name << " " << age << " " << specailty << " " << id << " " << gender << " " << salary << " " << comisson << " " << contactinfo << " " << trainer_activity.hours_worked << " " << trainer_activity.session_duration<<" ";
            }
+     for(int i=0;i<10;i++)
+         tfile<< assignedmemberlist[i]<<" ";
          tfile.close();
      }
 
