@@ -10,10 +10,13 @@
 
 using namespace std;
 
+constexpr int MAX_TRAINERS = 30;
+
 void displayMenu() {
     cout << "\nWelcome to the Potatos Management System!" << endl;
     cout << "1. Create a new member" << endl;
     cout << "2. Create a new trainer" << endl;
+	cout << "3. Load member" << endl;
     cout << "0. Exit" << endl;
     cout << "Enter your choice: ";
 }
@@ -29,8 +32,8 @@ void createMember(member members[], int& memberCount) {
      
 }
 void createTrainer(Trainer_Management Trainer[], int& TrainerCount) {
-    if (TrainerCount < 1000) {
-        Trainer[TrainerCount].//createnewclient();
+    if (TrainerCount < MAX_TRAINERS) {
+        Trainer[TrainerCount].createnewtrainer();
         TrainerCount++;
         cout << "Trainer created successfully!" << endl;
     }
@@ -44,9 +47,11 @@ void createTrainer(Trainer_Management Trainer[], int& TrainerCount) {
 int main() {
     int choice;
     member m[1000];
-    Trainer_Management t[30];
+    Trainer_Management t[MAX_TRAINERS];
     int TrainerCount = 0;
     int memberCount = 0;
+	Trainer_Management t1;
+	
     do {
 		displayMenu();
         cin >> choice;
@@ -58,8 +63,13 @@ int main() {
 			createMember(m, memberCount);
             break;
         case 2:
-			cout << "Creating a new trainer is under construction. Please check back later." << endl;
-			//createTrainer(t, TrainerCount);
+			//cout << "Creating a new trainer is under construction. Please check back later." << endl;
+			createTrainer(t, TrainerCount);
+			t[TrainerCount - 1].save_file();
+            break;
+        case 3:
+			t[1].load_file(); 
+			t[1].printer();
             break;
         case 0:
             cout << "Exiting..." << endl;

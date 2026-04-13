@@ -75,6 +75,11 @@ time_t plan::getexpiration_date()
 }
 void plan::printstartandenddate()
 {
-	cout << "Start Date: " << ctime(&start_date) << endl;
-	cout << "Expiration Date: " << ctime(&expiration_date) << endl;
+	// Use ctime_s to avoid deprecated warnings on MSVC
+	char startBuf[26];
+	char expBuf[26];
+	ctime_s(startBuf, sizeof(startBuf), &start_date);
+	ctime_s(expBuf, sizeof(expBuf), &expiration_date);
+	cout << "Start Date: " << startBuf << endl;
+	cout << "Expiration Date: " << expBuf << endl;
 }
