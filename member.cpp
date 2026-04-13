@@ -1,7 +1,11 @@
 #include <iostream>
 #include <ctime>
 #include "member.h"
+<<<<<<< HEAD
 #include "person.h"
+=======
+#include <fstream>
+>>>>>>> 12f264f7b4bb0525f3c77e42427d95bd7418bdd9
 using namespace std;
 
 member::member() : person() {
@@ -96,3 +100,22 @@ void member::createnewclient() {
 	assignedtrainer();
 	activesubscription();
 }
+void member::save_file() {
+	ofstream mfile("member_info.txt");
+	if (mfile.is_open()) {
+		mfile << "Name: " << name << endl;
+		mfile << "ID: " << id << endl;
+		mfile << "Contact Info: " << contactinfo << endl;
+		mfile << "Age: " << age << endl;
+		mfile << "Membership Plan: " << membership_plan << endl;
+		mfile << "Assigned Trainer: " << assigned_trainer << endl;
+		mfile << "Active Subscription: " << active_subscription << endl;
+		mfile.close();
+	}
+}
+	void member::load_file() {
+		ifstream mfile("member_info.txt");
+		if (mfile.is_open()) {
+			mfile >> name >> id >> contactinfo >> age >> membership_plan >> assigned_trainer >> active_subscription;
+		}
+	}
