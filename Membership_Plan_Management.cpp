@@ -54,29 +54,29 @@ void plan::displayPlan() {
 
 void plan::setplan_id()
 {
-	cout << "write plan id " << plan_id;
+	cout << "write plan id ";
 	cin >> plan_id;
 }	
 
 void plan::setduration()
 {
-	cout << "write plan duration in days " << duration;
+	cout << "write plan duration in days " ;
 	cin >> duration;
 }
 
 void plan::setprice()
 {
-	cout << "write plan price " << price;
+	cout << "write plan price " ;
 	cin >> price;
 }
 
 void plan::setAllowed_services() {
-	cout << "write allowed services for this plan " << Allowed_services;
+	cout << "write allowed services for this plan " ;
 	cin >> Allowed_services;
 }
 
 void plan::setDiscount_rules() {
-	cout << "write discount rules for this plan " << Discount_rules;
+	cout << "write discount rules for this plan " ;
 	cin >> Discount_rules;
 }
 void plan::setexpiration_date()
@@ -110,7 +110,7 @@ void plan::printstartandenddate()
 	cout << "Start Date: " << startBuffer;
 	cout << "Expiration Date: " << endBuffer;
 }
-void membershipplansystem() {
+void Membership_Plan_Management::membershipplansystem() {
 	Membership_Plan_Management m(0, "");
 	m.setid();
 	m.setname();
