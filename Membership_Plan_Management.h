@@ -4,7 +4,6 @@
 #include <ctime>
 using namespace std;
 
-
 class Membership_Plan_Management
 {
 private:

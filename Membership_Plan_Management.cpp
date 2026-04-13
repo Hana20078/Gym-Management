@@ -3,19 +3,18 @@
 #include<ctime>
 
 using namespace std;
-
 Membership_Plan_Management::Membership_Plan_Management(int i, string n) {
 	id = i;
 	name = n;
 }
 void Membership_Plan_Management::setid()
 {
-	cout << "write membership plan's id : " ;
+	cout << "write membership plan's id  " << id;
 	cin >> id;
 }
 void Membership_Plan_Management::setname()
 {
-	cout << "write membership plan's name : " ;
+	cout << "write membership plan's name " << name;
 	cin >> name;
 }
 int Membership_Plan_Management::getid()
@@ -75,11 +74,22 @@ time_t plan::getexpiration_date()
 }
 void plan::printstartandenddate()
 {
-	// Use ctime_s to avoid deprecated warnings on MSVC
-	char startBuf[26];
-	char expBuf[26];
-	ctime_s(startBuf, sizeof(startBuf), &start_date);
-	ctime_s(expBuf, sizeof(expBuf), &expiration_date);
-	cout << "Start Date: " << startBuf << endl;
-	cout << "Expiration Date: " << expBuf << endl;
+	cout << "Start Date: " << ctime(&start_date) << endl;
+	cout << "Expiration Date: " << ctime(&expiration_date) << endl;
 }
+void membershipplansystem() {
+	Membership_Plan_Management m(0,"");
+	m.setid();
+	m.setname();
+	m.displaymembershipPlan();
+	cout << endl;
+	plan p(0,0,0,"","",Access_level::Basic);
+	p.setplan_id();
+	p.setduration();
+	p.setprice();
+	p.setAllowed_services();
+	p.setDiscount_rules();
+	p.setstart_date();
+	p.setexpiration_date();
+	p.displayPlan();
+	p.printstartandenddate() ;
