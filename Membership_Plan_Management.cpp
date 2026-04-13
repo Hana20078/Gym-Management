@@ -10,12 +10,12 @@ Membership_Plan_Management::Membership_Plan_Management(int i, string n) {
 }
 void Membership_Plan_Management::setid()
 {
-	cout << "write membership plan's id  " << id;
+	cout << "write membership plan's id : " ;
 	cin >> id;
 }
 void Membership_Plan_Management::setname()
 {
-	cout << "write membership plan's name " << name;
+	cout << "write membership plan's name : " ;
 	cin >> name;
 }
 int Membership_Plan_Management::getid()
@@ -36,7 +36,7 @@ void Membership_Plan_Management::displaymembershipPlan() {
 plan::plan(int pi, int d, float p, string a, string dr, Access_level al) {
 	plan_id = pi;
 	duration = d;
-	Access_level = al;
+	access_level = al;
 	price = p;
 	Allowed_services = a;
 	Discount_rules = dr;
@@ -46,7 +46,7 @@ plan::plan(int pi, int d, float p, string a, string dr, Access_level al) {
 void plan::displayPlan() {
 	cout << "Plan ID:" << plan_id << endl;
 	cout << "Duration:" << duration << endl;
-	cout << "Access level:" << Access_level << endl;
+	cout << "Access level:" << access_level << endl;
 	cout << "Price:" << price << endl;
 	cout << "Allowed services:" << Allowed_services << endl;
 	cout << "Discount rules:" << Discount_rules << endl;
@@ -75,6 +75,6 @@ time_t plan::getexpiration_date()
 }
 void plan::printstartandenddate()
 {
-		cout << "Start Date: " << ctime(&start_date) << endl;
-		cout << "Expiration Date: " << ctime(&expiration_date) << endl;
-{
+	cout << "Start Date: " << ctime(&start_date) << endl;
+	cout << "Expiration Date: " << ctime(&expiration_date) << endl;
+}

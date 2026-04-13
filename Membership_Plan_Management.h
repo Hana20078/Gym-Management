@@ -1,6 +1,8 @@
 #pragma once
 #include<iostream>
 #include <string>
+#include <ctime>
+using namespace std;
 
 
 class Membership_Plan_Management
@@ -23,6 +25,9 @@ private:
 	int plan_id, duration;
 	float price;
 	string Allowed_services, Discount_rules;
+	time_t start_date, expiration_date;
+	Access_level access_level;
+
 public:
 	plan(int pi, int d, float p, string a, string dr, Access_level al);
 	void setplan_id();
@@ -37,9 +42,8 @@ public:
 	string getDiscount_rules();
 	void setexpiration_date();
 	void setstart_date();
-	float getstart_date();
-	float getexpiration_date();
-	Access_level Access_level;
+	time_t getstart_date();
+	time_t getexpiration_date();
 	void displayPlan();
-	void printstartandenddate()
+	void printstartandenddate();
 };

@@ -28,9 +28,9 @@ void createMember(member members[], int& memberCount) {
 	}
      
 }
-void createTrainer(member Trainer[], int& TrainerCount) {
+void createTrainer(Trainer_Management Trainer[], int& TrainerCount) {
     if (TrainerCount < 1000) {
-        Trainer[TrainerCount].createnewclient();
+        Trainer[TrainerCount].//createnewclient();
         TrainerCount++;
         cout << "Trainer created successfully!" << endl;
     }
@@ -44,7 +44,7 @@ void createTrainer(member Trainer[], int& TrainerCount) {
 int main() {
     int choice;
     member m[1000];
-    member t[30];
+    Trainer_Management t[30];
     int TrainerCount = 0;
     int memberCount = 0;
     do {
