@@ -24,14 +24,7 @@ public:
 	void Membershipstatus();
 	void printmemberinfo();
 	void createnewclient();
-<<<<<<< HEAD
-=======
 	void save_file();
 	void load_file();
-
-
-
-
->>>>>>> 12f264f7b4bb0525f3c77e42427d95bd7418bdd9
 };
 

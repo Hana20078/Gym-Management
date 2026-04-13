@@ -1,11 +1,8 @@
 #include <iostream>
 #include <ctime>
 #include "member.h"
-<<<<<<< HEAD
 #include "person.h"
-=======
 #include <fstream>
->>>>>>> 12f264f7b4bb0525f3c77e42427d95bd7418bdd9
 using namespace std;
 
 member::member() : person() {

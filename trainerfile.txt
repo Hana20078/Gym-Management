@@ -1,1 +1,18 @@
-1111   11111  111  1000    11  11  1111                    ottt   12  yoga  1000    20000  20  911231                    
+Name: youssef
+Age: 20
+Speciality: yoga
+ID: 1000
+Gender
+Salary: 20000
+Comisson: 3000
+Contact Info: 11113112
+Assigned Member 0: 
+Assigned Member 1: 
+Assigned Member 2: 
+Assigned Member 3: 
+Assigned Member 4: 
+Assigned Member 5: 
+Assigned Member 6: 
+Assigned Member 7: 
+Assigned Member 8: 
+Assigned Member 9: 

@@ -68,8 +68,8 @@ int main() {
 			t[TrainerCount - 1].save_file();
             break;
         case 3:
-			t[1].load_file(); 
-			t[1].printer();
+			t1.load_file(); 
+			t1.printer();
             break;
         case 0:
             cout << "Exiting..." << endl;
