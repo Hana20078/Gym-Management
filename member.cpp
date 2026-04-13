@@ -110,7 +110,7 @@ void member::save_file() {
 	}
 }
 	void member::load_file() {
-		ifstream mfile("member_info.txt",ios::app);
+		ifstream mfile("member_info.txt");
 		if (mfile.is_open()) {
 			mfile >> name >> id >> contactinfo >> age >> membership_plan >> assigned_trainer >> active_subscription;
 		}
