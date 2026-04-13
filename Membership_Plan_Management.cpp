@@ -32,7 +32,7 @@ void Membership_Plan_Management::displaymembershipPlan() {
 	cout << "Name:" << name << endl;
 	cout << "======================================================";
 }
-plan::plan(int pi, int d, int al, float p, string a, string dr) {
+plan::plan(int pi, int d, float p, string a, string dr, Access_level al) {
 	plan_id = pi;
 	duration = d;
 	Access_level = al;

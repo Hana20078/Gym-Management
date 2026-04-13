@@ -1,4 +1,5 @@
 #pragma once
+#include<iostream>
 #include <string>
 
 
@@ -16,13 +17,24 @@ public:
 	void displaymembershipPlan();
 
 };
-
+enum Access_level{Basic, Premium, VIP};
 class plan {
 private:
-	int plan_id, duration, Access_level;
+	int plan_id, duration;
 	float price;
 	string Allowed_services, Discount_rules;
 public:
-	plan(int pi, int d, int al, float p, string a, string dr);
+	plan(int pi, int d, float p, string a, string dr, Access_level al);
+	void setplan_id();
+	void setduration();
+	void setprice();
+	void setAllowed_services();
+	void setDiscount_rules();
+	int getplan_id();
+	int getduration();
+	float getprice();
+	string getAllowed_services();
+	string getDiscount_rules();
+	Access_level Access_level;
 	void displayPlan();
 };
