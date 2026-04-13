@@ -167,9 +167,4 @@ string workout_programs::getassigned_trainer()
     return assigned_trainer;
 }
 
-float workout_programs::getexpiration_date()
-{
-	return start_date + duration;
-}
-
 

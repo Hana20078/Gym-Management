@@ -35,6 +35,11 @@ public:
 	float getprice();
 	string getAllowed_services();
 	string getDiscount_rules();
+	void setexpiration_date();
+	void setstart_date();
+	float getstart_date();
+	float getexpiration_date();
 	Access_level Access_level;
 	void displayPlan();
+	void printstartandenddate()
 };

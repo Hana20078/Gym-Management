@@ -1,5 +1,6 @@
 #include "Membership_Plan_Management.h"
 #include <iostream>
+#include<ctime>
 
 using namespace std;
 
@@ -39,6 +40,8 @@ plan::plan(int pi, int d, float p, string a, string dr, Access_level al) {
 	price = p;
 	Allowed_services = a;
 	Discount_rules = dr;
+	start_date = time(0);
+	expiration_date = start_date + (duration * 24 * 60 * 60);
 }
 void plan::displayPlan() {
 	cout << "Plan ID:" << plan_id << endl;
@@ -49,3 +52,29 @@ void plan::displayPlan() {
 	cout << "Discount rules:" << Discount_rules << endl;
 	cout << "======================================================";
 }
+
+void plan::setexpiration_date()
+{
+	time_t now = time(0);
+	expiration_date = start_date + (duration * 24 * 60 * 60);
+}
+
+void plan::setstart_date()
+{
+	time_t now = time(0);
+	start_date = time(0);
+}
+
+time_t plan::getstart_date()
+{
+	return start_date;
+}
+time_t plan::getexpiration_date()
+{
+	return expiration_date;
+}
+void plan::printstartandenddate()
+{
+		cout << "Start Date: " << ctime(&start_date) << endl;
+		cout << "Expiration Date: " << ctime(&expiration_date) << endl;
+{
