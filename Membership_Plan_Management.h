@@ -16,7 +16,7 @@ public:
 	int getid();
 	string getname();
 	void displaymembershipPlan();
-
+	void membershipplansystem();
 };
 enum Access_level{Basic, Premium, VIP};
 class plan {
@@ -45,5 +45,5 @@ public:
 	time_t getexpiration_date();
 	void displayPlan();
 	void printstartandenddate();
+
 };
-void membershipplansystem();
