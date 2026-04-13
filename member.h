@@ -24,7 +24,8 @@ public:
 	void Membershipstatus();
 	void printmemberinfo();
 	void createnewclient();
-
+	void save_file();
+	void load_file();
 
 
 
