@@ -83,14 +83,22 @@ activity Trainer_Management::getactivity()
          return a1;
  }
 void Trainer_Management::load_file() {
-    ifstream 
-
+    ifstream tfile;
+    tfile.open("trainerfile.txt",ios::app);
+    if (tfile) {
+		tfile >> name >> age >> specailty >> id >> gender>> salary >> comisson >> contactinfo;
+        for (int i = 0; i < 10; i++) {
+            tfile >> assignedmemberlist[i];
+		}
+        tfile.close();
+    }
+	
  
  }
 void Trainer_Management::save_file()
  {
      ofstream tfile;
-     tfile.open("trainerfile.txt");
+     tfile.open("trainerfile.txt",ios::app);
      if (tfile) {
          tfile << name << "   " << age << "  " << specailty << "  " << id << "  " << gender << "  " << salary << "  " << comisson <<"  " << contactinfo;
          for (int i = 0; i < 10; i++) {
@@ -98,8 +106,11 @@ void Trainer_Management::save_file()
              
              
    }
+         tfile.close();
      }
-     tfile.close();
+
+
+     
  }
  
  
