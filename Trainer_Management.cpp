@@ -4,6 +4,17 @@
 
 using namespace std;
 
+Trainer_Management::Trainer_Management()
+{
+    // Initialize defaults
+    specailty = "";
+    salary = 0.0;
+    comisson = 0.0f;
+    for (int i = 0; i < 10; ++i) assignedmemberlist[i] = "";
+    trainer_activity.hours_worked = 0;
+    trainer_activity.session_duration = 0;
+}
+
 
 
 void Trainer_Management::createnewtrainer()
@@ -99,7 +110,7 @@ void Trainer_Management::save_file()
              tfile << assignedmemberlist[i]<<"  ";
              
              
-   }
+           }
          tfile.close();
      }
 

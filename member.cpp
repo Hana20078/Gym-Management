@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include "member.h"
+#include "person.h"
 using namespace std;
 
 member::member() : person() {
@@ -39,9 +40,9 @@ void member::chooseplan() {
 				current_time.tm_year += 1;
 				break;
 
-	default:
-		cout << "Invalid choice" << endl;
-		break;
+		default:
+			cout << "Invalid choice" << endl;
+			break;
 	}
 	
 	expiration_date = mktime(&current_time);

@@ -4,7 +4,7 @@
 #include <ctime>
 using namespace std;
 
-class member: private person 
+class member : public person
 {
 private:
 	time_t now = time(0);
@@ -17,17 +17,12 @@ private:
 	string active_subscription;
 
 public:
-	
+	member();
 	void chooseplan();
 	void activesubscription();
 	void assignedtrainer();
 	void Membershipstatus();
 	void printmemberinfo();
 	void createnewclient();
-
-
-
-
-
 };
 
