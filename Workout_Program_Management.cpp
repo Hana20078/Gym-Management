@@ -71,11 +71,76 @@ void workout_programs::displayprogram() {
 	cout << "Expiration Date:" << expiration_date << endl;
 	cout << "======================================================";
 }
-Exercise::Exercise(string en, int s, int r, int rt) {
+Exercise::Exercise(string en, int s, int r, int rt,string tg,string el,string at,int i,int d) {
 	exercise_name = en;
 	sets = s;
 	reps = r;
 	rest_time = rt;
+	target_goal = tg;
+	exercise_list = el;
+	assigned_trainer = at;
+	id = i;
+	duration = d;
+}
+void Exercise::setid()
+{
+	cout << "write exercise's id  " ;
+	cin >> id;
+}
+void Exercise::setduration()
+{
+	cout << "write exercise's duration  ";
+	cin >> duration;
+}
+void Exercise::setname()
+{
+	cout << "write exercise's name " ;
+	cin >>exercise_name ;
+}
+void Exercise::settarget_goal()
+{
+	cout << "write exercise's target goal " ;
+	cin >> target_goal;
+}
+void Exercise::setexercise_list()
+{
+	cout << "write exercise's exercise list " ;
+	cin >> exercise_list;
+}
+void Exercise::setassigned_trainer()
+{
+	cout << "write exercise's assigned trainer" ;
+	cin >> assigned_trainer;
+}
+int Exercise::getid()
+{
+	cout << "exercise's id is " ;
+	return id;
+}
+int Exercise::getduration()
+{
+	cout << "exercise's duration is " ;
+	return duration;
+}
+string Exercise::getname()
+{
+	cout << "exercise's name is " ;
+	return exercise_name;
+}
+string Exercise::gettarget_goal()
+{
+	cout << "exercise's target goal is " ;
+	return target_goal;
+}
+string Exercise::getexercise_list()
+{
+	cout << "exercise's exercise list is " ;
+	return exercise_list;
+}
+string Exercise::getassigned_trainer()
+{
+	cout << "exercise's assigned trainer is " ;
+	return assigned_trainer;
 }
 void Exercise::display() {
 	cout << "Exercise Name:" << exercise_name << endl;
@@ -167,4 +232,26 @@ string workout_programs::getassigned_trainer()
     return assigned_trainer;
 }
 
+void Exercisesystem(){
+	Exercise e("", 0, 0, 0);
+	e.setid();
+	e.setduration();
+	e.setname();
+	e.settarget_goal();
+	e.setexercise_list();
+	e.setassigned_trainer();
+	e.display();
+}
 
+void workoutprogrammanagement() {
+	workout_programs w(0, 0, "", "", "", "", 0, 0);
+	w.setid();
+	w.setduration();
+	w.setname();
+	w.settarget_goal();
+	w.setexercise_list();
+	w.setassigned_trainer();
+	w.setstart_date();
+	w.setexpiration_date();
+	w.displayprogram();
+}

@@ -34,9 +34,10 @@ public:
 class Exercise
 {
 private:
-	string exercise_name;
-	int sets, reps, rest_time;
+	string exercise_name, target_goal, assigned_trainer, exercise_list;
+	int sets, reps, rest_time, id, duration;
 public:
+	Exercise(string en, int s, int r, int rt, string tg, string el, string at, int i, int d);
 	void setid();
 	void setduration();
 	void setname();
@@ -53,3 +54,4 @@ public:
 	void display();
 };
 
+	void workoutprogrammanagement();
