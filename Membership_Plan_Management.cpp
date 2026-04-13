@@ -101,8 +101,14 @@ time_t plan::getexpiration_date()
 }
 void plan::printstartandenddate()
 {
-	cout << "Start Date: " << ctime(&start_date) << endl;
-	cout << "Expiration Date: " << ctime(&expiration_date) << endl;
+	char startBuffer[26];
+	char endBuffer[26];
+
+	ctime_s(startBuffer, sizeof(startBuffer), &start_date);
+	ctime_s(endBuffer, sizeof(endBuffer), &expiration_date);
+
+	cout << "Start Date: " << startBuffer;
+	cout << "Expiration Date: " << endBuffer;
 }
 void membershipplansystem() {
 	Membership_Plan_Management m(0, "");
