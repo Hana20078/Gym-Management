@@ -1,8 +1,11 @@
 #pragma once
 #include <ctime>
 #include <string>
-
+#include <vector>
 class member;
+
+//vector(member)& member;
+
 using namespace std;
 
 class Attendance_Tracking
@@ -19,12 +22,14 @@ protected:
 	int check_id;
 public:
 	Attendance_Tracking();
-    void recordAttendance(member members[], int memberCount);
+    void recordAttendance(vector<member>& members);
 	int getuser(member member[], int memberCount, int id1);
-	void getAttendanceReport(member members[], int memberCount);
+	void getAttendanceReport(vector<member>& members);
 	bool getStatus();
 	time_t getCheckinTime();
+	time_t getCheckoutTime();
 	void load_file(Attendance_Tracking records[], int& recordCount);
 	void save_file();
+	void CheckoutAttendance(vector<member>& members);
 };
 
