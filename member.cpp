@@ -100,19 +100,13 @@ void member::createnewclient() {
 void member::save_file() {
 	ofstream mfile("member_info.txt");
 	if (mfile.is_open()) {
-		mfile << "Name: " << name << endl;
-		mfile << "ID: " << id << endl;
-		mfile << "Contact Info: " << contactinfo << endl;
-		mfile << "Age: " << age << endl;
-		mfile << "Membership Plan: " << membership_plan << endl;
-		mfile << "Assigned Trainer: " << assigned_trainer << endl;
-		mfile << "Active Subscription: " << active_subscription << endl;
+		mfile << name << " " << id << " " << contactinfo << " " << age << " " << membership_plan << " " << assigned_trainer << " " << active_subscription << " " << gender << " " << payment_status << " " << attendance_record << " " << registration_date << " " << expiration_date;
 		mfile.close();
 	}
 }
 	void member::load_file() {
 		ifstream mfile("member_info.txt");
 		if (mfile.is_open()) {
-			mfile >> name >> id >> contactinfo >> age >> membership_plan >> assigned_trainer >> active_subscription;
+			mfile >> name >> id >> contactinfo >> age >> membership_plan >> assigned_trainer >> active_subscription >> gender >> payment_status >> attendance_record >> registration_date >> expiration_date;
 		}
 	}

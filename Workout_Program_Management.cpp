@@ -1,6 +1,7 @@
 #include "Workout_Program_Management.h"
 #include<iostream>
 #include <string>
+#include<fstream>
 using namespace std;
 
 workout_programs::workout_programs(int nu, int d, string n, string tg, string el, string at,float sd, float ed) {
@@ -166,5 +167,41 @@ string workout_programs::getassigned_trainer()
 	cout << "workout's assigned trainer is " ;
     return assigned_trainer;
 }
-
+void workout_programs::save_file() {
+	ofstream wfile("workout_programs.txt");
+	if (wfile.is_open()) {
+		wfile << num << " " << duration << " " << name << " " << target_goal << " " << exercise_list << " " << assigned_trainer << " " << start_date << " " << expiration_date;
+		wfile.close();
+	}
+}
+void workout_programs::load_file() {
+	ifstream wfile;
+	wfile.open("workout_programs.txt");
+	if (wfile) {
+		wfile >> num >> duration >> name >> target_goal >> exercise_list >> assigned_trainer >> start_date >> expiration_date;
+		wfile.close();
+	}
+}
+void Exercise::save_file() {
+	ofstream efile("exercise.txt");
+	if (efile.is_open()) {
+		efile << exercise_name << " " << sets << " " << reps << " " << rest_time;
+		efile.close();
+	}
+}
+void Exercise::load_file() {
+	ifstream efile;
+	efile.open("exercise.txt");
+	if (efile) {
+		efile >> exercise_name >> sets >> reps >> rest_time;
+		efile.close();
+	}
+}
+void Exercise::save_file() {
+	ofstream efile("exercise.txt");
+	if (efile.is_open()) {
+		efile << exercise_name << " " << sets << " " << reps << " " << rest_time;
+		efile.close();
+	}
+}
 

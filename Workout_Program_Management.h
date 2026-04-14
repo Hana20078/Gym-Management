@@ -28,6 +28,8 @@ public:
 	float getexpiration_date();
 	void setstart_date();
 	float getstart_date();
+	void save_file();
+	void load_file();
 };
 
 class Exercise
@@ -50,5 +52,7 @@ public:
 	std::string getassigned_trainer();
 	Exercise(std::string en, int s, int r, int rt);
 	void display();
+	void save_file();
+	void load_file();
 };
 
