@@ -2,7 +2,7 @@
 #include<string>
 #include"member.h"
 using namespace std;
-//int Billing_System::payment_id=0;
+int Billing_System::payment_id=0;
 class Billing_System: public member
 {
 private:
@@ -14,4 +14,12 @@ private:
 
 public:
 	void addpayment();
+	void setamount();
+	void setpayment_methods();
+	void setdate();
+	int getpayment_id();
+	int getdate();
+	string getpayment_methods();
+	bool getpayment_State();
+	double getamount();	
 };
