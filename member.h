@@ -29,4 +29,6 @@ public:
 	void load_file();
 	string getstatus();
 	int activecount(member arr[], int size); // fixed
+	string getName();
+	int getid();
 };

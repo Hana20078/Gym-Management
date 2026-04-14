@@ -19,6 +19,8 @@ void displayMenu() {
     cout << "2. Create a new trainer" << endl;
 	cout << "3. Load member" << endl;
     cout << "4. Membership plan system" << endl;
+    cout << "5. Attendance tracking system" << endl;
+
     cout << "0. Exit" << endl;
     cout << "Enter your choice: ";
 }
@@ -54,7 +56,8 @@ int main() {
     int memberCount = 0;
 	Trainer_Management t1;
 	Membership_Plan_Management mp(0, "");
-	
+    Attendance_Tracking at;
+
     do {
 		displayMenu();
         cin >> choice;
@@ -77,6 +80,9 @@ int main() {
         case 4:
             mp.membershipplansystem();
             break;
+        case 5:
+            at.recordAttendance(m, memberCount);
+			break;
         case 0:
             cout << "Exiting..." << endl;
             break;

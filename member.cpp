@@ -141,3 +141,10 @@ void member::load_file() {
 		mfile >> name >> id >> contactinfo >> age >> membership_plan >> assigned_trainer >> active_subscription >> gender >> payment_status >> attendance_record >> registration_date >> expiration_date;
 	}
 }
+
+string member::getName() {
+	return name;
+}
+int member::getid() {
+	return id;
+}
