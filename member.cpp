@@ -141,6 +141,8 @@ void member::save_file() {
 	}
 	else {
 		cout << "Error opening file for saving." << endl; // fixed
+		mfile << name << " " << id << " " << contactinfo << " " << age << " " << membership_plan << " " << assigned_trainer << " " << active_subscription << " " << gender << " " << payment_status << " " << attendance_record << " " << registration_date << " " << expiration_date;
+		mfile.close();
 	}
 }
 
@@ -163,3 +165,9 @@ void member::load_file() {
 		cout << "Error opening file for loading." << endl; // fixed
 	}
 }
+	void member::load_file() {
+		ifstream mfile("member_info.txt");
+		if (mfile.is_open()) {
+			mfile >> name >> id >> contactinfo >> age >> membership_plan >> assigned_trainer >> active_subscription >> gender >> payment_status >> attendance_record >> registration_date >> expiration_date;
+		}
+	}

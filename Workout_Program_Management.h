@@ -53,6 +53,8 @@ public:
 	std::string getassigned_trainer();
 	Exercise(std::string en, int s, int r, int rt);
 	void display();
+	void save_file();
+	void load_file();
 	void Exercisesystem();
 };
 
