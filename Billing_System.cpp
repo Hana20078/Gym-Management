@@ -4,6 +4,13 @@ using namespace std;
 
 void Billing_System::receipt()
 {
+	cout << "*******************************RECEIPT************************************" << endl;
+	cout << "member name: " << name << endl;
+	cout << "Payment ID: " << payment_id << endl;
+	cout << "Payment Method: " << payment_methods << endl;
+	cout << "Amount: " << amount <<"$"<< endl;
+	cout << "Payment Date: " << date << endl;
+
 }
 
 void Billing_System::addpayment()
