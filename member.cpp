@@ -3,7 +3,7 @@
 #include "member.h"
 #include "person.h"
 #include <fstream>
-#include <string>   // fixed
+#include <string>   
 
 using namespace std;
 
@@ -21,7 +21,7 @@ int member::activecount(member arr[], int size) {
 			count++;
 		}
 	}
-	return count; // fixed
+	return count; 
 }
 
 void member::chooseplan() {
@@ -126,45 +126,15 @@ void member::createnewclient() {
 }
 
 void member::save_file() {
-	ofstream mfile("member_info.txt"); // fixed
+	ofstream mfile("member_info.txt"); 
 	if (mfile.is_open()) {
-		mfile << name << endl; // fixed
-		mfile << id << endl; // fixed
-		mfile << contactinfo << endl; // fixed
-		mfile << age << endl; // fixed
-		mfile << membership_plan << endl; // fixed
-		mfile << assigned_trainer << endl; // fixed
-		mfile << active_subscription << endl; // fixed
-		mfile << registration_date << endl; // fixed
-		mfile << expiration_date << endl; // fixed
-		mfile.close(); // fixed
-	}
-	else {
-		cout << "Error opening file for saving." << endl; // fixed
+	
 		mfile << name << " " << id << " " << contactinfo << " " << age << " " << membership_plan << " " << assigned_trainer << " " << active_subscription << " " << gender << " " << payment_status << " " << attendance_record << " " << registration_date << " " << expiration_date;
 		mfile.close();
 	}
 }
 
-//void member::load_file() {
-//	ifstream mfile("member_info.txt"); // fixed
-//	if (mfile.is_open()) {
-//		std::getline(mfile, name); // fixed
-//		mfile >> id; // fixed
-//		mfile >> contactinfo; // fixed
-//		mfile >> age; // fixed
-//		mfile.ignore(); // fixed
-//		std::getline(mfile, membership_plan); // fixed
-//		std::getline(mfile, assigned_trainer); // fixed
-//		std::getline(mfile, active_subscription); // fixed
-//		mfile >> registration_date; // fixed
-//		mfile >> expiration_date; // fixed
-//		mfile.close(); // fixed
-//	}
-//	else {
-//		cout << "Error opening file for loading." << endl; // fixed
-//	}
-//}
+
 void member::load_file() {
 	ifstream mfile("member_info.txt");
 	if (mfile.is_open()) {

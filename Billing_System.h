@@ -13,6 +13,7 @@ private:
 	string payment_methods;
 
 public:
+	void receipt();
 	void addpayment();
 	void setamount();
 	void setpayment_methods();
