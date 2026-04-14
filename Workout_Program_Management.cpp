@@ -2,9 +2,10 @@
 #include<iostream>
 #include <string>
 #include<fstream>
+#include <sstream>
 using namespace std;
 
-workout_programs::workout_programs(int nu, int d, string n, string tg, string el, string at,float sd, float ed) {
+workout_programs::workout_programs(int nu, int d, string n, string tg, string el, string at,float sd, float ed,float p,bool pay) {
 	num = nu;
 	duration = d;
 	name = n;
@@ -13,6 +14,8 @@ workout_programs::workout_programs(int nu, int d, string n, string tg, string el
 	assigned_trainer = at;
 	start_date = sd;
 	expiration_date = ed;
+	price = p;
+	payment = pay;
 }
 void workout_programs::chooseWorkout() {
 	int choice;
@@ -170,37 +173,35 @@ void workout_programs::setduration()
 
 void workout_programs::setname()
 {
-	cout << "write workout's name " << name;
+	cout << "write workout's name " ;
 	cin >> name;
 }
 
 void workout_programs::settarget_goal()
 {
-	cout << "write workout's target goal " << target_goal;
+	cout << "write workout's target goal " ;
 	cin >> target_goal;
 }
 
 void workout_programs::setexercise_list()
 {
-	cout << "write workout's exercise list " << exercise_list;
+	cout << "write workout's exercise list " ;
 	cin >> exercise_list;
 }
 
 void workout_programs::setassigned_trainer()
 {
-	cout << "write workout's assigned trainer" << assigned_trainer;
+	cout << "write workout's assigned trainer" ;
 	cin >> assigned_trainer;
 }
 
 int workout_programs::getid()
 {
-	cout << "workout's id is " ;
     return num;
 }
 
 int workout_programs::getduration()
 {
-	cout << "workout's duration is " ;
     return duration;
 }
 
@@ -211,7 +212,6 @@ float workout_programs::getstart_date()
 
 string workout_programs::getname()
 {
-	cout << "workout's name is " ;
     return name;
 }
 
@@ -240,12 +240,53 @@ void workout_programs::save_file() {
 	}
 }
 void workout_programs::load_file() {
-	ifstream wfile;
-	wfile.open("workout_programs.txt");
-	if (wfile) {
-		wfile >> num >> duration >> name >> target_goal >> exercise_list >> assigned_trainer >> start_date >> expiration_date;
-		wfile.close();
-	}
+    std::ifstream wfile("workout_programs.txt");
+    if (!wfile.is_open()) {
+        return;
+    }
+
+    std::string line;
+    // Read the first line (if you expect multiple records, iterate with while(getline(...)) )
+    if (std::getline(wfile, line)) {
+        if (!line.empty()) {
+            std::stringstream ss(line);
+            std::string token;
+
+            if (std::getline(ss, token, '|')) {
+                try { num = std::stoi(token); } catch (...) { num = 0; }
+            }
+
+            if (std::getline(ss, token, '|')) {
+                try { duration = std::stoi(token); } catch (...) { duration = 0; }
+            }
+
+            if (std::getline(ss, name, '|')) {
+                
+            }
+
+			if (std::getline(ss, target_goal, '|')) {
+			}
+
+           
+            if (std::getline(ss, exercise_list, '|')) {
+               
+            }
+
+            if (std::getline(ss, assigned_trainer, '|')) {
+                
+            }
+
+            if (std::getline(ss, token, '|')) {
+                try { start_date = std::stof(token); } catch (...) { start_date = 0.0f; }
+            }
+
+            if (std::getline(ss, token)) {
+                try { expiration_date = std::stof(token); } catch (...) { expiration_date = 0.0f; }
+            }
+        }
+    }
+
+    wfile.close();
 }
 void Exercise::save_file() {
 	ofstream efile("exercise.txt");
@@ -275,7 +316,7 @@ void Exercise::Exercisesystem(){
 }
 
 void workout_programs::workoutprogrammanagement() {
-	workout_programs w(0, 0, "", "", "", "", 0, 0);
+	workout_programs w(0, 0, "", "", "", "", 0, 0,0,false);
 	w.setid();
 	w.setduration();
 	w.setname();
@@ -285,6 +326,30 @@ void workout_programs::workoutprogrammanagement() {
 	w.setstart_date();
 	w.setexpiration_date();
 	w.displayprogram();
+}
+
+void workout_programs::setprice()
+{
+	cout << "write workout's price  " ;
+	cin >> price;
+}
+
+float workout_programs::getprice()
+{
+	return price;
+}
+
+void workout_programs::setpayment()
+{
+	int x;
+	cout << "Payment status (1=paid, 0=not paid): ";
+	cin >> x;
+	payment = (x == 1);
+}
+
+bool workout_programs::getpayment()
+{
+	return payment;
 }
 
 // Implement missing methods declared in the header
@@ -299,16 +364,4 @@ float workout_programs::getexpiration_date()
 	return expiration_date;
 }
 
-// 4-argument Exercise constructor implementation
-Exercise::Exercise(std::string en, int s, int r, int rt)
-{
-	exercise_name = en;
-	sets = s;
-	reps = r;
-	rest_time = rt;
-	target_goal = "";
-	exercise_list = "";
-	assigned_trainer = "";
-	id = 0;
-	duration = 0;
-}
+

@@ -49,3 +49,17 @@ void showReportsHeader()
 {
     cout << "Welcome to the Reports Section" << endl;
 }
+void Reports::expired_memberships()
+{
+    cout << "Not implemented yet\n";
+}
+
+void Reports::monthly_revenue()
+{
+    cout << "Not implemented yet\n";
+}
+
+void Reports::display_performance()
+{
+    cout << "Not implemented yet\n";
+}
