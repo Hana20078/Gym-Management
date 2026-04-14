@@ -1,9 +1,9 @@
 #pragma once
-#include<string>
-#include"member.h"
+#include <string>
+
 using namespace std;
-//int Billing_System::payment_id=0;
-class Billing_System: public member
+
+class Billing_System
 {
 private:
 	static int payment_id;
@@ -13,5 +13,14 @@ private:
 	string payment_methods;
 
 public:
+	void receipt();
 	void addpayment();
+	void setamount();
+	void setpayment_methods();
+	void setdate();
+	int getpayment_id();
+	int getdate();
+	string getpayment_methods();
+	bool getpayment_State();
+	double getamount();	
 };

@@ -2,15 +2,24 @@
 #include <ctime>
 #include "member.h"
 #include "person.h"
+#include "Attendance_Tracking.h"
 #include <fstream>
-#include <string>   // fixed
+#include <string>   
 
 using namespace std;
 
-member::member() : person() {
+member::member() : person(), Billing_System() {
 }
 
 string member::getstatus() {
+    // Determine active subscription based on expiration_date
+	Attendance_Tracking at;
+	if (at.getStatus() == true) {
+		active_subscription = "Active";
+	}
+	else {
+		active_subscription = "Inactive";
+	}
 	return active_subscription;
 }
 
@@ -21,7 +30,7 @@ int member::activecount(member arr[], int size) {
 			count++;
 		}
 	}
-	return count; // fixed
+	return count; 
 }
 
 void member::chooseplan() {
@@ -126,48 +135,89 @@ void member::createnewclient() {
 }
 
 void member::save_file() {
-	ofstream mfile("member_info.txt"); // fixed
+	ofstream mfile("member_info.txt", ios::app);
 	if (mfile.is_open()) {
-		mfile << name << endl; // fixed
-		mfile << id << endl; // fixed
-		mfile << contactinfo << endl; // fixed
-		mfile << age << endl; // fixed
-		mfile << membership_plan << endl; // fixed
-		mfile << assigned_trainer << endl; // fixed
-		mfile << active_subscription << endl; // fixed
-		mfile << registration_date << endl; // fixed
-		mfile << expiration_date << endl; // fixed
-		mfile.close(); // fixed
-	}
-	else {
-		cout << "Error opening file for saving." << endl; // fixed
-		mfile << name << " " << id << " " << contactinfo << " " << age << " " << membership_plan << " " << assigned_trainer << " " << active_subscription << " " << gender << " " << payment_status << " " << attendance_record << " " << registration_date << " " << expiration_date;
+		mfile << name << "|" << id << "|" << contactinfo << "|" << age << "|" << membership_plan << "|" << assigned_trainer << "|" << active_subscription << "|" << gender << "|" << payment_status << "|" << attendance_record << "|" << registration_date << "|" << expiration_date << "\n";
 		mfile.close();
 	}
 }
 
-//void member::load_file() {
-//	ifstream mfile("member_info.txt"); // fixed
+void member::load_file(member members[], int& memberCount) {
+	ifstream mfile("member_info.txt");
+
+	if (!mfile.is_open()) {
+		cout << "Could not open file.\n";
+		return;
+	}
+
+	memberCount = 0;
+	string temp;
+
+	while (
+		getline(mfile, members[memberCount].name, '|') &&
+		getline(mfile, temp, '|')
+		)
+	{
+		// id
+		members[memberCount].id = stoi(temp);
+
+		// contact info
+		getline(mfile, temp, '|');
+		members[memberCount].contactinfo = stoi(temp);
+
+		// age
+		getline(mfile, temp, '|');
+		members[memberCount].age = stoi(temp);
+
+		// باقي البيانات النصية
+		getline(mfile, members[memberCount].membership_plan, '|');
+		getline(mfile, members[memberCount].assigned_trainer, '|');
+		getline(mfile, members[memberCount].active_subscription, '|');
+		getline(mfile, members[memberCount].gender, '|');
+		getline(mfile, members[memberCount].payment_status, '|');
+		getline(mfile, members[memberCount].attendance_record, '|');
+
+		// registration date
+		getline(mfile, temp, '|');
+		members[memberCount].registration_date = stoll(temp);
+
+		// expiration date
+		getline(mfile, temp);
+		members[memberCount].expiration_date = stoll(temp);
+
+		memberCount++;
+
+		if (memberCount >= 1000)
+			break;
+	}
+
+	mfile.close();
+
+	// تحديث الـ counter علشان الـ IDs تكمل من آخر واحد
+	int maxId = 999;
+	for (int i = 0; i < memberCount; i++) {
+		if (members[i].id > maxId) {
+			maxId = members[i].id;
+		}
+	}
+
+	person::setCounter(maxId + 1);
+}
+//void member::load_file(member members[], int &memberCount) {
+//	ifstream mfile("member_info.txt");
 //	if (mfile.is_open()) {
-//		std::getline(mfile, name); // fixed
-//		mfile >> id; // fixed
-//		mfile >> contactinfo; // fixed
-//		mfile >> age; // fixed
-//		mfile.ignore(); // fixed
-//		std::getline(mfile, membership_plan); // fixed
-//		std::getline(mfile, assigned_trainer); // fixed
-//		std::getline(mfile, active_subscription); // fixed
-//		mfile >> registration_date; // fixed
-//		mfile >> expiration_date; // fixed
-//		mfile.close(); // fixed
-//	}
-//	else {
-//		cout << "Error opening file for loading." << endl; // fixed
+//		memberCount = 0;
+//		while (mfile >> members[memberCount].name >> members[memberCount].id >> members[memberCount].contactinfo >> members[memberCount].age >> members[memberCount].membership_plan >> members[memberCount].assigned_trainer >> members[memberCount].active_subscription >> members[memberCount].gender >> members[memberCount].payment_status >> members[memberCount].attendance_record >> members[memberCount].registration_date >> members[memberCount].expiration_date) {
+//			memberCount++;
+//			if (memberCount >= 1000) break;
+//		}
+//		mfile.close();
 //	}
 //}
-void member::load_file() {
-	ifstream mfile("member_info.txt");
-	if (mfile.is_open()) {
-		mfile >> name >> id >> contactinfo >> age >> membership_plan >> assigned_trainer >> active_subscription >> gender >> payment_status >> attendance_record >> registration_date >> expiration_date;
-	}
+
+string member::getName() {
+	return name;
+}
+int member::getid() {
+	return id;
 }

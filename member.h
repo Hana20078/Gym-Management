@@ -2,14 +2,17 @@
 #include "person.h"
 #include <iostream>
 #include <ctime>
-#include <string> // fixed
-
+#include <string> 
+#include <fstream>
+#include "Billing_System.h"
 using namespace std;
 
-class member : public person
+class Attendance_Tracking;
+
+class member : public person, public Billing_System
 {
 private:
-	string membership_plan; // fixed
+	string membership_plan;
 	time_t registration_date;
 	time_t expiration_date;
 	string assigned_trainer;
@@ -25,8 +28,10 @@ public:
 	void Membershipstatus();
 	void printmemberinfo();
 	void createnewclient();
-	void save_file();
-	void load_file();
+    void save_file();
+	void load_file(member members[], int &memberCount);
 	string getstatus();
-	int activecount(member arr[], int size); // fixed
+	int activecount(member arr[], int size);
+	string getName();
+	int getid();
 };
