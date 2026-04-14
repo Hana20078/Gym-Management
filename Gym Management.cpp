@@ -62,7 +62,8 @@ int main() {
     int memberCount = 0;
 	Trainer_Management t1;
 	Membership_Plan_Management mp(0, "");
-    Attendance_Tracking at;
+    Attendance_Tracking attendance[1000];
+	int attendanceCount = 0;
 
     do {
 		displayMenu();
@@ -80,14 +81,22 @@ int main() {
 			t[TrainerCount - 1].save_file();
             break;
         case 3:
-			at.getAttendanceReport(m, memberCount);
+            for (int i = 0; i < attendanceCount; i++) {
+                attendance[i].getAttendanceReport(m, memberCount);
+            }
             break;
         case 4:
             mp.membershipplansystem();
             break;
         case 5:
-            at.recordAttendance(m, memberCount);
-			break;
+            if (attendanceCount < 1000) {
+                attendance[attendanceCount].recordAttendance(m, memberCount);
+                attendanceCount++;
+            }
+            else {
+                cout << "Attendance limit reached.\n";
+            }
+            break;
         case 6:
             loadMembers(m, memberCount);
             loadTrainers(t, TrainerCount);

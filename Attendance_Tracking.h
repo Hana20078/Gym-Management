@@ -24,5 +24,7 @@ public:
 	void getAttendanceReport(member members[], int memberCount);
 	bool getStatus();
 	time_t getCheckinTime();
+	void load_file(Attendance_Tracking records[], int& recordCount);
+	void save_file();
 };
 
