@@ -7,10 +7,10 @@ using namespace std;
 class Reports
 {
 public:
-	#workout reports
+	//workout reports
 	void total_workouts();
 	void count_workouts();
-	#membership plans
+	//membership plans
 	void expired_memberships();
 	void monthly_revenue();
 	void display_performance();

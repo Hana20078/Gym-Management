@@ -80,8 +80,9 @@ void member::chooseplan() {
 }
 
 void member::activesubscription() {
-	time_t now = time(0); // fixed
-	if (now <= expiration_date) { // fixed
+	Attendance_Tracking at;
+
+	if (at.getStatus() == true) { // fixed
 		active_subscription = "Active";
 	}
 	else {
@@ -194,7 +195,7 @@ void member::load_file(member members[], int& memberCount) {
 	mfile.close();
 
 	// تحديث الـ counter علشان الـ IDs تكمل من آخر واحد
-	int maxId = 999;
+	int maxId = 99;
 	for (int i = 0; i < memberCount; i++) {
 		if (members[i].id > maxId) {
 			maxId = members[i].id;
