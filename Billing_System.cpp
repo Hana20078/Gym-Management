@@ -1,14 +1,8 @@
 #include "Billing_System.h"
+#include<iostream>
 using namespace std;
 
-
-
-
-
-
-};
-
-void addpayment()
+Billing_System()
 {
 	cout << "enter payment method" << endl;
 }
