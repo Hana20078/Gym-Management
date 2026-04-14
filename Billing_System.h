@@ -1,9 +1,9 @@
 #pragma once
-#include<string>
-#include"member.h"
+#include <string>
+
 using namespace std;
-int Billing_System::payment_id=0;
-class Billing_System: public member
+
+class Billing_System
 {
 private:
 	static int payment_id;

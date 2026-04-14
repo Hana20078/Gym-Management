@@ -17,10 +17,10 @@ void displayMenu() {
     cout << "\nWelcome to the Potatos Management System!" << endl;
     cout << "1. Create a new member" << endl;
     cout << "2. Create a new trainer" << endl;
-	cout << "3. Load member" << endl;
+	cout << "3. Print Attendance Report" << endl;
     cout << "4. Membership plan system" << endl;
     cout << "5. Attendance tracking system" << endl;
-
+    cout << "6. Load Trainers/Clients" << endl;
     cout << "0. Exit" << endl;
     cout << "Enter your choice: ";
 }
@@ -46,6 +46,12 @@ void createTrainer(Trainer_Management Trainer[], int& TrainerCount) {
     }
 
 }
+void loadTrainers(Trainer_Management Trainer[], int &TrainerCount) {
+    Trainer[0].load_file(Trainer, TrainerCount);
+}
+void loadMembers(member members[], int &memberCount) {
+    members[0].load_file(members, memberCount);
+}
 
 
 int main() {
@@ -67,15 +73,14 @@ int main() {
         
         case 1:
 			createMember(m, memberCount);
+			m[memberCount - 1].save_file();
             break;
         case 2:
-			//cout << "Creating a new trainer is under construction. Please check back later." << endl;
 			createTrainer(t, TrainerCount);
 			t[TrainerCount - 1].save_file();
             break;
         case 3:
-			t1.load_file(); 
-			t1.printer();
+			at.getAttendanceReport(m, memberCount);
             break;
         case 4:
             mp.membershipplansystem();
@@ -83,6 +88,11 @@ int main() {
         case 5:
             at.recordAttendance(m, memberCount);
 			break;
+        case 6:
+            loadMembers(m, memberCount);
+            loadTrainers(t, TrainerCount);
+            cout << "Loaded " << memberCount << " members and " << TrainerCount << " trainers." << endl;
+            break;
         case 0:
             cout << "Exiting..." << endl;
             break;

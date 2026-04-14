@@ -1,6 +1,7 @@
 #include "Billing_System.h"
 #include<iostream>
 using namespace std;
+int Billing_System::payment_id = 0;
 
 void Billing_System::receipt()
 {

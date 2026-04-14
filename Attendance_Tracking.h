@@ -1,10 +1,11 @@
 #pragma once
 #include <ctime>
-#include "member.h"
+#include <string>
 
-using namespace std;	
+class member;
+using namespace std;
 
-class Attendance_Tracking : public member
+class Attendance_Tracking
 {
 protected:
 	static int attendanceidcounter;
@@ -18,7 +19,10 @@ protected:
 	int check_id;
 public:
 	Attendance_Tracking();
-	void recordAttendance(member members[], int memberCount);
-	int getuser(member member[], int memberCount);
+    void recordAttendance(member members[], int memberCount);
+	int getuser(member member[], int memberCount, int id1);
+	void getAttendanceReport(member members[], int memberCount);
+	bool getStatus();
+	time_t getCheckinTime();
 };
 
