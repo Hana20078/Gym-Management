@@ -29,6 +29,8 @@ public:
 	void setstart_date();
 	float getstart_date();
 	void workoutprogrammanagement();
+	void save_file();
+	void load_file();
 
 };
 

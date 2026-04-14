@@ -146,28 +146,28 @@ void member::save_file() {
 	}
 }
 
+//void member::load_file() {
+//	ifstream mfile("member_info.txt"); // fixed
+//	if (mfile.is_open()) {
+//		std::getline(mfile, name); // fixed
+//		mfile >> id; // fixed
+//		mfile >> contactinfo; // fixed
+//		mfile >> age; // fixed
+//		mfile.ignore(); // fixed
+//		std::getline(mfile, membership_plan); // fixed
+//		std::getline(mfile, assigned_trainer); // fixed
+//		std::getline(mfile, active_subscription); // fixed
+//		mfile >> registration_date; // fixed
+//		mfile >> expiration_date; // fixed
+//		mfile.close(); // fixed
+//	}
+//	else {
+//		cout << "Error opening file for loading." << endl; // fixed
+//	}
+//}
 void member::load_file() {
-	ifstream mfile("member_info.txt"); // fixed
+	ifstream mfile("member_info.txt");
 	if (mfile.is_open()) {
-		std::getline(mfile, name); // fixed
-		mfile >> id; // fixed
-		mfile >> contactinfo; // fixed
-		mfile >> age; // fixed
-		mfile.ignore(); // fixed
-		std::getline(mfile, membership_plan); // fixed
-		std::getline(mfile, assigned_trainer); // fixed
-		std::getline(mfile, active_subscription); // fixed
-		mfile >> registration_date; // fixed
-		mfile >> expiration_date; // fixed
-		mfile.close(); // fixed
-	}
-	else {
-		cout << "Error opening file for loading." << endl; // fixed
+		mfile >> name >> id >> contactinfo >> age >> membership_plan >> assigned_trainer >> active_subscription >> gender >> payment_status >> attendance_record >> registration_date >> expiration_date;
 	}
 }
-	void member::load_file() {
-		ifstream mfile("member_info.txt");
-		if (mfile.is_open()) {
-			mfile >> name >> id >> contactinfo >> age >> membership_plan >> assigned_trainer >> active_subscription >> gender >> payment_status >> attendance_record >> registration_date >> expiration_date;
-		}
-	}

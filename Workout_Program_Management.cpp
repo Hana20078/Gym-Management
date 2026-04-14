@@ -262,13 +262,6 @@ void Exercise::load_file() {
 		efile.close();
 	}
 }
-void Exercise::save_file() {
-	ofstream efile("exercise.txt");
-	if (efile.is_open()) {
-		efile << exercise_name << " " << sets << " " << reps << " " << rest_time;
-		efile.close();
-	}
-}
 
 void Exercise::Exercisesystem(){
 	Exercise e("", 0, 0, 0);

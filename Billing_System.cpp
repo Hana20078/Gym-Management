@@ -2,7 +2,8 @@
 #include<iostream>
 using namespace std;
 
-Billing_System()
+void Billing_System::addpayment()
 {
 	cout << "enter payment method" << endl;
+	cin >> payment_methods;
 }
