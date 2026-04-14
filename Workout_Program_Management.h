@@ -28,6 +28,7 @@ public:
 	float getexpiration_date();
 	void setstart_date();
 	float getstart_date();
+	void workoutprogrammanagement();
 
 };
 
@@ -52,6 +53,6 @@ public:
 	std::string getassigned_trainer();
 	Exercise(std::string en, int s, int r, int rt);
 	void display();
+	void Exercisesystem();
 };
 
-	void workoutprogrammanagement();

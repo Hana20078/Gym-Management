@@ -232,7 +232,7 @@ string workout_programs::getassigned_trainer()
     return assigned_trainer;
 }
 
-void Exercisesystem(){
+void Exercise::Exercisesystem(){
 	Exercise e("", 0, 0, 0);
 	e.setid();
 	e.setduration();
@@ -243,7 +243,7 @@ void Exercisesystem(){
 	e.display();
 }
 
-void workoutprogrammanagement() {
+void workout_programs::workoutprogrammanagement() {
 	workout_programs w(0, 0, "", "", "", "", 0, 0);
 	w.setid();
 	w.setduration();
@@ -254,4 +254,30 @@ void workoutprogrammanagement() {
 	w.setstart_date();
 	w.setexpiration_date();
 	w.displayprogram();
+}
+
+// Implement missing methods declared in the header
+void workout_programs::setexpiration_date()
+{
+	cout << "write workout's expiration date  " << expiration_date;
+	cin >> expiration_date;
+}
+
+float workout_programs::getexpiration_date()
+{
+	return expiration_date;
+}
+
+// 4-argument Exercise constructor implementation
+Exercise::Exercise(std::string en, int s, int r, int rt)
+{
+	exercise_name = en;
+	sets = s;
+	reps = r;
+	rest_time = rt;
+	target_goal = "";
+	exercise_list = "";
+	assigned_trainer = "";
+	id = 0;
+	duration = 0;
 }

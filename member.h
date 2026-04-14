@@ -2,13 +2,14 @@
 #include "person.h"
 #include <iostream>
 #include <ctime>
+#include <string> // fixed
+
 using namespace std;
 
 class member : public person
 {
 private:
-	time_t now = time(0);
-	string membership_plan;
+	string membership_plan; // fixed
 	time_t registration_date;
 	time_t expiration_date;
 	string assigned_trainer;
@@ -26,5 +27,6 @@ public:
 	void createnewclient();
 	void save_file();
 	void load_file();
+	string getstatus();
+	int activecount(member arr[], int size); // fixed
 };
-
