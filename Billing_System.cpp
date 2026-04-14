@@ -14,3 +14,40 @@ void Billing_System::addpayment()
 	payment_id++;
 }
 
+void Billing_System::setamount()
+{
+}
+
+void Billing_System::setpayment_methods()
+{
+}
+
+void Billing_System::setdate()
+{
+}
+
+int Billing_System::getpayment_id()
+{
+	return 0;
+}
+
+int Billing_System::getdate()
+{
+	return 0;
+}
+
+string Billing_System::getpayment_methods()
+{
+	return string();
+}
+
+bool Billing_System::getpayment_State()
+{
+	return false;
+}
+
+double Billing_System::getamount()
+{
+	return 0.0;
+}
+
