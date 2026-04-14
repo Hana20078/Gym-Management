@@ -233,7 +233,7 @@ string workout_programs::getassigned_trainer()
     return assigned_trainer;
 }
 void workout_programs::save_file() {
-	ofstream wfile("workout_programs.txt");
+	ofstream wfile("workout_programs.txt", ios::app);
 	if (wfile.is_open()) {
 		wfile << num << " " << duration << " " << name << " " << target_goal << " " << exercise_list << " " << assigned_trainer << " " << start_date << " " << expiration_date;
 		wfile.close();
