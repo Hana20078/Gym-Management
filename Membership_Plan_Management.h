@@ -4,7 +4,6 @@
 #include <ctime>
 using namespace std;
 
-
 class Membership_Plan_Management
 {
 private:
@@ -17,7 +16,7 @@ public:
 	int getid();
 	string getname();
 	void displaymembershipPlan();
-
+	void membershipplansystem();
 };
 enum Access_level{Basic, Premium, VIP};
 class plan {
@@ -46,4 +45,5 @@ public:
 	time_t getexpiration_date();
 	void displayPlan();
 	void printstartandenddate();
+
 };

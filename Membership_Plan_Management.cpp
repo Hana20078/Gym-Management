@@ -3,19 +3,18 @@
 #include<ctime>
 
 using namespace std;
-
 Membership_Plan_Management::Membership_Plan_Management(int i, string n) {
 	id = i;
 	name = n;
 }
 void Membership_Plan_Management::setid()
 {
-	cout << "write membership plan's id : " ;
+	cout << "write membership plan's id  " << id;
 	cin >> id;
 }
 void Membership_Plan_Management::setname()
 {
-	cout << "write membership plan's name : " ;
+	cout << "write membership plan's name " << name;
 	cin >> name;
 }
 int Membership_Plan_Management::getid()
@@ -53,6 +52,33 @@ void plan::displayPlan() {
 	cout << "======================================================";
 }
 
+void plan::setplan_id()
+{
+	cout << "write plan id ";
+	cin >> plan_id;
+}	
+
+void plan::setduration()
+{
+	cout << "write plan duration in days " ;
+	cin >> duration;
+}
+
+void plan::setprice()
+{
+	cout << "write plan price " ;
+	cin >> price;
+}
+
+void plan::setAllowed_services() {
+	cout << "write allowed services for this plan " ;
+	cin >> Allowed_services;
+}
+
+void plan::setDiscount_rules() {
+	cout << "write discount rules for this plan " ;
+	cin >> Discount_rules;
+}
 void plan::setexpiration_date()
 {
 	time_t now = time(0);
@@ -75,11 +101,29 @@ time_t plan::getexpiration_date()
 }
 void plan::printstartandenddate()
 {
-	// Use ctime_s to avoid deprecated warnings on MSVC
-	char startBuf[26];
-	char expBuf[26];
-	ctime_s(startBuf, sizeof(startBuf), &start_date);
-	ctime_s(expBuf, sizeof(expBuf), &expiration_date);
-	cout << "Start Date: " << startBuf << endl;
-	cout << "Expiration Date: " << expBuf << endl;
+	char startBuffer[26];
+	char endBuffer[26];
+
+	ctime_s(startBuffer, sizeof(startBuffer), &start_date);
+	ctime_s(endBuffer, sizeof(endBuffer), &expiration_date);
+
+	cout << "Start Date: " << startBuffer;
+	cout << "Expiration Date: " << endBuffer;
+}
+void Membership_Plan_Management::membershipplansystem() {
+	Membership_Plan_Management m(0, "");
+	m.setid();
+	m.setname();
+	m.displaymembershipPlan();
+	cout << endl;
+	plan p(0, 0, 0, "", "", Access_level::Basic);
+	p.setplan_id();
+	p.setduration();
+	p.setprice();
+	p.setAllowed_services();
+	p.setDiscount_rules();
+	p.setstart_date();
+	p.setexpiration_date();
+	p.displayPlan();
+	p.printstartandenddate();
 }

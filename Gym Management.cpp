@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include "member.h"
 #include "Trainer_Management.h"
@@ -17,6 +18,7 @@ void displayMenu() {
     cout << "1. Create a new member" << endl;
     cout << "2. Create a new trainer" << endl;
 	cout << "3. Load member" << endl;
+    cout << "4. Membership plan system" << endl;
     cout << "0. Exit" << endl;
     cout << "Enter your choice: ";
 }
@@ -51,6 +53,7 @@ int main() {
     int TrainerCount = 0;
     int memberCount = 0;
 	Trainer_Management t1;
+	Membership_Plan_Management mp(0, "");
 	
     do {
 		displayMenu();
@@ -70,6 +73,9 @@ int main() {
         case 3:
 			t1.load_file(); 
 			t1.printer();
+            break;
+        case 4:
+            mp.membershipplansystem();
             break;
         case 0:
             cout << "Exiting..." << endl;
