@@ -7,9 +7,10 @@ class workout_programs {
 private:
 	int num, duration;
     string name, target_goal, exercise_list, assigned_trainer;
-	float start_date, expiration_date;
+	float start_date, expiration_date, price;
+	bool payment;
 public:
-    workout_programs(int nu, int d, string n, string tg, string el, string at ,float sd,float ed);
+    workout_programs(int nu, int d, string n, string tg, string el, string at ,float sd,float ed,float p,bool pay);
 	void chooseWorkout();
 	void displayprogram();
 	void setid();
@@ -29,6 +30,10 @@ public:
 	void setstart_date();
 	float getstart_date();
 	void workoutprogrammanagement();
+	void setprice();
+	float getprice();
+	void setpayment();
+	bool getpayment();
 	void save_file();
 	void load_file();
 
