@@ -6,8 +6,6 @@ using namespace std;
 
 class Reports
 {
-public:
-	#workout reports
 	void total_workouts();
 	void count_workouts();
 	#membership plans
