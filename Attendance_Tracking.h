@@ -1,10 +1,14 @@
 #pragma once
 #include <ctime>
-#include "member.h"
+#include <string>
+#include <vector>
+class member;
 
-using namespace std;	
+//vector(member)& member;
 
-class Attendance_Tracking : public member
+using namespace std;
+
+class Attendance_Tracking
 {
 protected:
 	static int attendanceidcounter;
@@ -18,7 +22,14 @@ protected:
 	int check_id;
 public:
 	Attendance_Tracking();
-	void recordAttendance(member members[], int memberCount);
-	int getuser(member member[], int memberCount);
+    void recordAttendance(vector<member>& members);
+	int getuser(member member[], int memberCount, int id1);
+	void getAttendanceReport(vector<member>& members);
+	bool getStatus();
+	time_t getCheckinTime();
+	time_t getCheckoutTime();
+	void load_file(Attendance_Tracking records[], int& recordCount);
+	void save_file();
+	void CheckoutAttendance(vector<member>& members);
 };
 

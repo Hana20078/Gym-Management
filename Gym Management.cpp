@@ -8,55 +8,57 @@
 #include "person.h"
 #include "Attendance_Tracking.h"
 #include "Reports.h"
+#include <vector>
 
 using namespace std;
 
-constexpr int MAX_TRAINERS = 30;
+constexpr int MAX_TRAINERS = 20;
 
 void displayMenu() {
     cout << "\nWelcome to the Potatos Management System!" << endl;
     cout << "1. Create a new member" << endl;
     cout << "2. Create a new trainer" << endl;
-	cout << "3. Load member" << endl;
+	cout << "3. Print Attendance Report" << endl;
     cout << "4. Membership plan system" << endl;
     cout << "5. Attendance tracking system" << endl;
-
+    cout << "6. Load Trainers/Clients" << endl;
     cout << "0. Exit" << endl;
     cout << "Enter your choice: ";
 }
-void createMember(member members[], int& memberCount) {
-    if (memberCount < 1000) {
-        members[memberCount].createnewclient();
-        memberCount++;
-        cout << "Member created successfully!" << endl;
-    }
-    else {
-        cout << "Member limit reached. Cannot create more members." << endl;
-	}
-     
+void createMember(vector<member>& members) {
+	member newMember;
+    newMember.createnewclient();
+	members.push_back(newMember);
+    cout << "Member created successfully!" << endl; 
 }
-void createTrainer(Trainer_Management Trainer[], int& TrainerCount) {
-    if (TrainerCount < MAX_TRAINERS) {
-        Trainer[TrainerCount].createnewtrainer();
-        TrainerCount++;
-        cout << "Trainer created successfully!" << endl;
-    }
-    else {
-        cout << "Trainer limit reached. Cannot create more trainers." << endl;
-    }
+void createTrainer(vector<Trainer_Management>& Trainer) {
+	Trainer_Management newTrainer;
+    newTrainer.createnewtrainer();
+	Trainer.push_back(newTrainer);
+    cout << "Trainer created successfully!" << endl;
 
+}
+void loadTrainers(Trainer_Management Trainer[], int &TrainerCount) {
+    Trainer[0].load_file(Trainer, TrainerCount);
+}
+void loadMembers(member members[], int &memberCount) {
+    members[0].load_file(members, memberCount);
 }
 
 
 int main() {
     int choice;
-    member m[1000];
-    Trainer_Management t[MAX_TRAINERS];
-    int TrainerCount = 0;
-    int memberCount = 0;
+    //member m[30];
+    vector<member> m;
+    //Trainer_Management t[MAX_TRAINERS];
+    vector<Trainer_Management> t;
+    //Attendance_Tracking attendance[10];
+	vector<Attendance_Tracking> attendance;
+    //int TrainerCount = 0;
+    //int memberCount = 0;
 	Trainer_Management t1;
 	Membership_Plan_Management mp(0, "");
-    Attendance_Tracking at;
+	//int attendanceCount = 0;
 
     do {
 		displayMenu();
@@ -66,23 +68,58 @@ int main() {
         {
         
         case 1:
-			createMember(m, memberCount);
+			//createMember(m, memberCount);
+			//m[memberCount - 1].save_file();
+			createMember(m);
+			m.back().save_file();
             break;
         case 2:
-			//cout << "Creating a new trainer is under construction. Please check back later." << endl;
-			createTrainer(t, TrainerCount);
-			t[TrainerCount - 1].save_file();
+			createTrainer(t);
+			t.back().save_file();
             break;
         case 3:
-			t1.load_file(); 
-			t1.printer();
+            for (int i = 0; i < attendance.size; i++) {
+                attendance[i].getAttendanceReport(m, memberCount);
+            }
             break;
         case 4:
             mp.membershipplansystem();
             break;
         case 5:
-            at.recordAttendance(m, memberCount);
-			break;
+			int attendanceChoice;
+			cout << "Attendance Tracking System" << endl;
+			cout << "1. Record Attendance (Check-in)" << endl;
+			cout << "2. Record Attendance (Check-out)" << endl;
+			cout << "Enter your choice: ";
+			cin >> attendanceChoice;
+            switch (attendanceChoice)
+            {
+            case 1:
+                if (attendanceCount < 100) {
+                    attendance[attendanceCount].recordAttendance(m, memberCount);
+                    attendanceCount++;
+                }
+                else {
+                    cout << "Attendance limit reached.\n";
+                }
+                break;
+            case 2:
+                if (attendanceCount < 100) {
+                    attendance[attendanceCount].CheckoutAttendance(m, memberCount);
+                    attendanceCount++;
+                }
+                else {
+                    cout << "Attendance limit reached.\n";
+                }
+                break;
+            }
+            break;
+
+        case 6:
+            loadMembers(m, memberCount);
+            loadTrainers(t, TrainerCount);
+            cout << "Loaded " << memberCount << " members and " << TrainerCount << " trainers." << endl;
+            break;
         case 0:
             cout << "Exiting..." << endl;
             break;

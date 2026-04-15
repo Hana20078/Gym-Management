@@ -32,7 +32,7 @@ public:
 	float getcomisson();
 	member getassignedmemberlist();
 	activity getactivity();
-	void save_file();
-	void load_file();
+    void save_file();
+	void load_file(Trainer_Management trainers[], int &trainerCount);
 	void createnewtrainer();
 };

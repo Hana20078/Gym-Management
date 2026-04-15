@@ -87,30 +87,32 @@ activity Trainer_Management::getactivity()
     a1.session_duration = trainer_activity.session_duration;
          return a1;
  }
-void Trainer_Management::load_file() {
-    ifstream tfile;
-    tfile.open("trainerfile.txt");
-    if (tfile) {
-		tfile >> name >> age >> specailty >> id >> gender >> salary >> comisson >> contactinfo >> trainer_activity.hours_worked >> trainer_activity.session_duration;
-        for (int i = 0; i < 10; i++) {
-            tfile >> assignedmemberlist[i];
-		}
+void Trainer_Management::load_file(Trainer_Management trainers[], int &trainerCount) {
+    ifstream tfile("trainerfile.txt");
+    if (tfile.is_open()) {
+        trainerCount = 0;
+        while (tfile >> trainers[trainerCount].name >> trainers[trainerCount].age >> trainers[trainerCount].specailty >> trainers[trainerCount].id >> trainers[trainerCount].gender >> trainers[trainerCount].salary >> trainers[trainerCount].comisson >> trainers[trainerCount].contactinfo >> trainers[trainerCount].trainer_activity.hours_worked >> trainers[trainerCount].trainer_activity.session_duration) {
+            for (int i = 0; i < 10; i++) {
+                tfile >> trainers[trainerCount].assignedmemberlist[i];
+            }
+            trainerCount++;
+            if (trainerCount >= 30) break;
+        }
         tfile.close();
     }
-	
- 
- }
+}
 void Trainer_Management::save_file()
- {
-     ofstream tfile;
-     tfile.open("trainerfile.txt",ios::app);
-     if (tfile) {
-         tfile << name << " " << age << " " << specailty << " " << id << " " << gender << " " << salary << " " << comisson << " " << contactinfo << " " << trainer_activity.hours_worked << " " << trainer_activity.session_duration<<" ";
-           }
-     for(int i=0;i<10;i++)
-         tfile<< assignedmemberlist[i]<<" ";
-         tfile.close();
-     }
+{
+    ofstream tfile;
+    tfile.open("trainerfile.txt", ios::app);
+    if (tfile.is_open()) {
+        tfile << name << " " << age << " " << specailty << " " << id << " " << gender << " " << salary << " " << comisson << " " << contactinfo << " " << trainer_activity.hours_worked << " " << trainer_activity.session_duration << " ";
+        for (int i = 0; i < 10; i++)
+            tfile << assignedmemberlist[i] << " ";
+        tfile << "\n";
+    }
+    tfile.close();
+}
 
 
      

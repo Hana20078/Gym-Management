@@ -66,7 +66,6 @@ int person::getage() {
 int person::getcontactinfo() {
     return contactinfo;
 }
-
-
-
-
+void person::setCounter(int value) {
+    counter = value;
+}
