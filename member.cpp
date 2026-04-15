@@ -9,8 +9,13 @@
 using namespace std;
 
 member::member() : person(), Billing_System() {
-}
+	registration_date = 0;
+	expiration_date = 0;
 
+	active_subscription = "Inactive";
+	payment_status = "Unpaid";
+	attendance_record = "0";
+}
 string member::getstatus() {
     // Determine active subscription based on expiration_date
 	Attendance_Tracking at;
@@ -221,4 +226,23 @@ string member::getName() {
 }
 int member::getid() {
 	return id;
+}
+string member::getActiveSubscription()const {
+	return active_subscription;
+}
+
+string member::getPlan()const {
+	return membership_plan;
+}
+
+string member::getTrainer()const {
+	return assigned_trainer;
+}
+
+string member::getPaymentStatus()const {
+	return payment_status;
+}
+
+int member::getAttendance()const {
+	return stoi(attendance_record); // لو مخزنة كـ string
 }

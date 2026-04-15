@@ -3,6 +3,12 @@
 using namespace std;
 int Billing_System::payment_id = 0;
 
+Billing_System::Billing_System() {
+	amount = 0.0;
+	date = 0;
+	payment_State = "Unpaid";
+}
+
 void Billing_System::receipt()
 {
 	cout << "*******************************RECEIPT************************************" << endl;
