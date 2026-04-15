@@ -35,10 +35,7 @@ void Membership_Plan_Management::displaymembershipPlan() {
 plan::plan(int pi, int d, float p, string a, string dr, Access_level al) {
 	plan_id = pi;
 	duration = d;
-	access_level = al;
-	price = p;
-	Allowed_services = a;
-	Discount_rules = dr;
+	acc
 	start_date = time(0);
 	expiration_date = start_date + (duration * 24 * 60 * 60);
 }
