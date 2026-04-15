@@ -2,6 +2,7 @@
 #include<iostream>
 #include <string>
 #include <ctime>
+#include"Billing_System.h"
 using namespace std;
 
 class Membership_Plan_Management
@@ -9,6 +10,7 @@ class Membership_Plan_Management
 private:
 	int id;
 	string name;
+	Billing_System billing_system;
 public:
 	Membership_Plan_Management(int i, string n);
     void setid();
@@ -17,6 +19,9 @@ public:
 	string getname();
 	void displaymembershipPlan();
 	void membershipplansystem();
+	void setbilling_system(Billing_System b);
+	Billing_System getbilling_system();
+
 };
 enum Access_level{Basic, Premium, VIP};
 class plan {
@@ -45,5 +50,4 @@ public:
 	time_t getexpiration_date();
 	void displayPlan();
 	void printstartandenddate();
-
 };
