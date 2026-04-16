@@ -95,24 +95,50 @@ int main() {
             switch (attendanceChoice)
             {
             case 1:
-                if (attendanceCount < 100) {
-                    attendance[attendanceCount].recordAttendance(m, memberCount);
-                    attendanceCount++;
-                }
-                else {
-                    cout << "Attendance limit reached.\n";
-                }
+                Attendance_Tracking newAttendance;
+                newAttendance.recordAttendance(m);
+                attendance.push_back(newAttendance);
                 break;
+                //if (attendanceCount < 100) {
+                //    attendance[attendanceCount].recordAttendance(m, memberCount);
+                //    attendanceCount++;
+                //}
+                //else {
+                //    cout << "Attendance limit reached.\n";
+                //}
+                //break;
             case 2:
-                if (attendanceCount < 100) {
-                    attendance[attendanceCount].CheckoutAttendance(m, memberCount);
-                    attendanceCount++;
+                int memberId;
+                cout << "Enter member id the check out: ";
+                cin >> memberId;
+
+                bool found = false;
+
+                for (int i = attendance.size - 1;i >= 0;i--) {
+                    if (attendance[i].getMemberId() == memberId && !attendance[i].isCheckedOut()) {
+                        attendance[i].CheckoutAttendance();
+                        foud = true;
+                        break;
+                    }
                 }
-                else {
-                    cout << "Attendance limit reached.\n";
+
+                if (!found) {
+                    cout << "No active check-in found for this member." << endl;
                 }
                 break;
+
+                //if (attendanceCount < 100) {
+                //    attendance[attendanceCount].CheckoutAttendance(m, memberCount);
+                //    attendanceCount++;
+                //}
+                //else {
+                //    cout << "Attendance limit reached.\n";
+                //}
+                //break;
             }
+            break;
+        default:
+            cout << "Invalid choice" << endl;
             break;
 
         case 6:

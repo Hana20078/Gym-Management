@@ -19,17 +19,19 @@ protected:
 	time_t checkout_time;
 	bool status;
 	time_t current_time;
-	int check_id;
 public:
 	Attendance_Tracking();
     void recordAttendance(vector<member>& members);
-	int getuser(member member[], int memberCount, int id1);
+	int getuser(vector<member>& members, int id1);
 	void getAttendanceReport(vector<member>& members);
 	bool getStatus();
 	time_t getCheckinTime();
 	time_t getCheckoutTime();
-	void load_file(Attendance_Tracking records[], int& recordCount);
+	void load_file(Avector<Attendance_Tracking>& records);
 	void save_file();
+
 	void CheckoutAttendance(vector<member>& members);
+	int getMemberId();
+	bool isCheckedOut();
 };
 

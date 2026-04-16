@@ -2,6 +2,8 @@
 #include "Attendance_Tracking.h"
 #include "member.h"
 #include <iostream>
+#include <fstream>
+
 using namespace std;
 int Attendance_Tracking::attendanceidcounter = 100;
 Attendance_Tracking::Attendance_Tracking() {
@@ -13,8 +15,8 @@ Attendance_Tracking::Attendance_Tracking() {
 	status = false;
 	current_time = time(0);
 }
-int Attendance_Tracking::getuser(member members[], int memberCount, int id1) {
-	for (int i = 0; i < memberCount; i++) {
+int Attendance_Tracking::getuser(vector<member>& members, int id1) {
+	for (int i = 0; i < members.size; i++) {
 		if (id1 == members[i].getid()) {
 			return i;
 		}
@@ -30,63 +32,58 @@ void Attendance_Tracking::recordAttendance(vector<member>& members) {
 		cout << "Member not found." << endl;
 		return;
 	}
-	else {
-		if (status == true) {
-			cout << "Member has already checked in Today at " << ctime(&checkin_time) << endl;
 
-		}
-		else if (status == false) {
-			status = true;
-			checkin_time = time(0);
-			cout << "Member " << members[userindex].getName() << " checked in successfully." << endl;
-			cout << "Check in Time: " << ctime(&checkin_time) << endl;
-		}
-	}
+
+	checkin_time = time(0);
+	cout << "Member " << members[userindex].getName() << " checked in successfully." << endl;
+	cout << "Check in Time: " << ctime(&checkin_time) << endl;
+
 	save_file();
-
 }
-void Attendance_Tracking::CheckoutAttendance(vector<member>& members) {
-	cout << "Enter member id to check out: ";
-	cin >> id;
-	int userindex = getuser(members, memberCount, id);
-
-	if (userindex == -1) {
-		cout << "Member not found." << endl;
-		return;
-	}
-	else {
-		if (status == true) {
-			status = false;
-			checkout_time = time(0);
-			cout << "Member " << members[userindex].getName() << " checked out successfully." << endl;
-			cout << "Check out Time: " << ctime(&checkout_time) << endl;
+	void Attendance_Tracking::CheckoutAttendance() {
+		if (!status) {
+			cout << "This attendance record is already checked out." << endl;
+			return;
 		}
-		else if (status == false) {
-			cout << "Member has already checked out Today at " << ctime(&checkout_time) << endl;
 
+		checkout_time = time(0);
+		status = false;
 
+		cout << "Check out recorded successfully." << endl;
+		cout << "Check out Time: " << ctime(&checkout_time) << endl;
+
+		save_file();
+	}
+	void Attendance_Tracking::getAttendanceReport(vector<member>& members) {
+		if (members.size() <= 0) {
+			cout << "No members loaded.\n";
+			return;
 		}
+
+		int userindex = getuser(members, id);
+
+		if (userindex == -1) {
+			cout << "Member not found for this attendance record.\n";
+			return;
+		}
+
+		cout << "Member Name: " << members[userindex].getName() << endl;
+		cout << "Member ID: " << members[userindex].getid() << endl;
+		cout << "Membership Plan: " << members[userindex].getstatus() << endl;
+		cout << "Attendance Status: " << (status ? "Checked In" : "Checked Out") << endl;
+
+		if (checkin_time != 0)
+			cout << "Check-in Time: " << ctime(&checkin_time);
+		else
+			cout << "Check-in Time: Not recorded\n";
+
+		if (checkout_time != 0)
+			cout << "Check-out Time: " << ctime(&checkout_time);
+		else
+			cout << "Check-out Time: Not recorded\n";
+
+		cout << "-----------------------------------" << endl;
 	}
-	save_file();
-
-}
-void Attendance_Tracking:: getAttendanceReport(vector<member>& members) {
-	if (memberCount <= 0) {
-		cout << "No members loaded.\n";
-		return;
-	}
-	int userindex = getuser(members, memberCount, id);
-
-	cout << "Member Name: " << members[userindex].getName() << endl;
-	cout << "Member ID: " << members[userindex].getid() << endl;
-	cout << "Membership Plan: " << members[userindex].getstatus() << endl;
-	cout << "Attendance Status: " << (status ? "Checked In" : "Not Checked In") << endl;
-	cout << "Check-in Time: " << ctime(&checkin_time);
-	cout << "Check-out Time: " << ctime(&checkout_time);
-
-	cout << "-----------------------------------" << endl;
-
-}
 bool Attendance_Tracking::getStatus() {
 	return status;
 }
@@ -157,5 +154,24 @@ void Attendance_Tracking::load_file(Attendance_Tracking records[], int& recordCo
 	}
 
 	attendanceidcounter = maxAttendanceId + 1;
+}
+bool Attendance_Tracking::getStatus() {
+	return status;
+}
+
+time_t Attendance_Tracking::getCheckinTime() {
+	return checkin_time;
+}
+
+time_t Attendance_Tracking::getCheckoutTime() {
+	return checkout_time;
+}
+
+int Attendance_Tracking::getMemberId() {
+	return id;
+}
+
+bool Attendance_Tracking::isCheckedOut() {
+	return !status;
 }
 
