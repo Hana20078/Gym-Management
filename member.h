@@ -12,6 +12,10 @@ class Attendance_Tracking;
 class member : public person, public Billing_System
 {
 private:
+	string name;
+	int id;
+	int contactinfo;
+	int age;
 	string membership_plan;
 	time_t registration_date;
 	time_t expiration_date;
@@ -34,4 +38,9 @@ public:
 	int activecount(member arr[], int size);
 	string getName();
 	int getid();
+	string getActiveSubscription()const;
+	string getPlan()const;
+	string getTrainer()const;
+	string getPaymentStatus()const;
+	int getAttendance()const;
 };

@@ -1,14 +1,17 @@
 #pragma once
 #include <iostream>
 #include <string>
-
+#include <vector>
+using namespace std;
+class member;
+class workout_programs;
 class Reports
 {
 public:
-    void total_workouts();
-    void count_workouts();
-    void expired_memberships();
-    void monthly_revenue();
-    void display_performance();
-    void display_reports();
+	static int totalActiveMembers(vector<member>& members);
+	static int expiredMemberships(vector<member>& members);
+	static float monthlyRevenue(vector<member>& members);
+	void trainerPerformance(vector<workout_programs>& programs);
+	static string mostPopularPlan(vector<member>& members);
+	static void attendanceStats(vector<member>& members);
 };
