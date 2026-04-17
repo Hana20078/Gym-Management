@@ -205,17 +205,6 @@ void member::load_file(vector<member>& members) {
 		members[0].setCounter(maxId + 1);
 	}
 }
-//void member::load_file(member members[], int &memberCount) {
-//	ifstream mfile("member_info.txt");
-//	if (mfile.is_open()) {
-//		memberCount = 0;
-//		while (mfile >> members[memberCount].name >> members[memberCount].id >> members[memberCount].contactinfo >> members[memberCount].age >> members[memberCount].membership_plan >> members[memberCount].assigned_trainer >> members[memberCount].active_subscription >> members[memberCount].gender >> members[memberCount].payment_status >> members[memberCount].attendance_record >> members[memberCount].registration_date >> members[memberCount].expiration_date) {
-//			memberCount++;
-//			if (memberCount >= 1000) break;
-//		}
-//		mfile.close();
-//	}
-//}
 
 string member::getName() {
 	return name;
@@ -240,5 +229,113 @@ string member::getPaymentStatus()const {
 }
 
 int member::getAttendance()const {
-	return stoi(attendance_record); // لو مخزنة كـ string
+	return stoi(attendance_record); 
+}
+int member::getuser(vector<member>& members, int id1) {
+	for (int i = 0; i < (int)members.size(); i++) {
+		if (id1 == members[i].getid()) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+void member::getuser1(vector<member>& members) {
+	int id1;
+	cout << "Enter member ID: ";
+	cin >> id1;
+
+	int index = getuser(members, id1);
+
+	if (index != -1) {
+		members[index].printmemberinfo();
+	}
+	else {
+		cout << "Member not found." << endl;
+	}
+}
+void member::deleteMember(vector<member>& members) {
+    int id1;
+    cout << "Enter member ID to delete: ";
+    cin >> id1;
+
+    int index = getuser(members, id1);
+
+    if (index != -1) {
+        members.erase(members.begin() + index);
+
+        // update file after delete
+        saveAllMembersToFile(members);
+
+        cout << "Member deleted successfully!\n";
+    }
+    else {
+        cout << "Member not found.\n";
+    }
+}
+void member::saveAllMembersToFile(vector<member>& members) {
+	ofstream mfile("member_info.txt", ios::trunc); 
+
+	if (!mfile.is_open()) {
+		cout << "Error opening file\n";
+		return;
+	}
+
+	for (int i = 0; i < members.size(); i++) {
+		mfile << members[i].name << "|" << members[i].id << "|"
+			<< members[i].contactinfo << "|" << members[i].age << "|"
+			<< members[i].membership_plan << "|" << members[i].assigned_trainer << "|"
+			<< members[i].active_subscription << "|" << members[i].gender << "|"
+			<< members[i].payment_status << "|" << members[i].attendance_record << "|"
+			<< members[i].registration_date << "|" << members[i].expiration_date << "\n";
+	}
+
+	mfile.close();
+}
+void member::updateMember(vector<member>& members) {
+	int id1;
+	cout << "Enter member ID to update: ";
+	cin >> id1;
+
+	int index = getuser(members, id1);
+
+	if (index == -1) {
+		cout << "Member not found.\n";
+		return;
+	}
+
+	cout << "\nEnter new data for member:\n";
+
+	cout << "Enter name: ";
+	cin.ignore();
+	getline(cin, members[index].name);
+
+	cout << "Enter contact info: ";
+	cin >> members[index].contactinfo;
+
+	cout << "Enter age: ";
+	cin >> members[index].age;
+
+	cout << "Enter membership plan: ";
+	cin.ignore();
+	getline(cin, members[index].membership_plan);
+
+	cout << "Enter assigned trainer: ";
+	getline(cin, members[index].assigned_trainer);
+
+	cout << "Enter active subscription: ";
+	getline(cin, members[index].active_subscription);
+
+	cout << "Enter gender: ";
+	getline(cin, members[index].gender);
+
+	cout << "Enter payment status: ";
+	getline(cin, members[index].payment_status);
+
+	cout << "Enter attendance record: ";
+	getline(cin, members[index].attendance_record);
+
+	saveAllMembersToFile(members);
+
+	cout << "Member updated successfully!\n";
 }

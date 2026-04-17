@@ -32,7 +32,12 @@ public:
 	float getcomisson();
 	member getassignedmemberlist();
 	activity getactivity();
-    void save_file();
+	void save_file();
 	void load_file(vector<Trainer_Management>& trainers);
 	void createnewtrainer();
+	void updateTrainer(vector<Trainer_Management>& trainers);
+	void deleteTrainer(vector<Trainer_Management>& trainers);
+	static void saveAllTrainersToFile(const vector<Trainer_Management>& trainers);
+	static int getTrainerIndex(vector<Trainer_Management>& trainers, int id);
+	void getTrainerIndex1(vector<Trainer_Management>& trainers);
 };

@@ -41,4 +41,9 @@ public:
 	string getTrainer()const;
 	string getPaymentStatus()const;
 	int getAttendance()const;
+	int getuser(vector<member>& members, int id1);
+	void getuser1(vector<member>& members);
+	void deleteMember(vector<member>& members);
+	void saveAllMembersToFile(vector<member>& members);
+	void updateMember(vector<member>& members);
 };
