@@ -117,13 +117,30 @@ void loadAttendance(vector<Attendance_Tracking>& attendance) {
     Attendance_Tracking temp;
     temp.load_file(attendance);
 }
+void createWorkoutProgram(vector<workout_programs>& programs) {
+    workout_programs newProgram(0, 0, "", "", "", "", 0, 0, 0, false,"");
+    newProgram.chooseWorkout();
+    programs.push_back(newProgram);
+    newProgram.save_file();
+    cout << "Workout program created successfully!" << endl;
+}
+void loadWorkoutPrograms(vector<workout_programs>& programs) {
+    ifstream file("workout_programs.txt");
+    if (!file.is_open()) return;
+     workout_programs temp(0, 0, "", "", "", "", 0, 0, 0, false, "");
+     while (file >> temp.num >> temp.duration >> temp.name >> temp.target_goal >> temp.exercise_list>> temp.assigned_trainer >> temp.start_date>> temp.expiration_date) {
+        programs.push_back(temp);
+    }
+     file.close();
+}
+
 int main() {
     int choice;
     vector<member> m;
     vector<Trainer_Management> t;
     vector<Attendance_Tracking> attendance;
     Membership_Plan_Management mp( "");
-    workout_programs wp(0, 0, "", "", "", "", 0, 0, 0, false);
+    workout_programs wp(0, 0, "", "", "", "", 0, 0, 0, false,"");
     Reports r;
     member temp;
 
@@ -134,11 +151,11 @@ int main() {
         switch (choice)
         {
         case 1:
-            int choise1;
+            int choice1;
             do{
                 showMemberMenu();
-                cin >> choise1;
-                switch (choise1) {
+                cin >> choice1;
+                switch (choice1) {
                 case 1:
                     cout << "Add Member selected\n";
                     createMember(m);
@@ -181,7 +198,7 @@ int main() {
                 default:
                     cout << "Invalid choice\n";
                 }
-            } while (choise1 != 0);
+            } while (choice1 != 0);
             break;
         case 2:
         {
@@ -407,6 +424,7 @@ int main() {
         }
 
     } while (choice != 0);
+
 
     return 0;
 }

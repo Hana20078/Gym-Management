@@ -70,6 +70,10 @@ plan::plan(int pi, int d, float p, string a, string dr, Access_level al) {
 	plan_id = pi;
 	duration = d;
 	expiration_date = start_date + (duration * 24 * 60 * 60);
+	Allowed_services = a;
+	Discount_rules = dr;
+	access_level = al;
+	start_date = time(0);
 }
 
 void plan::displayPlan() {
@@ -80,6 +84,14 @@ void plan::displayPlan() {
 	cout << "Allowed services:" << Allowed_services << endl;
 	cout << "Discount rules:" << Discount_rules << endl;
 	cout << "======================================================";
+}
+void Reports::trainerPerformance(vector<Workoutplans>& programs) {
+	
+}
+void createMembershipPlan(vector<Membership_Plan_Management>& plans) {
+	Membership_Plan_Management newPlan;
+	newPlan.createnewclient();
+	plans.push_back(newPlan);
 }
 
 void plan::setplan_id()
@@ -117,6 +129,7 @@ void plan::setDiscount_rules() {
 
 void plan::setexpiration_date()
 {
+	start_date = time(0);
 	time_t now = time(0);
 	expiration_date = start_date + (duration * 24 * 60 * 60);
 }

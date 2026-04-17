@@ -5,7 +5,7 @@
 #include <sstream>
 using namespace std;
 
-workout_programs::workout_programs(int nu, int d, string n, string tg, string el, string at,float sd, float ed,float p,bool pay) {
+workout_programs::workout_programs(int nu, int d, string n, string tg, string el, string at,float sd, float ed,float p,bool pay,string tp) {
 	num = nu;
 	duration = d;
 	name = n;
@@ -16,6 +16,7 @@ workout_programs::workout_programs(int nu, int d, string n, string tg, string el
 	expiration_date = ed;
 	price = p;
 	payment = pay;
+	trainer_performance = tp;
 }
 void workout_programs::chooseWorkout() {
 	int choice;
@@ -328,7 +329,7 @@ void Exercise::Exercisesystem(){
 }
 
 void workout_programs::workoutprogrammanagement() {
-	workout_programs w(0, 0, "", "", "", "", 0, 0,0,false);
+	workout_programs w(0, 0, "", "", "", "", 0, 0,0,false,"");
 	w.setid();
 	w.setduration();
 	w.setname();
@@ -374,6 +375,16 @@ void workout_programs::setexpiration_date()
 float workout_programs::getexpiration_date()
 {
 	return expiration_date;
+}
+
+void workout_programs::settrainerperformance() {
+	cout << "write trainer performance  ";
+	cin >> trainer_performance;
+}
+
+string workout_programs::gettrainerperformance()
+{
+	return trainer_performance;
 }
 
 
