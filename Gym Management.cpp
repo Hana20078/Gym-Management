@@ -13,12 +13,11 @@ using namespace std;
 
 void displayMenu() {
     cout << "\nWelcome to the Potatos Management System!" << endl;
-    cout << "1. Create a new member" << endl;
-    cout << "2. Create a new trainer" << endl;
-    cout << "3. Print Attendance Report" << endl;
-    cout << "4. Membership plan system" << endl;
-    cout << "5. Attendance tracking system" << endl;
-    cout << "6. Load Trainers/Clients" << endl;
+    cout << "1. Create User" << endl;
+    cout << "2. Print Attendance Report" << endl;
+    cout << "3. Membership plan system" << endl;
+    cout << "4. Attendance tracking system" << endl;
+    cout << "5. Load Trainers/Clients" << endl;
     cout << "0. Exit" << endl;
     cout << "Enter your choice: ";
 }
@@ -49,13 +48,14 @@ void loadAttendance(vector<Attendance_Tracking>& attendance) {
     Attendance_Tracking temp;
     temp.load_file(attendance);
 }
-
 int main() {
     int choice;
     vector<member> m;
     vector<Trainer_Management> t;
     vector<Attendance_Tracking> attendance;
-    Membership_Plan_Management mp(0, "");
+    Membership_Plan_Management mp( "");
+    workout_programs wp(0, 0, "", "", "", "", 0, 0, 0, false);
+    Reports r;
 
     do {
         displayMenu();
@@ -64,16 +64,23 @@ int main() {
         switch (choice)
         {
         case 1:
-            createMember(m);
-            m.back().save_file();
-            break;
+            int choise;
+			cout << "1. Create a new member" << endl;
+			cout << "2. Create a new trainer" << endl;
+
+            cin >> choise;
+            switch (choise) {
+            case 1:
+                createMember(m);
+                m.back().save_file();
+                break;
+            case 2:
+                createTrainer(t);
+                t.back().save_file();
+                break;
+            }
 
         case 2:
-            createTrainer(t);
-            t.back().save_file();
-            break;
-
-        case 3:
         {
             loadMembers(m);
             loadAttendance(attendance);
@@ -88,11 +95,11 @@ int main() {
             }
             break;
         }
-        case 4:
+        case 3:
             mp.membershipplansystem();
             break;
 
-        case 5:
+        case 4:
         {
             int attendanceChoice;
             Attendance_Tracking at;
@@ -119,13 +126,16 @@ int main() {
             }
             break;
         }
-        case 6:
+        case 5:
             loadMembers(m);
             loadTrainers(t);
             cout << "Loaded " << m.size() << " members and " << t.size() << " trainers." << endl;
 
             break;
 
+        case 6:
+            r.reports;
+            break;
         case 0:
             cout << "Exiting..." << endl;
             break;

@@ -15,4 +15,6 @@ public:
 	static string mostPopularPlan(vector<member>& members);
 	static void attendanceStats(vector<member>& members);
 	void display_performance();
+	static void reports(vector<member>& members);
+
 };

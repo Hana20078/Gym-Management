@@ -3,41 +3,75 @@
 #include<ctime>
 #include"Billing_System.h"
 
+int Membership_Plan_Management::counter = 1000;
+
 using namespace std;
-Membership_Plan_Management::Membership_Plan_Management(int i, string n) {
-	id = i;
+Membership_Plan_Management::Membership_Plan_Management( string n) {
+	id = counter++;
 	name = n;
 }
+
 void Membership_Plan_Management::setid()
 {
 	cout << "write membership plan's id  " << id;
 	cin >> id;
 }
+
 void Membership_Plan_Management::setname()
 {
 	cout << "write membership plan's name " << name;
 	cin >> name;
 }
+
 int Membership_Plan_Management::getid()
 {
 	cout << "membership plan's id is " << id;
 	return id;
 }
+
 string Membership_Plan_Management::getname()
 {
 	cout << "membership plan's name is " << name;
 	return name;
 }
+
 void Membership_Plan_Management::displaymembershipPlan() {
 	cout << "ID:" << id << endl;
 	cout << "Name:" << name << endl;
 	cout << "======================================================";
 }
+
+void Membership_Plan_Management::membershipplansystem() {
+	setname();
+	displaymembershipPlan();
+	cout << endl;
+	plan p(0, 0, 0, "", "", Access_level::Basic);
+	p.setplan_id();
+	p.setduration();
+	p.setprice();
+	p.setAllowed_services();
+	p.setDiscount_rules();
+	p.setstart_date();
+	p.setexpiration_date();
+	p.displayPlan();
+	p.printstartandenddate();
+	Billing_System bill;
+	bill.addpayment();
+	bill.receipt();
+	setbilling_system(bill);
+}
+
+void Membership_Plan_Management::setbilling_system(Billing_System b)
+{
+	billing_system = b;
+}
+
 plan::plan(int pi, int d, float p, string a, string dr, Access_level al) {
 	plan_id = pi;
 	duration = d;
 	expiration_date = start_date + (duration * 24 * 60 * 60);
 }
+
 void plan::displayPlan() {
 	cout << "Plan ID:" << plan_id << endl;
 	cout << "Duration:" << duration << endl;
@@ -112,33 +146,3 @@ void plan::printstartandenddate()
 	cout << "Start Date: " << startBuffer;
 	cout << "Expiration Date: " << endBuffer;
 }
-void Membership_Plan_Management::setbilling_system(Billing_System b)
-{
-	billing_system = b;
-}
-
-Billing_System Membership_Plan_Management::getbilling_system()
-{
-	return billing_system;
-}
-void Membership_Plan_Management::membershipplansystem() {
-	setid();
-	setname();
-	displaymembershipPlan();
-	cout << endl;
-	plan p(0, 0, 0, "", "", Access_level::Basic);
-	p.setplan_id();
-	p.setduration();
-	p.setprice();
-	p.setAllowed_services();
-	p.setDiscount_rules();
-	p.setstart_date();
-	p.setexpiration_date();
-	p.displayPlan();
-	p.printstartandenddate();
-	Billing_System bill;
-	bill.addpayment();
-	bill.receipt();
-	setbilling_system(bill);
-}
-

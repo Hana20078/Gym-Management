@@ -8,11 +8,12 @@ using namespace std;
 class Membership_Plan_Management
 {
 private:
+	static int counter;
 	int id;
 	string name;
 	Billing_System billing_system;
 public:
-	Membership_Plan_Management(int i, string n);
+	Membership_Plan_Management( string n);
     void setid();
 	void setname();
 	int getid();

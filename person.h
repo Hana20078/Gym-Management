@@ -28,6 +28,7 @@ public:
 	int getage();
 	int getcontactinfo();
 	void setCounter(int value);
+
 };
 
 #endif // PERSON_H

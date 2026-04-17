@@ -27,14 +27,14 @@ float Reports::monthlyRevenue(vector<member>& members) {
     float total = 0;
     for (auto& m : members) {
         if (m.getPaymentStatus() == "Paid") {
-            if(m.getPlan() == "Monthly Plan")
+            if (m.getPlan() == "Monthly Plan")
                 total += 50;
             else if (m.getPlan() == "3 Months Plan")
                 total += 140;
             else if (m.getPlan() == "6 Months Plan")
                 total += 270;
             else if (m.getPlan() == "12 Months Plan")
-				total += 500;
+                total += 500;
         }
     }
     return total;
@@ -55,14 +55,12 @@ static void trainerPerformance(vector<member>& members) {
 
 string Reports::mostPopularPlan(vector<member>& members) {
     map<string, int> planCount;
-
     for (auto& m : members) {
         planCount[m.getPlan()]++;
     }
 
     string bestPlan;
     int maxCount = 0;
-
     for (auto& p : planCount) {
         if (p.second > maxCount) {
             maxCount = p.second;
@@ -75,17 +73,22 @@ string Reports::mostPopularPlan(vector<member>& members) {
 
 void Reports::attendanceStats(vector<member>& members) {
     int total = 0;
-
     for (auto& m : members) {
         total += m.getAttendance();
     }
 
     cout << "Total Attendance: " << total << endl;
+    if (!members.empty()) {
+        double avg = static_cast<double>(total) / members.size();
+        cout << "Average Attendance: " << avg << endl;
+    }
+}
 
-    if (!members.empty())
-        cout << "Average Attendance: " << total / members.size() << endl;
+void Reports::reports(vector<member>& members) {
+    cout << "Active Members: " << totalActiveMembers(members) << endl;
+    cout << "Expired Memberships: " << expiredMemberships(members) << endl;
+    cout << "Monthly Revenue: $" << monthlyRevenue(members) << endl;
+    cout << "Most Popular Plan: " << mostPopularPlan(members) << endl;
+    attendanceStats(members);
 }
-void Reports::display_performance()
-{
-    cout << "Not implemented yet\n";
-}
+
