@@ -36,7 +36,6 @@ float Reports::monthlyRevenue(vector<member>& members) {
             else if (m.getPlan() == "12 Months Plan")
 				total += 500;
         }
-            total += m.getPayment();
     }
     return total;
 }

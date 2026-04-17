@@ -5,6 +5,7 @@
 #include <string> 
 #include <fstream>
 #include "Billing_System.h"
+#include <vector>
 using namespace std;
 
 class Attendance_Tracking;
@@ -12,10 +13,7 @@ class Attendance_Tracking;
 class member : public person, public Billing_System
 {
 private:
-	string name;
-	int id;
-	int contactinfo;
-	int age;
+
 	string membership_plan;
 	time_t registration_date;
 	time_t expiration_date;
@@ -33,7 +31,7 @@ public:
 	void printmemberinfo();
 	void createnewclient();
     void save_file();
-	void load_file(member members[], int &memberCount);
+	void load_file(vector<member>& members);
 	string getstatus();
 	int activecount(member arr[], int size);
 	string getName();

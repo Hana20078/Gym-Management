@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <ctime>
 #include "member.h"
@@ -5,7 +7,7 @@
 #include "Attendance_Tracking.h"
 #include <fstream>
 #include <string>   
-
+#include <vector>
 using namespace std;
 
 member::member() : person(), Billing_System() {
@@ -148,7 +150,7 @@ void member::save_file() {
 	}
 }
 
-void member::load_file(member members[], int& memberCount) {
+void member::load_file(vector<member>& members) {
 	ifstream mfile("member_info.txt");
 
 	if (!mfile.is_open()) {
@@ -156,58 +158,52 @@ void member::load_file(member members[], int& memberCount) {
 		return;
 	}
 
-	memberCount = 0;
+	members.clear();
 	string temp;
 
-	while (
-		getline(mfile, members[memberCount].name, '|') &&
-		getline(mfile, temp, '|')
-		)
-	{
-		// id
-		members[memberCount].id = stoi(temp);
+	while (true) {
+		member one;
 
-		// contact info
-		getline(mfile, temp, '|');
-		members[memberCount].contactinfo = stoi(temp);
-
-		// age
-		getline(mfile, temp, '|');
-		members[memberCount].age = stoi(temp);
-
-		// باقي البيانات النصية
-		getline(mfile, members[memberCount].membership_plan, '|');
-		getline(mfile, members[memberCount].assigned_trainer, '|');
-		getline(mfile, members[memberCount].active_subscription, '|');
-		getline(mfile, members[memberCount].gender, '|');
-		getline(mfile, members[memberCount].payment_status, '|');
-		getline(mfile, members[memberCount].attendance_record, '|');
-
-		// registration date
-		getline(mfile, temp, '|');
-		members[memberCount].registration_date = stoll(temp);
-
-		// expiration date
-		getline(mfile, temp);
-		members[memberCount].expiration_date = stoll(temp);
-
-		memberCount++;
-
-		if (memberCount >= 1000)
+		if (!getline(mfile, one.name, '|'))
 			break;
+
+		getline(mfile, temp, '|');
+		one.id = stoi(temp);
+
+		getline(mfile, temp, '|');
+		one.contactinfo = stoi(temp);
+
+		getline(mfile, temp, '|');
+		one.age = stoi(temp);
+
+		getline(mfile, one.membership_plan, '|');
+		getline(mfile, one.assigned_trainer, '|');
+		getline(mfile, one.active_subscription, '|');
+		getline(mfile, one.gender, '|');
+		getline(mfile, one.payment_status, '|');
+		getline(mfile, one.attendance_record, '|');
+
+		getline(mfile, temp, '|');
+		one.registration_date = stoll(temp);
+
+		getline(mfile, temp);
+		one.expiration_date = stoll(temp);
+
+		members.push_back(one);
 	}
 
 	mfile.close();
 
-	// تحديث الـ counter علشان الـ IDs تكمل من آخر واحد
-	int maxId = 99;
-	for (int i = 0; i < memberCount; i++) {
+	int maxId = 999;
+	for (int i = 0; i < (int)members.size(); i++) {
 		if (members[i].id > maxId) {
 			maxId = members[i].id;
 		}
 	}
 
-	person::setCounter(maxId + 1);
+	if (!members.empty()) {
+		members[0].setCounter(maxId + 1);
+	}
 }
 //void member::load_file(member members[], int &memberCount) {
 //	ifstream mfile("member_info.txt");

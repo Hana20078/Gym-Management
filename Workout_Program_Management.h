@@ -46,6 +46,7 @@ private:
 	int sets, reps, rest_time, id, duration;
 public:
 	Exercise(string en, int s, int r, int rt, string tg, string el, string at, int i, int d);
+	Exercise(std::string en, int s, int r, int rt);
 	void setid();
 	void setduration();
 	void setname();
@@ -58,7 +59,6 @@ public:
 	string gettarget_goal();
 	std::string getexercise_list();
 	std::string getassigned_trainer();
-	Exercise(std::string en, int s, int r, int rt);
 	void display();
 	void save_file();
 	void load_file();

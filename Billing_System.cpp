@@ -6,7 +6,7 @@ int Billing_System::payment_id = 0;
 Billing_System::Billing_System() {
 	amount = 0.0;
 	date = 0;
-	payment_State = "Unpaid";
+	payment_State = false;
 }
 
 void Billing_System::receipt()

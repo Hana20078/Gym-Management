@@ -86,6 +86,7 @@ Exercise::Exercise(string en, int s, int r, int rt,string tg,string el,string at
 	id = i;
 	duration = d;
 }
+
 void Exercise::setid()
 {
 	cout << "write exercise's id  " ;
@@ -130,6 +131,17 @@ string Exercise::getname()
 {
 	cout << "exercise's name is " ;
 	return exercise_name;
+}
+Exercise::Exercise(string en, int s, int r, int rt) {
+	exercise_name = en;
+	sets = s;
+	reps = r;
+	rest_time = rt;
+	target_goal = "";
+	exercise_list = "";
+	assigned_trainer = "";
+	id = 0;
+	duration = 0;
 }
 string Exercise::gettarget_goal()
 {

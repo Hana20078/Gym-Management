@@ -87,19 +87,40 @@ activity Trainer_Management::getactivity()
     a1.session_duration = trainer_activity.session_duration;
          return a1;
  }
-void Trainer_Management::load_file(Trainer_Management trainers[], int &trainerCount) {
+void Trainer_Management::load_file(vector<Trainer_Management>& trainers) {
     ifstream tfile("trainerfile.txt");
-    if (tfile.is_open()) {
-        trainerCount = 0;
-        while (tfile >> trainers[trainerCount].name >> trainers[trainerCount].age >> trainers[trainerCount].specailty >> trainers[trainerCount].id >> trainers[trainerCount].gender >> trainers[trainerCount].salary >> trainers[trainerCount].comisson >> trainers[trainerCount].contactinfo >> trainers[trainerCount].trainer_activity.hours_worked >> trainers[trainerCount].trainer_activity.session_duration) {
-            for (int i = 0; i < 10; i++) {
-                tfile >> trainers[trainerCount].assignedmemberlist[i];
-            }
-            trainerCount++;
-            if (trainerCount >= 30) break;
-        }
-        tfile.close();
+
+    if (!tfile.is_open()) {
+        cout << "Could not open trainer file.\n";
+        return;
     }
+
+    trainers.clear();
+
+    while (true) {
+        Trainer_Management temp;
+
+        if (!(tfile >> temp.name
+            >> temp.age
+            >> temp.specailty
+            >> temp.id
+            >> temp.gender
+            >> temp.salary
+            >> temp.comisson
+            >> temp.contactinfo
+            >> temp.trainer_activity.hours_worked
+            >> temp.trainer_activity.session_duration)) {
+            break;
+        }
+
+        for (int i = 0; i < 10; i++) {
+            tfile >> temp.assignedmemberlist[i];
+        }
+
+        trainers.push_back(temp);
+    }
+
+    tfile.close();
 }
 void Trainer_Management::save_file()
 {

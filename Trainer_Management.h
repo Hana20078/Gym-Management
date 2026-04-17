@@ -2,7 +2,7 @@
 #include "person.h"
 #include "member.h"
 #include <string>
-
+#include <vector>
 struct activity {
 	// attendance data
 	int hours_worked;
@@ -33,6 +33,6 @@ public:
 	member getassignedmemberlist();
 	activity getactivity();
     void save_file();
-	void load_file(Trainer_Management trainers[], int &trainerCount);
+	void load_file(vector<Trainer_Management>& trainers);
 	void createnewtrainer();
 };

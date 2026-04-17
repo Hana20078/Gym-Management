@@ -14,4 +14,5 @@ public:
 	void trainerPerformance(vector<workout_programs>& programs);
 	static string mostPopularPlan(vector<member>& members);
 	static void attendanceStats(vector<member>& members);
+	void display_performance();
 };

@@ -36,8 +36,6 @@ void Membership_Plan_Management::displaymembershipPlan() {
 plan::plan(int pi, int d, float p, string a, string dr, Access_level al) {
 	plan_id = pi;
 	duration = d;
-	acc
-	start_date = time(0);
 	expiration_date = start_date + (duration * 24 * 60 * 60);
 }
 void plan::displayPlan() {
@@ -139,7 +137,7 @@ void Membership_Plan_Management::membershipplansystem() {
 	p.displayPlan();
 	p.printstartandenddate();
 	Billing_System bill;
-	bill.addpayment(p.getprice());
+	bill.addpayment();
 	bill.receipt();
 	setbilling_system(bill);
 }
