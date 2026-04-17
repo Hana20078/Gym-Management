@@ -2,6 +2,8 @@
 #include <iostream>
 #include<ctime>
 #include"Billing_System.h"
+#include <fstream>
+#include <vector>
 
 int Membership_Plan_Management::counter = 1000;
 
@@ -59,6 +61,7 @@ void Membership_Plan_Management::membershipplansystem() {
 	bill.addpayment();
 	bill.receipt();
 	setbilling_system(bill);
+	p.save_file();
 }
 
 void Membership_Plan_Management::setbilling_system(Billing_System b)
@@ -145,4 +148,106 @@ void plan::printstartandenddate()
 
 	cout << "Start Date: " << startBuffer;
 	cout << "Expiration Date: " << endBuffer;
+}
+void Membership_Plan_Management::save_file()
+{
+	ofstream mfile("membershipplans.txt", ios::app);
+
+	if (mfile.is_open()) {
+		mfile << id << "|" << name << "\n";
+		mfile.close();
+	}
+	else {
+		cout << "Could not open membership plan file.\n";
+	}
+}
+
+void Membership_Plan_Management::load_file(vector<Membership_Plan_Management>& plans)
+{
+	ifstream mfile("membershipplans.txt");
+
+	if (!mfile.is_open()) {
+		cout << "Could not open membership plan file.\n";
+		return;
+	}
+
+	plans.clear();
+
+	while (true) {
+		string tempId;
+		Membership_Plan_Management temp("");
+
+		if (!getline(mfile, tempId, '|'))
+			break;
+
+		getline(mfile, temp.name);
+
+		temp.id = stoi(tempId);
+
+		plans.push_back(temp);
+	}
+
+	mfile.close();
+}
+void plan::save_file()
+{
+	ofstream pfile("plans.txt", ios::app);
+
+	if (pfile.is_open()) {
+		pfile << plan_id << "|"
+			<< duration << "|"
+			<< price << "|"
+			<< Allowed_services << "|"
+			<< Discount_rules << "|"
+			<< start_date << "|"
+			<< expiration_date << "|"
+			<< access_level << "\n";
+
+		pfile.close();
+	}
+	else {
+		cout << "Could not open plan file.\n";
+	}
+}
+
+void plan::load_file(vector<plan>& plans)
+{
+	ifstream pfile("plans.txt");
+
+	if (!pfile.is_open()) {
+		cout << "Could not open plan file.\n";
+		return;
+	}
+
+	plans.clear();
+
+	while (true) {
+		string temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8;
+
+		if (!getline(pfile, temp1, '|'))
+			break;
+
+		getline(pfile, temp2, '|');
+		getline(pfile, temp3, '|');
+		getline(pfile, temp4, '|');
+		getline(pfile, temp5, '|');
+		getline(pfile, temp6, '|');
+		getline(pfile, temp7, '|');
+		getline(pfile, temp8);
+
+		plan temp(0, 0, 0, "", "", Basic);
+
+		temp.plan_id = stoi(temp1);
+		temp.duration = stoi(temp2);
+		temp.price = stof(temp3);
+		temp.Allowed_services = temp4;
+		temp.Discount_rules = temp5;
+		temp.start_date = stoll(temp6);
+		temp.expiration_date = stoll(temp7);
+		temp.access_level = (Access_level)stoi(temp8);
+
+		plans.push_back(temp);
+	}
+
+	pfile.close();
 }

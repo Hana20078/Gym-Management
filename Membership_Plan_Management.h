@@ -3,6 +3,7 @@
 #include <string>
 #include <ctime>
 #include"Billing_System.h"
+#include <vector>
 using namespace std;
 
 class Membership_Plan_Management
@@ -22,6 +23,8 @@ public:
 	void membershipplansystem();
 	void setbilling_system(Billing_System b);
 	Billing_System getbilling_system();
+	void save_file();
+	void load_file(vector<Membership_Plan_Management>& plans);
 
 };
 enum Access_level{Basic, Premium, VIP};
@@ -51,4 +54,7 @@ public:
 	time_t getexpiration_date();
 	void displayPlan();
 	void printstartandenddate();
+	void save_file();
+	void load_file(vector<plan>& plans);
+
 };

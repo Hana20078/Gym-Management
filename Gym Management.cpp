@@ -117,6 +117,14 @@ void loadAttendance(vector<Attendance_Tracking>& attendance) {
     Attendance_Tracking temp;
     temp.load_file(attendance);
 }
+void loadMembershipPlans(vector<Membership_Plan_Management>& plans) {
+    Membership_Plan_Management temp("");
+    temp.load_file(plans);
+}
+void loadWorkoutPrograms(vector<workout_programs>& programs) {
+    workout_programs temp(0, 0, "", "", "", "", 0, 0, 0, false);
+    temp.load_file();
+}
 int main() {
     int choice;
     vector<member> m;
@@ -126,6 +134,8 @@ int main() {
     workout_programs wp(0, 0, "", "", "", "", 0, 0, 0, false);
     Reports r;
     member temp;
+    vector<Membership_Plan_Management> memberships;
+    //mp.save_file();
 
     do {
         showMainMenu();
