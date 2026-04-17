@@ -40,11 +40,11 @@ float Reports::monthlyRevenue(vector<member>& members) {
     return total;
 }
 
-static void trainerPerformance(vector<member>& members) {
+void Reports::trainerPerformance(vector<workout_programs>& programs) {
     map<string, int> trainerCount;
 
-    for (auto& m : members) {
-        trainerCount[m.getTrainer()]++;
+    for (auto& w : programs) {
+        trainerCount[w.getTrainer()]++;
     }
 
     cout << "Trainer Performance:\n";

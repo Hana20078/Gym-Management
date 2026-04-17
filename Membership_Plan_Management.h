@@ -23,6 +23,7 @@ public:
 	void membershipplansystem();
 	void setbilling_system(Billing_System b);
 	Billing_System getbilling_system();
+	void newplan();
 	void save_file();
 	void load_file(vector<Membership_Plan_Management>& plans);
 
@@ -34,7 +35,7 @@ private:
 	float price;
 	string Allowed_services, Discount_rules;
 	time_t start_date, expiration_date;
-	Access_level access_level;
+	Access_level level;
 
 public:
 	plan(int pi, int d, float p, string a, string dr, Access_level al);
@@ -54,6 +55,9 @@ public:
 	time_t getexpiration_date();
 	void displayPlan();
 	void printstartandenddate();
+	Access_level access_level;
+	};
+
 	void save_file();
 	void load_file(vector<plan>& plans);
 
