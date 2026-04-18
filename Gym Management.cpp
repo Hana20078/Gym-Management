@@ -466,7 +466,7 @@ int main() {
                 }
                 case 2:
                     cout << "Trainer Report selected\n";
-                    r.trainerPerformance(wp);
+                  
                     r.trainerPerformance(programs);
 
                     break;
