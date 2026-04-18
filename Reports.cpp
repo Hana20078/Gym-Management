@@ -84,6 +84,10 @@ void Reports::attendanceStats(vector<member>& members) {
     }
 }
 
+void Reports::display_performance()
+{
+}
+
 void Reports::reports(vector<member>& members) {
     cout << "Active Members: " << totalActiveMembers(members) << endl;
     cout << "Expired Memberships: " << expiredMemberships(members) << endl;
