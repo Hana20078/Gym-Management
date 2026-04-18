@@ -97,6 +97,11 @@ void Membership_Plan_Management::createMembershipPlan(vector<Membership_Plan_Man
 	plans.push_back(newPlan);
 }
 
+void Membership_Plan_Management::createnewclient()
+{
+	cout << "Enter plan data..." << endl;
+}
+
 void plan::setplan_id()
 {
 	cout << "write plan id ";
@@ -120,6 +125,16 @@ float plan::getprice()
 	return price;
 }
 
+string plan::getAllowed_services()
+{
+	return Allowed_services;
+}
+
+string plan::getDiscount_rules()
+{
+	return Discount_rules;
+}
+
 void plan::setAllowed_services() {
 	cout << "write allowed services for this plan " ;
 	cin >> Allowed_services;
@@ -128,6 +143,16 @@ void plan::setAllowed_services() {
 void plan::setDiscount_rules() {
 	cout << "write discount rules for this plan " ;
 	cin >> Discount_rules;
+}
+
+int plan::getplan_id()
+{
+	return 0;
+}
+
+int plan::getduration()
+{
+	return 0;
 }
 
 void plan::setexpiration_date()

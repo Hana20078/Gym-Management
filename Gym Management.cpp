@@ -128,10 +128,34 @@ void loadWorkoutPrograms(vector<workout_programs>& programs) {
     ifstream file("workout_programs.txt");
     if (!file.is_open()) return;
      workout_programs temp(0, 0, "", "", "", "", 0, 0, 0, false, "");
-     while (file >> temp.num >> temp.duration >> temp.name >> temp.target_goal >> temp.exercise_list>> temp.assigned_trainer >> temp.start_date>> temp.expiration_date) {
-        programs.push_back(temp);
-    }
+     while (true) {
+         if (!(file >> temp.num)) break;
+         file.ignore(); // skip |
+
+         file >> temp.duration;
+         file.ignore();
+
+         getline(file, temp.name, '|');
+         getline(file, temp.target_goal, '|');
+         getline(file, temp.exercise_list, '|');
+         getline(file, temp.assigned_trainer, '|');
+
+         file >> temp.start_date;
+         file.ignore();
+
+         file >> temp.expiration_date;
+
+         programs.push_back(temp);
+     }
      file.close();
+}
+
+void createMembershipPlan(vector<Membership_Plan_Management>& plans) {
+    Membership_Plan_Management newPlan("");
+    newPlan.createnewclient();
+    plans.push_back(newPlan);
+    newPlan.save_file();
+    cout << "Membership plan created successfully!" << endl;
 }
 
 void loadMembershipPlans(vector<Membership_Plan_Management>& plans) {
@@ -427,11 +451,52 @@ int main() {
 
         default:
             cout << "Invalid choice" << endl;
-            break;
         }
 
     } while (choice != 0);
+	int choice3;
+    do {
+        showPlanMenu();
+        cin >> choice3;
+        switch (choice3) {
+        case 1:
+            cout << "Add Plan " << endl;
+            break;
+        case 2:
+            cout << "Update Plan " << endl;
+            break;
+        case 3:
+            cout << "Delete Plan " << endl;
+            break;
+        case 4:
+            cout << "Display All Plans " << endl;
+            break;
 
-
+        case 0:
+            break;
+        default:
+            cout << "Invalid choice" << endl;
+        }
+    } while (choice3 != 0);
+    int choice4;
+    do {
+        showWorkoutMenu();
+	cin >> choice4;
+    switch (choice4) {
+    case 1:
+        cout << "Add Workout Program " << endl;
+        break;
+    case 2:
+        cout << "Assign Workout to Member " << endl;
+        break;
+    case 3:
+        cout << "Display Workout Programs " << endl;
+        break;
+    case 0:
+        break;
+    default:
+        cout << "Invalid choice" << endl;
+    }
+	} while (choice4 != 0);
     return 0;
 }

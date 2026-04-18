@@ -44,7 +44,7 @@ void Reports::trainerPerformance(vector<workout_programs>& programs) {
     map<string, int> trainerCount;
 
     for (auto& w : programs) {
-        trainerCount[w.getTrainer()]++;
+        trainerCount[w.getassigned_trainer()]++;
     }
 
     cout << "Trainer Performance:\n";

@@ -27,7 +27,7 @@ public:
 	void save_file();
 	void load_file(vector<Membership_Plan_Management>& plans);
 	void createMembershipPlan(vector<Membership_Plan_Management>& plans);
-
+	void createnewclient();
 };
 enum Access_level{Basic, Premium, VIP};
 class plan {
