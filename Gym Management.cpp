@@ -461,15 +461,19 @@ int main() {
 					Reports r;
                     
                     r.reports(m); 
+                    r.expiredMemberships(m);
                     break;
                     }
                 case 2:
                     cout << "Trainer Report selected\n";
+                    r.trainerPerformance(wp);
                     r.trainerPerformance(programs);
 
                     break;
                 case 3:
                     cout << "Payment Report selected\n";
+                    r.mostPopularPlan(m);
+                    r.monthlyRevenue(m);
                     break;
                 case 4:
                     cout << "Attendance Report selected\n";
