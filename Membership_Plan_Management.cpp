@@ -8,7 +8,7 @@
 int Membership_Plan_Management::counter = 1000;
 
 using namespace std;
-Membership_Plan_Management::Membership_Plan_Management( string n) {
+Membership_Plan_Management::Membership_Plan_Management(string n) {
 	id = counter++;
 	name = n;
 }
@@ -61,7 +61,7 @@ void Membership_Plan_Management::membershipplansystem() {
 	bill.addpayment();
 	bill.receipt();
 	setbilling_system(bill);
-	p.save_file();
+	p.psave_file();
 }
 
 void Membership_Plan_Management::setbilling_system(Billing_System b)
@@ -88,11 +88,11 @@ void plan::displayPlan() {
 	cout << "Discount rules:" << Discount_rules << endl;
 	cout << "======================================================";
 }
-void Reports::trainerPerformance(vector<Workoutplans>& programs) {
-	
-}
-void createMembershipPlan(vector<Membership_Plan_Management>& plans) {
-	Membership_Plan_Management newPlan;
+//void Reports::trainerPerformance(vector<Workoutplans>& programs) {
+//	
+//}
+void Membership_Plan_Management::createMembershipPlan(vector<Membership_Plan_Management>& plans) {
+	Membership_Plan_Management newPlan("");
 	newPlan.createnewclient();
 	plans.push_back(newPlan);
 }
@@ -202,7 +202,7 @@ void Membership_Plan_Management::load_file(vector<Membership_Plan_Management>& p
 
 	mfile.close();
 }
-void plan::save_file()
+void plan::psave_file()
 {
 	ofstream pfile("plans.txt", ios::app);
 
@@ -223,7 +223,7 @@ void plan::save_file()
 	}
 }
 
-void plan::load_file(vector<plan>& plans)
+void plan::pload_file(vector<plan>& plans)
 {
 	ifstream pfile("plans.txt");
 

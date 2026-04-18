@@ -26,6 +26,7 @@ public:
 	void newplan();
 	void save_file();
 	void load_file(vector<Membership_Plan_Management>& plans);
+	void createMembershipPlan(vector<Membership_Plan_Management>& plans);
 
 };
 enum Access_level{Basic, Premium, VIP};
@@ -56,9 +57,7 @@ public:
 	void displayPlan();
 	void printstartandenddate();
 	Access_level access_level;
-	};
-
-	void save_file();
-	void load_file(vector<plan>& plans);
+	void psave_file();
+	void pload_file(vector<plan>& plans);
 
 };

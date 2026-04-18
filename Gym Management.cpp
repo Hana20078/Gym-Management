@@ -138,10 +138,7 @@ void loadMembershipPlans(vector<Membership_Plan_Management>& plans) {
     Membership_Plan_Management temp("");
     temp.load_file(plans);
 }
-void loadWorkoutPrograms(vector<workout_programs>& programs) {
-    workout_programs temp(0, 0, "", "", "", "", 0, 0, 0, false);
-    temp.load_file();
-}
+
 int main() {
     int choice;
     vector<member> m;
@@ -269,12 +266,12 @@ int main() {
             //break;
         }
         case 3:
-            int choice;
+            int choice3;
             do {
                 showPlanMenu();
-                cin >> choice;
+                cin >> choice3;
 
-                switch (choice) {
+                switch (choice3) {
                 case 1:
                     cout << "Add Plan selected\n";
                     break;
@@ -292,17 +289,17 @@ int main() {
                 default:
                     cout << "Invalid choice\n";
                 }
-            } while (choice != 0);
+            } while (choice3 != 0);
             break;
             break;
         case 4:
         {
-            int choice;
+            int choice4;
             do {
                 showWorkoutMenu();
-                cin >> choice;
+                cin >> choice4;
 
-                switch (choice) {
+                switch (choice4) {
                 case 1:
                     cout << "Add Workout Program selected\n";
                     break;
@@ -345,12 +342,12 @@ int main() {
             //break;
         }
         case 5:
-            int choice;
+            int choice5;
             do {
                 showAttendanceMenu();
-                cin >> choice;
+                cin >> choice5;
 
-                switch (choice) {
+                switch (choice5) {
                 case 1:
                     cout << "Check In selected\n";
                     break;
@@ -365,7 +362,7 @@ int main() {
                 default:
                     cout << "Invalid choice\n";
                 }
-            } while (choice != 0);
+            } while (choice5 != 0);
             break;
             //loadMembers(m);
             //loadTrainers(t);
@@ -374,12 +371,12 @@ int main() {
             //break;
 
         case 6:
-            int choice;
+            int choice6;
             do {
                 showBillingMenu();
-                cin >> choice;
+                cin >> choice6;
 
-                switch (choice) {
+                switch (choice6) {
                 case 1:
                     cout << "Record Payment selected\n";
                     break;
@@ -394,15 +391,15 @@ int main() {
                 default:
                     cout << "Invalid choice\n";
                 }
-            } while (choice != 0);
+            } while (choice6 != 0);
             break;
         case 7:{
-            int choice;
+            int choice7;
             do {
                 showReportsMenu();
-                cin >> choice;
+                cin >> choice7;
 
-                switch (choice) {
+                switch (choice7) {
                 case 1:
                     cout << "Member Report selected\n";
                     break;
@@ -420,7 +417,7 @@ int main() {
                 default:
                     cout << "Invalid choice\n";
                 }
-            } while (choice != 0);
+            } while (choice7 != 0);
             break;
         }
 
