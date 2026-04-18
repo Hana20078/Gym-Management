@@ -102,6 +102,12 @@ void Membership_Plan_Management::createnewclient()
 	cout << "Enter plan data..." << endl;
 }
 
+void Membership_Plan_Management::updateMembershipPlan(vector<Membership_Plan_Management>& plans)
+{}
+
+void Membership_Plan_Management::deleteMembershipPlan(vector<Membership_Plan_Management>&plans)
+{}
+
 void plan::setplan_id()
 {
 	cout << "write plan id ";
