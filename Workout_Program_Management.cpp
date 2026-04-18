@@ -76,6 +76,8 @@ void workout_programs::displayprogram() {
 	cout << "Expiration Date:" << expiration_date << endl;
 	cout << "======================================================";
 }
+void workout_programs::setnum()
+{}
 Exercise::Exercise(string en, int s, int r, int rt,string tg,string el,string at,int i,int d) {
 	exercise_name = en;
 	sets = s;
@@ -167,11 +169,7 @@ void Exercise::display() {
 	cout << "======================================================";
 }
 
-void workout_programs::setid()
-{
-    cout << "write workout's id  " << num;
-	cin >> num;
-}
+
 void workout_programs::setstart_date()
 {
 	cout << "write workout's start date  " << start_date;
@@ -208,7 +206,13 @@ void workout_programs::setassigned_trainer()
 	cin >> assigned_trainer;
 }
 
-int workout_programs::getid()
+void workout_programs::setnum()
+{
+	cout << "write workout's id  " ;
+	cin >> num;
+}
+
+int workout_programs::getnum()
 {
     return num;
 }
@@ -330,7 +334,7 @@ void Exercise::Exercisesystem(){
 
 void workout_programs::workoutprogrammanagement() {
 	workout_programs w(0, 0, "", "", "", "", 0, 0,0,false,"");
-	w.setid();
+	w.setnum();
 	w.setduration();
 	w.setname();
 	w.settarget_goal();

@@ -13,13 +13,13 @@ public:
     workout_programs(int nu, int d, string n, string tg, string el, string at ,float sd,float ed,float p,bool pay,string tp);
 	void chooseWorkout();
 	void displayprogram();
-	void setid();
+	void setnum();
 	void setduration();
 	void setname();
 	void settarget_goal();
 	void setexercise_list();
 	void setassigned_trainer();
-    int getid();
+    int getnum();
 	int getduration();
 	string getname();
 	string gettarget_goal();
