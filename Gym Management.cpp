@@ -173,6 +173,7 @@ int main() {
     Reports r;
     member temp;
     vector<Membership_Plan_Management> memberships;
+    vector<Billing_System> payments;
     //mp.save_file();
 
     do {
@@ -400,15 +401,32 @@ int main() {
                 cin >> choice6;
 
                 switch (choice6) {
-                case 1:
+                case 1: {
                     cout << "Record Payment selected\n";
+                    Billing_System bill;
+					bill.addpayment();
+					bill.save_file();
+					payments.push_back(bill);
                     break;
-                case 2:
+                }
+                case 2: {
                     cout << "Generate Receipt selected\n";
+                    Billing_System tempBill;
+					tempBill.load_file(payments);
+
+					for (int i = 0; i < (int)payments.size(); i++) {
+                        cout << "Payment " << (i + 1) << ":\n";
+                        payments[i].receipt();
+                    }
                     break;
-                case 3:
+                }
+                case 3: {
                     cout << "View Unpaid Balances selected\n";
+                    Billing_System temp;
+                    temp.load_file(payments);
+                    temp.viewUnpaidBalances(payments);
                     break;
+                }
                 case 0:
                     break;
                 default:

@@ -1,27 +1,36 @@
 #pragma once
 #include <string>
-
+#include <iostream>
+#include <vector>
 using namespace std;
 
 class Billing_System
 {
 private:
-	static int payment_id;
-	int date;
-	bool payment_State;
-	double amount;
-	string payment_methods;
-
+	static int counter;
+	int payment_id;
+	int member_id;
+	float amount;
+	string payment_method;
+	string payment_status;
+	string date;
 public:
-	Billing_System();
-	void receipt();
-	void addpayment();
-	void setamount();
-	void setpayment_methods();
-	void setdate();
-	int getpayment_id();
-	int getdate();
-	string getpayment_methods();
-	bool getpayment_State();
-	double getamount();	
+    Billing_System();
+
+    void addpayment();
+    void receipt();
+    void displayPaymentInfo();
+
+    void save_file();
+    void load_file(vector<Billing_System>& payments);
+
+    int searchPayment(vector<Billing_System>& payments, int memberId);
+    void viewUnpaidBalances(vector<Billing_System>& payments);
+
+    int getpayment_id();
+    int getmember_id();
+    float getamount();
+    string getdate();
+    string getpayment_method();
+    string getpayment_status();
 };
