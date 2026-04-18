@@ -76,8 +76,7 @@ void workout_programs::displayprogram() {
 	cout << "Expiration Date:" << expiration_date << endl;
 	cout << "======================================================";
 }
-void workout_programs::setnum()
-{}
+
 Exercise::Exercise(string en, int s, int r, int rt,string tg,string el,string at,int i,int d) {
 	exercise_name = en;
 	sets = s;

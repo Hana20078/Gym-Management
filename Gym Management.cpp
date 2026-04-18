@@ -162,6 +162,20 @@ void loadMembershipPlans(vector<Membership_Plan_Management>& plans) {
     Membership_Plan_Management temp("");
     temp.load_file(plans);
 }
+void updateMembershipPlan(vector<Membership_Plan_Management>& plans) {
+    Membership_Plan_Management temp("");
+    temp.updateMembershipPlan(plans);
+}
+void deleteMembershipPlan(vector<Membership_Plan_Management>& plans) {
+    Membership_Plan_Management temp("");
+    temp.deleteMembershipPlan(plans);
+}
+void displayMembershipPlans(const vector<Membership_Plan_Management>& plans) {
+    for (const auto& plan : plans) {
+        plan.displayPlan();
+        cout << "-----------------------------\n";
+    }
+}
 
 int main() {
     int choice;
@@ -173,6 +187,7 @@ int main() {
     Reports r;
     member temp;
     vector<Membership_Plan_Management> memberships;
+    vector<Billing_System> payments;
     //mp.save_file();
 
     do {
@@ -400,15 +415,32 @@ int main() {
                 cin >> choice6;
 
                 switch (choice6) {
-                case 1:
+                case 1: {
                     cout << "Record Payment selected\n";
+                    Billing_System bill;
+					bill.addpayment();
+					bill.save_file();
+					payments.push_back(bill);
                     break;
-                case 2:
+                }
+                case 2: {
                     cout << "Generate Receipt selected\n";
+                    Billing_System tempBill;
+					tempBill.load_file(payments);
+
+					for (int i = 0; i < (int)payments.size(); i++) {
+                        cout << "Payment " << (i + 1) << ":\n";
+                        payments[i].receipt();
+                    }
                     break;
-                case 3:
+                }
+                case 3: {
                     cout << "View Unpaid Balances selected\n";
+                    Billing_System temp;
+                    temp.load_file(payments);
+                    temp.viewUnpaidBalances(payments);
                     break;
+                }
                 case 0:
                     break;
                 default:
@@ -458,49 +490,4 @@ int main() {
         }
 
     } while (choice != 0);
-	int choice3;
-    do {
-        showPlanMenu();
-        cin >> choice3;
-        switch (choice3) {
-        case 1:
-            cout << "Add Plan " << endl;
-            break;
-        case 2:
-            cout << "Update Plan " << endl;
-            break;
-        case 3:
-            cout << "Delete Plan " << endl;
-            break;
-        case 4:
-            cout << "Display All Plans " << endl;
-            break;
-
-        case 0:
-            break;
-        default:
-            cout << "Invalid choice" << endl;
-        }
-    } while (choice3 != 0);
-    int choice4;
-    do {
-        showWorkoutMenu();
-	cin >> choice4;
-    switch (choice4) {
-    case 1:
-        cout << "Add Workout Program " << endl;
-        break;
-    case 2:
-        cout << "Assign Workout to Member " << endl;
-        break;
-    case 3:
-        cout << "Display Workout Programs " << endl;
-        break;
-    case 0:
-        break;
-    default:
-        cout << "Invalid choice" << endl;
-    }
-	} while (choice4 != 0);
-    return 0;
-}
+	
