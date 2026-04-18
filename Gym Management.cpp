@@ -182,12 +182,12 @@ int main() {
     vector<member> m;
     vector<Trainer_Management> t;
     vector<Attendance_Tracking> attendance;
-    Membership_Plan_Management mp( "");
-    workout_programs wp(0, 0, "", "", "", "", 0, 0, 0, false,"");
+    Membership_Plan_Management mp("");
+    workout_programs wp(0, 0, "", "", "", "", 0, 0, 0, false, "");
     Reports r;
     member temp;
     vector<Membership_Plan_Management> memberships;
-	vector<workout_programs> programs;
+    vector<workout_programs> programs;
     vector<Billing_System> payments;
     //mp.save_file();
 
@@ -199,7 +199,7 @@ int main() {
         {
         case 1:
             int choice1;
-            do{
+            do {
                 showMemberMenu();
                 cin >> choice1;
                 switch (choice1) {
@@ -210,7 +210,7 @@ int main() {
                     break;
                 case 2:
                     cout << "Update Member selected\n";
-					temp.updateMember(m);
+                    temp.updateMember(m);
                     break;
                 case 3:
                     cout << "Delete Member selected\n";
@@ -221,7 +221,7 @@ int main() {
                     int memberId;
                     cout << "Enter member ID: ";
                     cin >> memberId;
-                    
+
                     int index = temp.getuser(m, memberId);
                     if (index != -1) {
                         m[index].printmemberinfo();
@@ -234,8 +234,8 @@ int main() {
                 }
                 case 5:
                     cout << "Display All Members selected\n";
-					loadMembers(m);
-					for (member& x : m) {
+                    loadMembers(m);
+                    for (member& x : m) {
                         x.printmemberinfo();
                         cout << "-----------------------------\n";
                     }
@@ -250,13 +250,13 @@ int main() {
         case 2:
         {
             int choice2;
-			do {
+            do {
                 showTrainerMenu();
                 cin >> choice2;
                 switch (choice2) {
                 case 1:
                     cout << "Add Trainer selected\n";
-					createTrainer(t);
+                    createTrainer(t);
                     break;
                 case 2: {
                     cout << "Update Trainer selected\n";
@@ -289,7 +289,7 @@ int main() {
                 default:
                     cout << "Invalid choice\n";
                 }
-            
+
             } while (choice2 != 0);
             break;
             //loadMembers(m);
@@ -419,17 +419,17 @@ int main() {
                 case 1: {
                     cout << "Record Payment selected\n";
                     Billing_System bill;
-					bill.addpayment();
-					bill.save_file();
-					payments.push_back(bill);
+                    bill.addpayment();
+                    bill.save_file();
+                    payments.push_back(bill);
                     break;
                 }
                 case 2: {
                     cout << "Generate Receipt selected\n";
                     Billing_System tempBill;
-					tempBill.load_file(payments);
+                    tempBill.load_file(payments);
 
-					for (int i = 0; i < (int)payments.size(); i++) {
+                    for (int i = 0; i < (int)payments.size(); i++) {
                         cout << "Payment " << (i + 1) << ":\n";
                         payments[i].receipt();
                     }
@@ -449,21 +449,21 @@ int main() {
                 }
             } while (choice6 != 0);
             break;
-        case 7:{
+        case 7: {
             int choice7;
             do {
                 showReportsMenu();
                 cin >> choice7;
 
                 switch (choice7) {
-                case 1:{
+                case 1: {
                     cout << "Member Report selected\n";
-					Reports r;
-                    
-                    r.reports(m); 
+                    Reports r;
+
+                    r.reports(m);
                     r.expiredMemberships(m);
                     break;
-                    }
+                }
                 case 2:
                     cout << "Trainer Report selected\n";
                     r.trainerPerformance(wp);
@@ -497,4 +497,5 @@ int main() {
         }
 
     } while (choice != 0);
+}
 	
