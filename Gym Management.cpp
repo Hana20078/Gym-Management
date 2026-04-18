@@ -423,8 +423,12 @@ int main() {
                 cin >> choice7;
 
                 switch (choice7) {
-                case 1:
+                case 1:{
                     cout << "Member Report selected\n";
+					Reports r;
+                    
+                    r.reports(m); 
+                    }
                     break;
                 case 2:
                     cout << "Trainer Report selected\n";
@@ -434,6 +438,7 @@ int main() {
                     break;
                 case 4:
                     cout << "Attendance Report selected\n";
+                    r.attendanceStats(m);
                     break;
                 case 0:
                     break;
