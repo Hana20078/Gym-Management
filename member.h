@@ -6,6 +6,8 @@
 #include <fstream>
 #include "Billing_System.h"
 #include <vector>
+#include "Workout_Program_Management.h"
+
 using namespace std;
 
 class Attendance_Tracking;
@@ -21,6 +23,7 @@ private:
 	string attendance_record;
 	string payment_status;
 	string active_subscription;
+	string assigned_workout;
 
 public:
 	member();
@@ -46,4 +49,6 @@ public:
 	void deleteMember(vector<member>& members);
 	void saveAllMembersToFile(vector<member>& members);
 	void updateMember(vector<member>& members);
+	string getAssignedWorkout() const;
+	void assignWorkoutToMember(vector<member>& members, vector<workout_programs>& programs);
 };

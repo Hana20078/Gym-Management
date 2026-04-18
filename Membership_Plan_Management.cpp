@@ -88,9 +88,7 @@ void plan::displayPlan() {
 	cout << "Discount rules:" << Discount_rules << endl;
 	cout << "======================================================";
 }
-//void Reports::trainerPerformance(vector<Workoutplans>& programs) {
-//	
-//}
+
 void Membership_Plan_Management::createMembershipPlan(vector<Membership_Plan_Management>& plans) {
 	Membership_Plan_Management newPlan("");
 	newPlan.createnewclient();

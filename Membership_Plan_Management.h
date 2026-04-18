@@ -19,7 +19,7 @@ public:
 	void setname();
 	int getid();
 	string getname();
-	void displayPlan();
+	//void displayPlan();
 	void membershipplansystem();
 	void setbilling_system(Billing_System b);
 	Billing_System getbilling_system();
@@ -30,6 +30,7 @@ public:
 	void createnewclient();
 	void updateMembershipPlan(vector<Membership_Plan_Management>& plans);
 	void deleteMembershipPlan(vector<Membership_Plan_Management>& plans);
+	void displaymembershipPlan();
 };
 enum Access_level{Basic, Premium, VIP};
 class plan {

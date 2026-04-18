@@ -5,6 +5,7 @@
 #include "member.h"
 #include "person.h"
 #include "Attendance_Tracking.h"
+#include "Workout_Program_Management.h"
 #include <fstream>
 #include <string>   
 #include <vector>
@@ -13,7 +14,7 @@ using namespace std;
 member::member() : person(), Billing_System() {
 	registration_date = 0;
 	expiration_date = 0;
-
+	assigned_workout = "No Workout";
 	active_subscription = "Inactive";
 	payment_status = "Unpaid";
 	attendance_record = "0";
@@ -132,6 +133,7 @@ void member::Membershipstatus() {
 void member::printmemberinfo() {
 	printer(); // fixed
 	cout << "Assigned Trainer: " << assigned_trainer << endl;
+	cout << "Assigned Workout: " << assigned_workout << endl;
 	Membershipstatus();
 }
 
@@ -141,71 +143,76 @@ void member::createnewclient() {
 	assignedtrainer();
 	activesubscription();
 }
-
+string member::getAssignedWorkout() const {
+	return assigned_workout;
+}
 void member::save_file() {
 	ofstream mfile("member_info.txt", ios::app);
 	if (mfile.is_open()) {
-		mfile << name << "|" << id << "|" << contactinfo << "|" << age << "|" << membership_plan << "|" << assigned_trainer << "|" << active_subscription << "|" << gender << "|" << payment_status << "|" << attendance_record << "|" << registration_date << "|" << expiration_date << "\n";
+		mfile << name << "|" << id << "|" << contactinfo << "|" << age << "|"
+			<< membership_plan << "|" << assigned_trainer << "|" << assigned_workout << "|"
+			<< active_subscription << "|" << gender << "|" << payment_status << "|"
+			<< attendance_record << "|" << registration_date << "|" << expiration_date << "\n";
 		mfile.close();
 	}
 }
 
 void member::load_file(vector<member>& members) {
-	ifstream mfile("member_info.txt");
+    ifstream mfile("member_info.txt");
 
-	if (!mfile.is_open()) {
-		cout << "Could not open file.\n";
-		return;
-	}
+    if (!mfile.is_open()) {
+        cout << "Could not open file.\n";
+        return;
+    }
 
-	members.clear();
-	string temp;
+    members.clear();
+    string temp;
 
-	while (true) {
-		member one;
+    while (true) {
+        member one;
 
-		if (!getline(mfile, one.name, '|'))
-			break;
+        if (!getline(mfile, one.name, '|'))
+            break;
 
-		getline(mfile, temp, '|');
-		one.id = stoi(temp);
+        getline(mfile, temp, '|');
+        one.id = stoi(temp);
 
-		getline(mfile, temp, '|');
-		one.contactinfo = stoi(temp);
+        getline(mfile, temp, '|');
+        one.contactinfo = stoi(temp);
 
-		getline(mfile, temp, '|');
-		one.age = stoi(temp);
+        getline(mfile, temp, '|');
+        one.age = stoi(temp);
 
-		getline(mfile, one.membership_plan, '|');
-		getline(mfile, one.assigned_trainer, '|');
-		getline(mfile, one.active_subscription, '|');
-		getline(mfile, one.gender, '|');
-		getline(mfile, one.payment_status, '|');
-		getline(mfile, one.attendance_record, '|');
+        getline(mfile, one.membership_plan, '|');
+        getline(mfile, one.assigned_trainer, '|');
+        getline(mfile, one.assigned_workout, '|');
+        getline(mfile, one.active_subscription, '|');
+        getline(mfile, one.gender, '|');
+        getline(mfile, one.payment_status, '|');
+        getline(mfile, one.attendance_record, '|');
 
-		getline(mfile, temp, '|');
-		one.registration_date = stoll(temp);
+        getline(mfile, temp, '|');
+        one.registration_date = stoll(temp);
 
-		getline(mfile, temp);
-		one.expiration_date = stoll(temp);
+        getline(mfile, temp);
+        one.expiration_date = stoll(temp);
 
-		members.push_back(one);
-	}
+        members.push_back(one);
+    }
 
-	mfile.close();
+    mfile.close();
 
-	int maxId = 999;
-	for (int i = 0; i < (int)members.size(); i++) {
-		if (members[i].id > maxId) {
-			maxId = members[i].id;
-		}
-	}
+    int maxId = 999;
+    for (int i = 0; i < (int)members.size(); i++) {
+        if (members[i].id > maxId) {
+            maxId = members[i].id;
+        }
+    }
 
-	if (!members.empty()) {
-		members[0].setCounter(maxId + 1);
-	}
+    if (!members.empty()) {
+        members[0].setCounter(maxId + 1);
+    }
 }
-
 string member::getName() {
 	return name;
 }
@@ -215,19 +222,15 @@ int member::getid() {
 string member::getActiveSubscription()const {
 	return active_subscription;
 }
-
 string member::getPlan()const {
 	return membership_plan;
 }
-
 string member::getTrainer()const {
 	return assigned_trainer;
 }
-
 string member::getPaymentStatus()const {
 	return payment_status;
 }
-
 int member::getAttendance()const {
 	return stoi(attendance_record); 
 }
@@ -239,7 +242,6 @@ int member::getuser(vector<member>& members, int id1) {
 	}
 	return -1;
 }
-
 void member::getuser1(vector<member>& members) {
 	int id1;
 	cout << "Enter member ID: ";
@@ -274,7 +276,7 @@ void member::deleteMember(vector<member>& members) {
     }
 }
 void member::saveAllMembersToFile(vector<member>& members) {
-	ofstream mfile("member_info.txt", ios::trunc); 
+	ofstream mfile("member_info.txt", ios::trunc);
 
 	if (!mfile.is_open()) {
 		cout << "Error opening file\n";
@@ -285,6 +287,7 @@ void member::saveAllMembersToFile(vector<member>& members) {
 		mfile << members[i].name << "|" << members[i].id << "|"
 			<< members[i].contactinfo << "|" << members[i].age << "|"
 			<< members[i].membership_plan << "|" << members[i].assigned_trainer << "|"
+			<< members[i].assigned_workout << "|"
 			<< members[i].active_subscription << "|" << members[i].gender << "|"
 			<< members[i].payment_status << "|" << members[i].attendance_record << "|"
 			<< members[i].registration_date << "|" << members[i].expiration_date << "\n";
@@ -338,4 +341,49 @@ void member::updateMember(vector<member>& members) {
 	saveAllMembersToFile(members);
 
 	cout << "Member updated successfully!\n";
+}
+void member::assignWorkoutToMember(vector<member>& members, vector<workout_programs>& programs) {
+	if (members.empty()) {
+		cout << "No members found.\n";
+		return;
+	}
+
+	if (programs.empty()) {
+		cout << "No workout programs found.\n";
+		return;
+	}
+
+	int memberId;
+	cout << "Enter member ID: ";
+	cin >> memberId;
+
+	int memberIndex = getuser(members, memberId);
+	if (memberIndex == -1) {
+		cout << "Member not found.\n";
+		return;
+	}
+
+	cout << "\nAvailable Workout Programs:\n";
+	for (int i = 0; i < (int)programs.size(); i++) {
+		cout << i + 1 << ". " << programs[i].getname()
+			<< " | Trainer: " << programs[i].getassigned_trainer()
+			<< " | Goal: " << programs[i].gettarget_goal() << endl;
+	}
+
+	int choice;
+	cout << "Choose workout number: ";
+	cin >> choice;
+
+	if (choice < 1 || choice >(int)programs.size()) {
+		cout << "Invalid workout choice.\n";
+		return;
+	}
+
+	members[memberIndex].assigned_workout = programs[choice - 1].getname();
+	members[memberIndex].assigned_trainer = programs[choice - 1].getassigned_trainer();
+
+	saveAllMembersToFile(members);
+
+	cout << "Workout assigned successfully to "
+		<< members[memberIndex].getName() << ".\n";
 }

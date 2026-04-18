@@ -93,12 +93,7 @@ void showReportsMenu() {
     cout << "Enter your choice: ";
 }
 
-void createMember(vector<member>& members) {
-    member newMember;
-    newMember.createnewclient();
-    members.push_back(newMember);
-    cout << "Member created successfully!" << endl;
-}
+
 void createTrainer(vector<Trainer_Management>& trainers) {
     Trainer_Management newTrainer;
     newTrainer.createnewtrainer();
@@ -149,15 +144,13 @@ void loadWorkoutPrograms(vector<workout_programs>& programs) {
      }
      file.close();
 }
-
 void createMembershipPlan(vector<Membership_Plan_Management>& plans) {
     Membership_Plan_Management newPlan("");
-    newPlan.createnewclient();
-    plans.push_back(newPlan);
+    newPlan.membershipplansystem();
     newPlan.save_file();
+    plans.push_back(newPlan);
     cout << "Membership plan created successfully!" << endl;
 }
-
 void loadMembershipPlans(vector<Membership_Plan_Management>& plans) {
     Membership_Plan_Management temp("");
     temp.load_file(plans);
@@ -170,14 +163,21 @@ void deleteMembershipPlan(vector<Membership_Plan_Management>& plans) {
     Membership_Plan_Management temp("");
     temp.deleteMembershipPlan(plans);
 }
-void displayMembershipPlans(const vector<Membership_Plan_Management>& plans) {
-    for (const auto& plan : plans) {
-        plan.displayPlan();
+void displayMembershipPlans(vector<Membership_Plan_Management>& plans) {
+    for (auto& plan : plans) {
+        plan.displaymembershipPlan();
         cout << "-----------------------------\n";
     }
 }
-
+void createMember(vector<member>& members) {
+	loadMembers(members);
+    member newMember;
+    newMember.createnewclient();
+    members.push_back(newMember);
+    cout << "Member created successfully!" << endl;
+}
 int main() {
+
     int choice;
     vector<member> m;
     vector<Trainer_Management> t;
@@ -189,15 +189,12 @@ int main() {
     vector<Membership_Plan_Management> memberships;
     vector<workout_programs> programs;
     vector<Billing_System> payments;
-    //mp.save_file();
-
     do {
         showMainMenu();
         cin >> choice;
-
         switch (choice)
         {
-        case 1:
+        case 1: {
             int choice1;
             do {
                 showMemberMenu();
@@ -247,6 +244,7 @@ int main() {
                 }
             } while (choice1 != 0);
             break;
+        }
         case 2:
         {
             int choice2;
@@ -305,12 +303,11 @@ int main() {
             //}
             //break;
         }
-        case 3:
+        case 3: {
             int choice3;
             do {
                 showPlanMenu();
                 cin >> choice3;
-
                 switch (choice3) {
                 case 1:
                     cout << "Add Plan selected\n";
@@ -331,6 +328,7 @@ int main() {
                 }
             } while (choice3 != 0);
             break;
+        }
         case 4:
         {
             int choice4;
@@ -341,12 +339,29 @@ int main() {
                 switch (choice4) {
                 case 1:
                     cout << "Add Workout Program selected\n";
+                    createWorkoutProgram(programs);
                     break;
                 case 2:
                     cout << "Assign Workout to Member selected\n";
+                    loadMembers(m);
+                    programs.clear();
+                    loadWorkoutPrograms(programs);
+                    temp.assignWorkoutToMember(m, programs);
                     break;
                 case 3:
                     cout << "Display Workout Programs selected\n";
+                    programs.clear();
+                    loadWorkoutPrograms(programs);
+
+                    if (programs.empty()) {
+                        cout << "No workout programs found.\n";
+                    }
+                    else {
+                        for (int i = 0; i < (int)programs.size(); i++) {
+                            programs[i].displayprogram();
+                            cout << "\n-----------------------------\n";
+                        }
+                    }
                     break;
                 case 0:
                     break;
@@ -355,32 +370,9 @@ int main() {
                 }
             } while (choice4 != 0);
             break;
-            //int attendanceChoice;
-            //Attendance_Tracking at;
-
-            //cout << "Attendance Tracking System" << endl;
-            //cout << "1. Record Attendance (Check-in)" << endl;
-            //cout << "2. Record Attendance (Check-out)" << endl;
-            //cout << "Enter your choice: ";
-            //cin >> attendanceChoice;
-
-            //switch (attendanceChoice)
-            //{
-            //case 1:
-            //    at.recordAttendance(m);
-            //    break;
-
-            //case 2:
-            //    at.CheckoutAttendance(m);
-            //    break;
-
-            //default:
-            //    cout << "Invalid choice" << endl;
-            //    break;
-            //}
-            //break;
         }
         case 5:
+        {
             int choice5;
             do {
                 showAttendanceMenu();
@@ -388,28 +380,61 @@ int main() {
 
                 switch (choice5) {
                 case 1:
+                {
                     cout << "Check In selected\n";
+
+                    loadMembers(m);
+                    Attendance_Tracking at;
+                    at.recordAttendance(m);
+
                     break;
+                }
+
                 case 2:
+                {
                     cout << "Check Out selected\n";
+
+                    loadMembers(m);
+                    Attendance_Tracking at;
+                    at.CheckoutAttendance(m);
+
                     break;
+                }
+
                 case 3:
+                {
                     cout << "View Attendance Report selected\n";
+
+                    loadMembers(m);
+
+                    vector<Attendance_Tracking> records;
+                    Attendance_Tracking temp;
+                    temp.load_file(records);
+
+                    if (records.empty()) {
+                        cout << "No attendance records found.\n";
+                    }
+                    else {
+                        for (int i = 0; i < (int)records.size(); i++) {
+                            records[i].getAttendanceReport(m);
+                        }
+                    }
+
                     break;
+                }
+
                 case 0:
                     break;
+
                 default:
                     cout << "Invalid choice\n";
                 }
+
             } while (choice5 != 0);
+
             break;
-            //loadMembers(m);
-            //loadTrainers(t);
-            //cout << "Loaded " << m.size() << " members and " << t.size() << " trainers." << endl;
-
-            //break;
-
-        case 6:
+        }
+        case 6: {
             int choice6;
             do {
                 showBillingMenu();
@@ -449,34 +474,36 @@ int main() {
                 }
             } while (choice6 != 0);
             break;
+        }
         case 7: {
             int choice7;
             do {
                 showReportsMenu();
                 cin >> choice7;
-
                 switch (choice7) {
                 case 1: {
                     cout << "Member Report selected\n";
-                    Reports r;
-
+                    loadMembers(m);
                     r.reports(m);
-                    r.expiredMemberships(m);
                     break;
                 }
                 case 2:
                     cout << "Trainer Report selected\n";
-                  
+                    programs.clear();
+                    loadWorkoutPrograms(programs);
                     r.trainerPerformance(programs);
-
                     break;
+
                 case 3:
                     cout << "Payment Report selected\n";
-                    r.mostPopularPlan(m);
-                    r.monthlyRevenue(m);
+                    loadMembers(m);
+                    cout << "Most Popular Plan: " << r.mostPopularPlan(m) << endl;
+                    cout << "Monthly Revenue: " << r.monthlyRevenue(m) << endl;
                     break;
+
                 case 4:
                     cout << "Attendance Report selected\n";
+                    loadMembers(m);
                     r.attendanceStats(m);
                     break;
                 case 0:
@@ -487,15 +514,15 @@ int main() {
             } while (choice7 != 0);
             break;
         }
-
-        case 0:
+        case 0: {
             cout << "Exiting..." << endl;
             break;
-
-        default:
+        }
+        default: {
             cout << "Invalid choice" << endl;
         }
-
+        }
     } while (choice != 0);
+    return 0;
 }
 	
