@@ -162,6 +162,20 @@ void loadMembershipPlans(vector<Membership_Plan_Management>& plans) {
     Membership_Plan_Management temp("");
     temp.load_file(plans);
 }
+void updateMembershipPlan(vector<Membership_Plan_Management>& plans) {
+    Membership_Plan_Management temp("");
+    temp.updateMembershipPlan(plans);
+}
+void deleteMembershipPlan(vector<Membership_Plan_Management>& plans) {
+    Membership_Plan_Management temp("");
+    temp.deleteMembershipPlan(plans);
+}
+void displayMembershipPlans(const vector<Membership_Plan_Management>& plans) {
+    for (const auto& plan : plans) {
+        plan.displayPlan();
+        cout << "-----------------------------\n";
+    }
+}
 
 int main() {
     int choice;
@@ -471,49 +485,4 @@ int main() {
         }
 
     } while (choice != 0);
-	int choice3;
-    do {
-        showPlanMenu();
-        cin >> choice3;
-        switch (choice3) {
-        case 1:
-            cout << "Add Plan " << endl;
-            break;
-        case 2:
-            cout << "Update Plan " << endl;
-            break;
-        case 3:
-            cout << "Delete Plan " << endl;
-            break;
-        case 4:
-            cout << "Display All Plans " << endl;
-            break;
-
-        case 0:
-            break;
-        default:
-            cout << "Invalid choice" << endl;
-        }
-    } while (choice3 != 0);
-    int choice4;
-    do {
-        showWorkoutMenu();
-	cin >> choice4;
-    switch (choice4) {
-    case 1:
-        cout << "Add Workout Program " << endl;
-        break;
-    case 2:
-        cout << "Assign Workout to Member " << endl;
-        break;
-    case 3:
-        cout << "Display Workout Programs " << endl;
-        break;
-    case 0:
-        break;
-    default:
-        cout << "Invalid choice" << endl;
-    }
-	} while (choice4 != 0);
-    return 0;
-}
+	
