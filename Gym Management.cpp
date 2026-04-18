@@ -187,6 +187,7 @@ int main() {
     Reports r;
     member temp;
     vector<Membership_Plan_Management> memberships;
+	vector<workout_programs> programs;
     vector<Billing_System> payments;
     //mp.save_file();
 
@@ -352,7 +353,7 @@ int main() {
                 default:
                     cout << "Invalid choice\n";
                 }
-            } while (choice != 0);
+            } while (choice4 != 0);
             break;
             //int attendanceChoice;
             //Attendance_Tracking at;
@@ -460,10 +461,12 @@ int main() {
 					Reports r;
                     
                     r.reports(m); 
-                    }
                     break;
+                    }
                 case 2:
                     cout << "Trainer Report selected\n";
+                    r.trainerPerformance(programs);
+
                     break;
                 case 3:
                     cout << "Payment Report selected\n";
