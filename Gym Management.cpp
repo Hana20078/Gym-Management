@@ -157,10 +157,12 @@ void loadMembershipPlans(vector<Membership_Plan_Management>& plans) {
 }
 void updateMembershipPlan(vector<Membership_Plan_Management>& plans) {
     Membership_Plan_Management temp("");
+    temp.load_file(plans);   
     temp.updateMembershipPlan(plans);
 }
 void deleteMembershipPlan(vector<Membership_Plan_Management>& plans) {
     Membership_Plan_Management temp("");
+    temp.load_file(plans);
     temp.deleteMembershipPlan(plans);
 }
 void displayMembershipPlans(vector<Membership_Plan_Management>& plans) {
@@ -170,7 +172,6 @@ void displayMembershipPlans(vector<Membership_Plan_Management>& plans) {
     }
 }
 void createMember(vector<member>& members) {
-	loadMembers(members);
     member newMember;
     newMember.createnewclient();
     members.push_back(newMember);
@@ -311,15 +312,22 @@ int main() {
                 switch (choice3) {
                 case 1:
                     cout << "Add Plan selected\n";
+					createMembershipPlan(memberships);
                     break;
                 case 2:
                     cout << "Update Plan selected\n";
+                    loadMembershipPlans(memberships);
+					updateMembershipPlan(memberships);
                     break;
                 case 3:
                     cout << "Delete Plan selected\n";
+                    loadMembershipPlans(memberships);
+					deleteMembershipPlan(memberships);
                     break;
                 case 4:
                     cout << "Display All Plans selected\n";
+					loadMembershipPlans(memberships);
+					displayMembershipPlans(memberships);
                     break;
                 case 0:
                     break;

@@ -21,7 +21,7 @@ void Membership_Plan_Management::setid()
 
 void Membership_Plan_Management::setname()
 {
-	cout << "write membership plan's name " << name;
+	cout << "write membership plan's name " ;
 	cin >> name;
 }
 
@@ -44,7 +44,10 @@ void Membership_Plan_Management::displaymembershipPlan() {
 }
 
 void Membership_Plan_Management::membershipplansystem() {
-	setname();
+	string n;
+	cout << "Enter membership plan name: ";
+	cin >> n;
+	setname(n);
 	displaymembershipPlan();
 	cout << endl;
 	plan p(0, 0, 0, "", "", Access_level::Basic);
@@ -57,10 +60,8 @@ void Membership_Plan_Management::membershipplansystem() {
 	p.setexpiration_date();
 	p.displayPlan();
 	p.printstartandenddate();
-	Billing_System bill;
-	bill.addpayment();
-	bill.receipt();
-	setbilling_system(bill);
+	billing_system.addpayment();
+	billing_system.receipt();
 	p.psave_file();
 }
 
@@ -69,9 +70,22 @@ void Membership_Plan_Management::setbilling_system(Billing_System b)
 	billing_system = b;
 }
 
+plan::plan()
+{
+	plan_id = 0;
+	duration = 0;
+	price = 0;
+	Allowed_services = "";
+	Discount_rules = "";
+	access_level = Basic;
+	start_date = time(0);
+	expiration_date = time(0);
+}
+
 plan::plan(int pi, int d, float p, string a, string dr, Access_level al) {
 	plan_id = pi;
 	duration = d;
+	start_date = time(0);
 	expiration_date = start_date + (duration * 24 * 60 * 60);
 	Allowed_services = a;
 	Discount_rules = dr;
@@ -99,13 +113,6 @@ void Membership_Plan_Management::createnewclient()
 {
 	cout << "Enter plan data..." << endl;
 }
-
-void Membership_Plan_Management::updateMembershipPlan(vector<Membership_Plan_Management>& plans)
-{}
-
-void Membership_Plan_Management::deleteMembershipPlan(vector<Membership_Plan_Management>&plans)
-{}
-
 void plan::setplan_id()
 {
 	cout << "write plan id ";
@@ -151,12 +158,12 @@ void plan::setDiscount_rules() {
 
 int plan::getplan_id()
 {
-	return 0;
+	return plan_id;
 }
 
 int plan::getduration()
 {
-	return 0;
+	return duration;
 }
 
 void plan::setexpiration_date()
@@ -179,6 +186,44 @@ time_t plan::getstart_date()
 time_t plan::getexpiration_date()
 {
 	return expiration_date;
+}
+void Membership_Plan_Management::setname(string n)
+{
+	name = n;
+}
+void Membership_Plan_Management::updateMembershipPlan(vector<Membership_Plan_Management>& plans)
+{
+	int id;
+	cout << "Enter plan ID to update: ";
+	cin >> id;
+
+	for (auto& p : plans) {
+		if (p.getid() == id) {
+			string newName;
+			cout << "Enter new name: ";
+			cin >> newName;
+			p.setname(newName);
+			cout << "Updated successfully!\n";
+			return;
+		}
+	}
+	
+	cout << "Plan not found.\n";
+}
+void Membership_Plan_Management::deleteMembershipPlan(vector<Membership_Plan_Management>& plans)
+{
+	int id;
+	cout << "Enter plan ID to delete: ";
+	cin >> id;
+
+	for (int i = 0; i < plans.size(); i++) {
+		if (plans[i].getid() == id) {
+			plans.erase(plans.begin() + i);
+			cout << "Deleted successfully!\n";
+			return;
+		}
+	}
+	cout << "Plan not found.\n";
 }
 void plan::printstartandenddate()
 {

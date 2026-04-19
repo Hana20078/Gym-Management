@@ -51,4 +51,5 @@ public:
 	void updateMember(vector<member>& members);
 	string getAssignedWorkout() const;
 	void assignWorkoutToMember(vector<member>& members, vector<workout_programs>& programs);
+
 };

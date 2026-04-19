@@ -5,34 +5,7 @@
 #include"Billing_System.h"
 #include <vector>
 using namespace std;
-
-class Membership_Plan_Management
-{
-private:
-	static int counter;
-	int id;
-	string name;
-	Billing_System billing_system;
-public:
-	Membership_Plan_Management( string n);
-    void setid();
-	void setname();
-	int getid();
-	string getname();
-	//void displayPlan();
-	void membershipplansystem();
-	void setbilling_system(Billing_System b);
-	Billing_System getbilling_system();
-	void newplan();
-	void save_file();
-	void load_file(vector<Membership_Plan_Management>& plans);
-	void createMembershipPlan(vector<Membership_Plan_Management>& plans);
-	void createnewclient();
-	void updateMembershipPlan(vector<Membership_Plan_Management>& plans);
-	void deleteMembershipPlan(vector<Membership_Plan_Management>& plans);
-	void displaymembershipPlan();
-};
-enum Access_level{Basic, Premium, VIP};
+enum Access_level { Basic, Premium, VIP };
 class plan {
 private:
 	int plan_id, duration;
@@ -42,6 +15,7 @@ private:
 	Access_level level;
 
 public:
+	plan();
 	plan(int pi, int d, float p, string a, string dr, Access_level al);
 	void setplan_id();
 	void setduration();
@@ -62,5 +36,33 @@ public:
 	Access_level access_level;
 	void psave_file();
 	void pload_file(vector<plan>& plans);
+	void displaymembershipPlan(vector<plan>& plans);
 
+};
+
+class Membership_Plan_Management
+{
+private:
+	static int counter;
+	int id;
+	string name;
+	Billing_System billing_system;
+	plan p;
+public:
+	Membership_Plan_Management( string n);
+	void setname(string n);
+    void setid();
+	int getid();
+	string getname();
+	void membershipplansystem();
+	void setbilling_system(Billing_System b);
+	Billing_System getbilling_system();
+	void newplan();
+	void save_file();
+	void load_file(vector<Membership_Plan_Management>& plans);
+	void createMembershipPlan(vector<Membership_Plan_Management>& plans);
+	void createnewclient();
+	void updateMembershipPlan(vector<Membership_Plan_Management>& plans);
+	void deleteMembershipPlan(vector<Membership_Plan_Management>& plans);
+	void displaymembershipPlan();
 };
