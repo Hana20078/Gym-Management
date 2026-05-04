@@ -12,7 +12,6 @@ private:
 	float price;
 	string Allowed_services, Discount_rules;
 	time_t start_date, expiration_date;
-	Access_level level;
 
 public:
 	plan();
@@ -36,8 +35,6 @@ public:
 	Access_level access_level;
 	void psave_file();
 	void pload_file(vector<plan>& plans);
-	void displaymembershipPlan(vector<plan>& plans);
-
 };
 
 class Membership_Plan_Management
