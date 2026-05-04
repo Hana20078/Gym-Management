@@ -77,7 +77,7 @@ plan::plan()
 }
 
 plan::plan(int pi, int d, float p, string a, string dr, Access_level al) {
-	plan_id = pi;
+	plan_id = pi; 
 	duration = d;
 	start_date = time(0);
 	expiration_date = start_date + (duration * 24 * 60 * 60);
