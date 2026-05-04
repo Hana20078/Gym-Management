@@ -1,8 +1,8 @@
 #include "Workout_Program_Management.h"
 #include<iostream>
 #include <string>
-#include<fstream>
-#include <sstream>
+#include<fstream> //ifstream and ofstream
+#include <sstream> //3ashan fel text file fel save w load ay data type yt7awel l string
 using namespace std;
 
 workout_programs::workout_programs(int nu, int d, string n, string tg, string el, string at,float sd, float ed,float p,bool pay,string tp) {
@@ -17,6 +17,85 @@ workout_programs::workout_programs(int nu, int d, string n, string tg, string el
 	price = p;
 	payment = pay;
 	trainer_performance = tp;
+}
+void workout_programs::setstart_date()
+{
+	cout << "write workout's start date  " << start_date;
+	cin >> start_date;
+}
+
+void workout_programs::setduration()
+{
+	cout << "write workout's duration  " << duration;
+	cin >> duration;
+}
+
+void workout_programs::setname()
+{
+	cout << "write workout's name ";
+	cin >> name;
+}
+
+void workout_programs::settarget_goal()
+{
+	cout << "write workout's target goal ";
+	cin >> target_goal;
+}
+
+void workout_programs::setexercise_list()
+{
+	cout << "write workout's exercise list ";
+	cin >> exercise_list;
+}
+
+void workout_programs::setassigned_trainer()
+{
+	cout << "write workout's assigned trainer";
+	cin >> assigned_trainer;
+}
+
+void workout_programs::setnum()
+{
+	cout << "write workout's id  ";
+	cin >> num;
+}
+
+int workout_programs::getnum()
+{
+	return num;
+}
+
+int workout_programs::getduration()
+{
+	return duration;
+}
+
+float workout_programs::getstart_date()
+{
+	return start_date;
+}
+
+string workout_programs::getname()
+{
+	return name;
+}
+
+string workout_programs::gettarget_goal()
+{
+	cout << "workout's target goal is ";
+	return target_goal;
+}
+
+string workout_programs::getexercise_list()
+{
+	cout << "workout's exercise list is ";
+	return exercise_list;
+}
+
+string workout_programs::getassigned_trainer()
+{
+	cout << "workout's assigned trainer is ";
+	return assigned_trainer;
 }
 void workout_programs::chooseWorkout() {
 	int choice;
@@ -169,85 +248,7 @@ void Exercise::display() {
 }
 
 
-void workout_programs::setstart_date()
-{
-	cout << "write workout's start date  " << start_date;
-	cin >> start_date;
-}
 
-void workout_programs::setduration()
-{
-	cout << "write workout's duration  " << duration;
-	cin >> duration;
-}
-
-void workout_programs::setname()
-{
-	cout << "write workout's name " ;
-	cin >> name;
-}
-
-void workout_programs::settarget_goal()
-{
-	cout << "write workout's target goal " ;
-	cin >> target_goal;
-}
-
-void workout_programs::setexercise_list()
-{
-	cout << "write workout's exercise list " ;
-	cin >> exercise_list;
-}
-
-void workout_programs::setassigned_trainer()
-{
-	cout << "write workout's assigned trainer" ;
-	cin >> assigned_trainer;
-}
-
-void workout_programs::setnum()
-{
-	cout << "write workout's id  " ;
-	cin >> num;
-}
-
-int workout_programs::getnum()
-{
-    return num;
-}
-
-int workout_programs::getduration()
-{
-    return duration;
-}
-
-float workout_programs::getstart_date()
-{
-	return start_date;
-}
-
-string workout_programs::getname()
-{
-    return name;
-}
-
-string workout_programs::gettarget_goal()
-{
-	cout << "workout's target goal is " ;
-    return target_goal;
-}
-
-string workout_programs::getexercise_list()
-{
-	cout << "workout's exercise list is " ;
-    return exercise_list;
-}
-
-string workout_programs::getassigned_trainer()
-{
-	cout << "workout's assigned trainer is " ;
-    return assigned_trainer;
-}
 void workout_programs::save_file() {
 	ofstream wfile("workout_programs.txt", ios::app);
 	if (wfile.is_open()) {

@@ -1,14 +1,14 @@
 #pragma once
 #include <string>
-
-using namespace std;
+using namespace std; //std::string ,std::cout, std::cin, etc.,std=standard library
 
 class workout_programs {
-public:
+private:
 	int num, duration;
 	string name, target_goal, exercise_list, assigned_trainer, trainer_performance;
 	float start_date, expiration_date, price;
 	bool payment;
+public:
     workout_programs(int nu, int d, string n, string tg, string el, string at ,float sd,float ed,float p,bool pay,string tp);
 	void chooseWorkout();
 	void displayprogram();
