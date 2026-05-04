@@ -97,6 +97,52 @@ string workout_programs::getassigned_trainer()
 	cout << "workout's assigned trainer is ";
 	return assigned_trainer;
 }
+void workout_programs::setprice()
+{
+	cout << "write workout's price  ";
+	cin >> price;
+}
+
+float workout_programs::getprice()
+{
+	return price;
+}
+
+void workout_programs::setpayment()
+{
+	int x;
+	cout << "Payment status (1=paid, 0=not paid): ";
+	cin >> x;
+	payment = (x == 1);
+}
+
+bool workout_programs::getpayment()
+{
+	return payment;
+}
+
+// Implement missing methods declared in the header
+void workout_programs::setexpiration_date()
+{
+	cout << "write workout's expiration date  " << expiration_date;
+	cin >> expiration_date;
+}
+
+float workout_programs::getexpiration_date()
+{
+	return expiration_date;
+}
+
+void workout_programs::settrainerperformance() {
+	cout << "write trainer performance  ";
+	cin >> trainer_performance;
+}
+
+string workout_programs::gettrainerperformance()
+{
+	return trainer_performance;
+}
+
 void workout_programs::chooseWorkout() {
 	int choice;
 	cout << "Choose a workout program from the following options: " << endl;
@@ -247,30 +293,27 @@ void Exercise::display() {
 	cout << "======================================================";
 }
 
-
-
 void workout_programs::save_file() {
-	ofstream wfile("workout_programs.txt", ios::app);
-	if (wfile.is_open()) {
+	ofstream wfile("workout_programs.txt", ios::app); //ofstream=outputfile btkteb fih,ios::app ya3ny 7ot fe a5er el file me4 tmsa7 el2adem,app=append
+	if (wfile.is_open()) { 
 		wfile << num << "|" << duration << "|" << name << "|" << target_goal << "|" << exercise_list << "|" << assigned_trainer << "|" << start_date << "|" << expiration_date << endl;
 		wfile.close();
 	}
 }
 void workout_programs::load_file() {
-    std::ifstream wfile("workout_programs.txt");
-    if (!wfile.is_open()) {
+    std::ifstream wfile("workout_programs.txt");//ifstream=inputfile ht2ra mno bs
+    if (!wfile.is_open()) { //law elfile me4 mafto7 etla3 mn el function 3a4an my7sal4 crash
         return;
     }
-
     std::string line;
     // Read the first line (if you expect multiple records, iterate with while(getline(...)) )
     if (std::getline(wfile, line)) {
         if (!line.empty()) {
-            std::stringstream ss(line);
-            std::string token;
+            std::stringstream ss(line);//by5aly elsatr yet2asem agza2
+            std::string token; //variable hysta2bel kol goz2
 
             if (std::getline(ss, token, '|')) {
-                try { num = std::stoi(token); } catch (...) { num = 0; }
+                try { num = std::stoi(token); } catch (...) { num = 0; }//num=0 hmaya mn el errors,bt2ra l7ad | w t7oto fe token w t7awelo l string
             }
 
             if (std::getline(ss, token, '|')) {
@@ -330,65 +373,6 @@ void Exercise::Exercisesystem(){
 	e.setexercise_list();
 	e.setassigned_trainer();
 	e.display();
-}
-
-void workout_programs::workoutprogrammanagement() {
-	workout_programs w(0, 0, "", "", "", "", 0, 0,0,false,"");
-	w.setnum();
-	w.setduration();
-	w.setname();
-	w.settarget_goal();
-	w.setexercise_list();
-	w.setassigned_trainer();
-	w.setstart_date();
-	w.setexpiration_date();
-	w.displayprogram();
-}
-
-void workout_programs::setprice()
-{
-	cout << "write workout's price  " ;
-	cin >> price;
-}
-
-float workout_programs::getprice()
-{
-	return price;
-}
-
-void workout_programs::setpayment()
-{
-	int x;
-	cout << "Payment status (1=paid, 0=not paid): ";
-	cin >> x;
-	payment = (x == 1);
-}
-
-bool workout_programs::getpayment()
-{
-	return payment;
-}
-
-// Implement missing methods declared in the header
-void workout_programs::setexpiration_date()
-{
-	cout << "write workout's expiration date  " << expiration_date;
-	cin >> expiration_date;
-}
-
-float workout_programs::getexpiration_date()
-{
-	return expiration_date;
-}
-
-void workout_programs::settrainerperformance() {
-	cout << "write trainer performance  ";
-	cin >> trainer_performance;
-}
-
-string workout_programs::gettrainerperformance()
-{
-	return trainer_performance;
 }
 
 
